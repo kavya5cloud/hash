@@ -1,0 +1,188 @@
+{
+  "benchmark_id": "98c59d6d-84b6-4cad-9c44-0810ddc9532e",
+  "completed": 20,
+  "passed": 20,
+  "failed": 0,
+  "results": [
+    {
+      "benchmark_id": "98c59d6d-84b6-4cad-9c44-0810ddc9532e",
+      "task_id": "code-01",
+      "task_type": "code",
+      "winner": "worker-super",
+      "price": 5.0,
+      "passed": true,
+      "result": "PASS"
+    },
+    {
+      "benchmark_id": "98c59d6d-84b6-4cad-9c44-0810ddc9532e",
+      "task_id": "code-02",
+      "task_type": "code",
+      "winner": "worker-nano",
+      "price": 1.0,
+      "passed": true,
+      "result": "PASS"
+    },
+    {
+      "benchmark_id": "98c59d6d-84b6-4cad-9c44-0810ddc9532e",
+      "task_id": "code-03",
+      "task_type": "code",
+      "winner": "worker-nano",
+      "price": 1.5,
+      "passed": true,
+      "result": "PASS"
+    },
+    {
+      "benchmark_id": "98c59d6d-84b6-4cad-9c44-0810ddc9532e",
+      "task_id": "code-04",
+      "task_type": "code",
+      "winner": "worker-nano",
+      "price": 0.5,
+      "passed": true,
+      "result": "PASS"
+    },
+    {
+      "benchmark_id": "98c59d6d-84b6-4cad-9c44-0810ddc9532e",
+      "task_id": "code-05",
+      "task_type": "code",
+      "winner": "worker-nano",
+      "price": 1.5,
+      "passed": true,
+      "result": "PASS"
+    },
+    {
+      "benchmark_id": "98c59d6d-84b6-4cad-9c44-0810ddc9532e",
+      "task_id": "code-06",
+      "task_type": "code",
+      "winner": "worker-nano",
+      "price": 1.0,
+      "passed": true,
+      "result": "PASS"
+    },
+    {
+      "benchmark_id": "98c59d6d-84b6-4cad-9c44-0810ddc9532e",
+      "task_id": "code-07",
+      "task_type": "code",
+      "winner": "worker-nano",
+      "price": 0.01,
+      "passed": true,
+      "result": "PASS"
+    },
+    {
+      "benchmark_id": "98c59d6d-84b6-4cad-9c44-0810ddc9532e",
+      "task_id": "copy-01",
+      "task_type": "copy",
+      "winner": "worker-nano",
+      "price": 5.0,
+      "passed": true,
+      "result": "PASS"
+    },
+    {
+      "benchmark_id": "98c59d6d-84b6-4cad-9c44-0810ddc9532e",
+      "task_id": "copy-02",
+      "task_type": "copy",
+      "winner": "worker-nano",
+      "price": 0.5,
+      "passed": true,
+      "result": "PASS"
+    },
+    {
+      "benchmark_id": "98c59d6d-84b6-4cad-9c44-0810ddc9532e",
+      "task_id": "copy-03",
+      "task_type": "copy",
+      "winner": "worker-nano",
+      "price": 2.0,
+      "passed": true,
+      "result": "PASS"
+    },
+    {
+      "benchmark_id": "98c59d6d-84b6-4cad-9c44-0810ddc9532e",
+      "task_id": "copy-04",
+      "task_type": "copy",
+      "winner": "worker-nano",
+      "price": 1.0,
+      "passed": true,
+      "result": "PASS"
+    },
+    {
+      "benchmark_id": "98c59d6d-84b6-4cad-9c44-0810ddc9532e",
+      "task_id": "copy-05",
+      "task_type": "copy",
+      "winner": "worker-nano",
+      "price": 2.5,
+      "passed": true,
+      "result": "PASS"
+    },
+    {
+      "benchmark_id": "98c59d6d-84b6-4cad-9c44-0810ddc9532e",
+      "task_id": "copy-06",
+      "task_type": "copy",
+      "winner": "worker-nano",
+      "price": 5.0,
+      "passed": true,
+      "result": "PASS"
+    },
+    {
+      "benchmark_id": "98c59d6d-84b6-4cad-9c44-0810ddc9532e",
+      "task_id": "research-01",
+      "task_type": "research",
+      "winner": "worker-nano",
+      "price": 1.0,
+      "passed": true,
+      "result": "PASS"
+    },
+    {
+      "benchmark_id": "98c59d6d-84b6-4cad-9c44-0810ddc9532e",
+      "task_id": "research-02",
+      "task_type": "research",
+      "winner": "worker-nano",
+      "price": 1.25,
+      "passed": true,
+      "result": "PASS"
+    },
+    {
+      "benchmark_id": "98c59d6d-84b6-4cad-9c44-0810ddc9532e",
+      "task_id": "research-03",
+      "task_type": "research",
+      "winner": "worker-nano",
+      "price": 1.0,
+      "passed": true,
+      "result": "PASS"
+    },
+    {
+      "benchmark_id": "98c59d6d-84b6-4cad-9c44-0810ddc9532e",
+      "task_id": "research-04",
+      "task_type": "research",
+      "winner": "worker-nano",
+      "price": 1.0,
+      "passed": true,
+      "result": "PASS"
+    },
+    {
+      "benchmark_id": "98c59d6d-84b6-4cad-9c44-0810ddc9532e",
+      "task_id": "research-05",
+      "task_type": "research",
+      "winner": "worker-nano",
+      "price": 1.0,
+      "passed": true,
+      "result": "PASS"
+    },
+    {
+      "benchmark_id": "98c59d6d-84b6-4cad-9c44-0810ddc9532e",
+      "task_id": "research-06",
+      "task_type": "research",
+      "winner": "worker-nano",
+      "price": 1.0,
+      "passed": true,
+      "result": "PASS"
+    },
+    {
+      "benchmark_id": "98c59d6d-84b6-4cad-9c44-0810ddc9532e",
+      "task_id": "research-07",
+      "task_type": "research",
+      "winner": "worker-nano",
+      "price": 1.0,
+      "passed": true,
+      "result": "PASS"
+    }
+  ]
+}

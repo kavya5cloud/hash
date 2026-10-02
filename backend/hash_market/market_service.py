@@ -34,6 +34,7 @@ def run_market(
     llm: LLMClient,
     ledger: Ledger,
     max_rounds: int = 2,
+    manager_telemetry: dict | None = None,
 ) -> MarketRunResult:
     """Run one task through bidding, award, escrow, execution and verification."""
 
@@ -72,6 +73,7 @@ def run_market(
             "budget": task.budget,
             "task_type": task.task_type.value,
             "acceptance_criteria": task.acceptance_criteria,
+            "telemetry": manager_telemetry or {},
         },
     )
 

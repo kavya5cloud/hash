@@ -275,11 +275,61 @@ def health() -> dict:
 
 @app.get("/agents")
 def agents() -> list[dict]:
-    """Return registered Hash market agents."""
-    return [
-        agent.model_dump()
-        for agent in phase2_agents().values()
-    ]
+    """Return registered Hash market agents with computed market stats."""
+
+    ledger = _ledger()
+
+    try:
+        rows = ledger.connection.execute(
+            """
+            SELECT event_type, data
+            FROM events
+            ORDER BY id ASC
+            """
+        ).fetchall()
+    finally:
+        ledger.close()
+
+    stats = {
+        agent_id: {"awards": 0, "wins": 0}
+        for agent_id in phase2_agents()
+    }
+
+    for event_type, raw_data in rows:
+        data = json.loads(raw_data)
+        worker_id = data.get("worker_id")
+
+        if worker_id not in stats:
+            continue
+
+        if event_type == "task_awarded":
+            stats[worker_id]["awards"] += 1
+        elif event_type == "payment_released":
+            stats[worker_id]["wins"] += 1
+
+    result = []
+
+    for agent in phase2_agents().values():
+        payload = agent.model_dump()
+        agent_stats = stats[agent.id]
+        awards = agent_stats["awards"]
+        wins = agent_stats["wins"]
+
+        payload.update(
+            {
+                "awards": awards,
+                "wins": wins,
+                "win_rate": (
+                    wins / awards
+                    if awards
+                    else 0.0
+                ),
+            }
+        )
+
+        result.append(payload)
+
+    return result
 
 
 @app.post("/runs")
@@ -308,6 +358,11 @@ def create_run(request: RunRequest) -> dict:
             task=task,
             llm=llm,
             ledger=ledger,
+            manager_telemetry=(
+                manager.last_response.telemetry()
+                if manager.last_response
+                else {}
+            ),
         )
 
         events = result.events

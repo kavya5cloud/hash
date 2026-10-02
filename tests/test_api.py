@@ -30,6 +30,16 @@ def test_agents() -> None:
         "nvidia/nemotron-3-super-120b-a12b",
     }
 
+    for agent in agents:
+        assert agent["awards"] >= 0
+        assert agent["wins"] >= 0
+        assert 0.0 <= agent["win_rate"] <= 1.0
+        assert (
+            agent["win_rate"] == 0.0
+            if agent["awards"] == 0
+            else agent["wins"] / agent["awards"]
+        )
+
 
 def test_benchmark() -> None:
     response = client.get("/benchmark")

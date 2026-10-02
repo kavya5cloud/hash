@@ -33,6 +33,7 @@ def run_market(
     task: Task,
     llm: LLMClient,
     ledger: Ledger,
+    max_rounds: int = 2,
 ) -> MarketRunResult:
     """Run one task through bidding, award, escrow, execution and verification."""
 
@@ -74,218 +75,222 @@ def run_market(
         },
     )
 
-    bids = []
+    for round_number in range(1, max_rounds + 1):
+        bids = []
 
-    for worker_id, worker in workers.items():
-        try:
-            bid = worker.bid(task)
-        except (RuntimeError, ValueError, KeyError) as exc:
+        for worker_id, worker in workers.items():
+            try:
+                bid = worker.bid(task)
+            except (RuntimeError, ValueError, KeyError) as exc:
+                ledger.append(
+                    run_id,
+                    "bid_failed",
+                    {
+                        "task_id": task.id,
+                        "worker_id": worker_id,
+                        "reason": str(exc),
+                    },
+                )
+                continue
+
+            bids.append(bid)
+
             ledger.append(
                 run_id,
-                "bid_failed",
+                "sealed_bid_submitted",
                 {
-                    "task_id": task.id,
-                    "worker_id": worker_id,
-                    "reason": str(exc),
+                    "bid_id": bid.id,
+                    "task_id": bid.task_id,
+                    "worker_id": bid.worker_id,
+                    "price": bid.price,
+                    "estimated_time_seconds": (
+                        bid.estimated_time_seconds
+                    ),
+                    "plan": bid.plan,
+                    "telemetry": (
+                        worker.last_response.telemetry()
+                        if worker.last_response
+                        else {}
+                    ),
                 },
             )
-            continue
 
-        bids.append(bid)
+        if not bids:
+            ledger.append(
+                run_id,
+                "task_unmarketable",
+                {
+                    "task_id": task.id,
+                    "reason": "No worker submitted a valid bid",
+                },
+            )
+
+            return MarketRunResult(
+                run_id=run_id,
+                goal=goal,
+                task=task,
+                events=[
+                    event.model_dump()
+                    for event in ledger.events(run_id)
+                ],
+            )
+
+
+        award = market.award(task, bids, agents)
 
         ledger.append(
             run_id,
-            "sealed_bid_submitted",
+            "task_awarded",
             {
-                "bid_id": bid.id,
-                "task_id": bid.task_id,
-                "worker_id": bid.worker_id,
-                "price": bid.price,
-                "estimated_time_seconds": (
-                    bid.estimated_time_seconds
+                "task_id": award.task_id,
+                "worker_id": award.worker_id,
+                "bid_id": award.bid_id,
+                "price": award.price,
+                "score": award.score,
+                "reputation_component": (
+                    award.reputation_component
                 ),
-                "plan": bid.plan,
+                "price_component": award.price_component,
+            },
+        )
+
+        winning_agent = agents[award.worker_id]
+        winning_worker = workers[award.worker_id]
+
+        market.reserve_escrow(
+            winning_agent,
+            award.price,
+        )
+
+        ledger.append(
+            run_id,
+            "escrow_reserved",
+            {
+                "task_id": task.id,
+                "worker_id": award.worker_id,
+                "amount": award.price,
+            },
+        )
+
+        output = winning_worker.execute(task)
+
+        ledger.append(
+            run_id,
+            "work_submitted",
+            {
+                "task_id": task.id,
+                "worker_id": award.worker_id,
+                "output": output,
                 "telemetry": (
-                    worker.last_response.telemetry()
-                    if worker.last_response
+                    winning_worker.last_response.telemetry()
+                    if winning_worker.last_response
                     else {}
                 ),
             },
         )
 
-    if not bids:
-        ledger.append(
-            run_id,
-            "task_unmarketable",
-            {
-                "task_id": task.id,
-                "reason": "No worker submitted a valid bid",
-            },
-        )
-
-        return MarketRunResult(
-            run_id=run_id,
-            goal=goal,
-            task=task,
-            events=[
-                event.model_dump()
-                for event in ledger.events(run_id)
-            ],
-        )
-
-    award = market.award(task, bids, agents)
-
-    ledger.append(
-        run_id,
-        "task_awarded",
-        {
-            "task_id": award.task_id,
-            "worker_id": award.worker_id,
-            "bid_id": award.bid_id,
-            "price": award.price,
-            "score": award.score,
-            "reputation_component": (
-                award.reputation_component
-            ),
-            "price_component": award.price_component,
-        },
-    )
-
-    winning_agent = agents[award.worker_id]
-    winning_worker = workers[award.worker_id]
-
-    market.reserve_escrow(
-        winning_agent,
-        award.price,
-    )
-
-    ledger.append(
-        run_id,
-        "escrow_reserved",
-        {
-            "task_id": task.id,
-            "worker_id": award.worker_id,
-            "amount": award.price,
-        },
-    )
-
-    output = winning_worker.execute(task)
-
-    ledger.append(
-        run_id,
-        "work_submitted",
-        {
-            "task_id": task.id,
-            "worker_id": award.worker_id,
-            "output": output,
-            "telemetry": (
-                winning_worker.last_response.telemetry()
-                if winning_worker.last_response
-                else {}
-            ),
-        },
-    )
-
-    verdict = verifier.verify(
-        task,
-        award.worker_id,
-        output,
-    )
-
-    ledger.append(
-        run_id,
-        "verdict",
-        {
-            "task_id": verdict.task_id,
-            "worker_id": verdict.worker_id,
-            "passed": verdict.passed,
-            "reason": verdict.reason,
-            "telemetry": (
-                verifier.last_response.telemetry()
-                if verifier.last_response
-                else {}
-            ),
-        },
-    )
-
-    if verdict.passed:
-        payment = market.settle_pass(
-            winning_agent,
-            award.price,
+        verdict = verifier.verify(
+            task,
+            award.worker_id,
+            output,
         )
 
         ledger.append(
             run_id,
-            "payment_released",
+            "verdict",
             {
-                "task_id": task.id,
-                "worker_id": award.worker_id,
-                "amount": payment,
+                "task_id": verdict.task_id,
+                "worker_id": verdict.worker_id,
+                "passed": verdict.passed,
+                "reason": verdict.reason,
+                "telemetry": (
+                    verifier.last_response.telemetry()
+                    if verifier.last_response
+                    else {}
+                ),
             },
         )
 
-        ledger.append(
-            run_id,
-            "reputation_updated",
-            {
-                "worker_id": award.worker_id,
-                "result": "pass",
-                "reputation": winning_agent.reputation,
-            },
-        )
+        if verdict.passed:
+            payment = market.settle_pass(
+                winning_agent,
+                award.price,
+            )
 
-        ledger.append(
-            run_id,
-            "goal_completed",
-            {
-                "goal_id": goal.id,
-                "worker_id": award.worker_id,
-            },
-        )
+            ledger.append(
+                run_id,
+                "payment_released",
+                {
+                    "task_id": task.id,
+                    "worker_id": award.worker_id,
+                    "amount": payment,
+                },
+            )
 
-    else:
-        slash = market.settle_fail(
-            winning_agent,
-            award.price,
-        )
+            ledger.append(
+                run_id,
+                "reputation_updated",
+                {
+                    "worker_id": award.worker_id,
+                    "result": "pass",
+                    "reputation": winning_agent.reputation,
+                },
+            )
 
-        ledger.append(
-            run_id,
-            "payment_slashed",
-            {
-                "task_id": task.id,
-                "worker_id": award.worker_id,
-                "amount": slash,
-            },
-        )
+            ledger.append(
+                run_id,
+                "goal_completed",
+                {
+                    "goal_id": goal.id,
+                    "worker_id": award.worker_id,
+                },
+            )
 
-        ledger.append(
-            run_id,
-            "reputation_updated",
-            {
-                "worker_id": award.worker_id,
-                "result": "fail",
-                "reputation": winning_agent.reputation,
-            },
-        )
+        else:
+            slash = market.settle_fail(
+                winning_agent,
+                award.price,
+            )
 
-        ledger.append(
-            run_id,
-            "task_reposted",
-            {
-                "task_id": task.id,
-                "failed_worker_id": award.worker_id,
-            },
-        )
+            ledger.append(
+                run_id,
+                "payment_slashed",
+                {
+                    "task_id": task.id,
+                    "worker_id": award.worker_id,
+                    "amount": slash,
+                },
+            )
 
-        ledger.append(
-            run_id,
-            "goal_failed",
-            {
-                "goal_id": goal.id,
-                "worker_id": award.worker_id,
-            },
-        )
+            ledger.append(
+                run_id,
+                "reputation_updated",
+                {
+                    "worker_id": award.worker_id,
+                    "result": "fail",
+                    "reputation": winning_agent.reputation,
+                },
+            )
+
+            ledger.append(
+                run_id,
+                "task_reposted",
+                {
+                    "task_id": task.id,
+                    "failed_worker_id": award.worker_id,
+                },
+            )
+
+            if round_number == max_rounds:
+                ledger.append(
+                    run_id,
+                    "goal_failed",
+                    {
+                        "goal_id": goal.id,
+                        "worker_id": award.worker_id,
+                    },
+                )
+                break
 
     return MarketRunResult(
         run_id=run_id,

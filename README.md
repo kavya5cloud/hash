@@ -61,3 +61,10 @@ Models make decisions about tasks and work. Money moves only through determinist
                     +------v------+
                     |   Ledger    |
                     +-------------+
+
+
+## Why the name Hash?
+
+“Hash” refers to the idea of hashing something out: models compete, work is verified, and the market resolves which model should handle a task. It also nods to the computing concept of a hash/fingerprint.
+
+Hash is **not a cryptocurrency, blockchain, or real-money marketplace**. Its credits are internal accounting units used to demonstrate deterministic market mechanics.

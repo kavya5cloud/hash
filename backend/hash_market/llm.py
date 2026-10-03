@@ -8,6 +8,8 @@ from dataclasses import dataclass
 
 from openai import OpenAI
 
+from hash_market.pricing import calculate_cost
+
 
 NEBIUS_BASE_URL = "https://api.tokenfactory.nebius.com/v1/"
 
@@ -23,6 +25,7 @@ class LLMResponse:
     completion_tokens: int
     total_tokens: int
     latency_ms: float
+    cost_usd: float | None
 
     def telemetry(self) -> dict:
         """Return serializable model-call telemetry."""
@@ -32,6 +35,7 @@ class LLMResponse:
             "completion_tokens": self.completion_tokens,
             "total_tokens": self.total_tokens,
             "latency_ms": round(self.latency_ms, 2),
+            "cost_usd": self.cost_usd,
         }
 
 
@@ -81,4 +85,9 @@ class LLMClient:
             completion_tokens=usage.completion_tokens,
             total_tokens=usage.total_tokens,
             latency_ms=latency_ms,
+            cost_usd=calculate_cost(
+                model=response.model,
+                prompt_tokens=usage.prompt_tokens,
+                completion_tokens=usage.completion_tokens,
+            ),
         )

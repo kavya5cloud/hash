@@ -122,8 +122,8 @@ def _run_summary(run_id: str) -> dict:
     worker_telemetry = work.get("telemetry")
     verifier_telemetry = verdict.get("telemetry")
 
-    total_tokens = sum(
-        telemetry.get("total_tokens", 0)
+    all_telemetry = [
+        telemetry
         for telemetry in (
             manager_telemetry,
             *[
@@ -134,6 +134,23 @@ def _run_summary(run_id: str) -> dict:
             verifier_telemetry,
         )
         if telemetry
+    ]
+
+    total_tokens = sum(
+        telemetry.get("total_tokens", 0)
+        for telemetry in all_telemetry
+    )
+
+    token_factory_costs = [
+        telemetry["cost_usd"]
+        for telemetry in all_telemetry
+        if telemetry.get("cost_usd") is not None
+    ]
+
+    token_factory_cost_usd = (
+        round(sum(token_factory_costs), 8)
+        if len(token_factory_costs) == len(all_telemetry)
+        else None
     )
 
     bids = [
@@ -262,6 +279,7 @@ def _run_summary(run_id: str) -> dict:
             "task_budget": task.get("budget"),
             "worker_price": award.get("price"),
             "total_tokens": total_tokens,
+            "token_factory_cost_usd": token_factory_cost_usd,
         },
         "events": events,
     }

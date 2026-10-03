@@ -12,7 +12,7 @@ def build_report(
     db_path: str = "hash.db",
     results_path: str = "benchmark_results.json",
 ) -> dict:
-    """Build a scoped evidence report for the latest benchmark."""
+    """Build an evidence report for the latest Monolith-vs-Market benchmark."""
 
     results_file = Path(results_path)
 
@@ -32,6 +32,10 @@ def build_report(
             "benchmark_results.json does not contain benchmark_id"
         )
 
+    results = benchmark_results.get("results", [])
+    summary = benchmark_results.get("summary", {})
+
+    # Preserve market evidence from the append-only event ledger.
     connection = sqlite3.connect(db_path)
 
     rows = connection.execute(
@@ -44,7 +48,6 @@ def build_report(
 
     connection.close()
 
-    # First collect ALL events by task run.
     runs: dict[str, dict] = {}
 
     for run_id, event_type, raw_data in rows:
@@ -70,7 +73,6 @@ def build_report(
         elif event_type == "verdict":
             runs[run_id]["verdict"] = data
 
-    # Only keep runs whose award belongs to this benchmark.
     benchmark_runs = {
         run_id: run
         for run_id, run in runs.items()
@@ -78,17 +80,15 @@ def build_report(
         and run["award"].get("benchmark_id") == benchmark_id
     }
 
-    tasks = []
+    market_ledger_tasks = []
 
     for run_id, run in benchmark_runs.items():
         award = run["award"]
 
-        winner = award["worker_id"]
-
         task = {
             "run_id": run_id,
             "task_id": award["task_id"],
-            "winner": winner,
+            "winner": award["worker_id"],
             "winning_price": award["price"],
             "score": award["score"],
             "reputation_component": award.get(
@@ -117,57 +117,31 @@ def build_report(
                 {},
             )
 
-        tasks.append(task)
+        market_ledger_tasks.append(task)
 
     winner_counts = Counter(
         task["winner"]
-        for task in tasks
+        for task in market_ledger_tasks
     )
-
-    category_counts: dict[str, dict] = {}
-
-    for task in tasks:
-        task_id = task["task_id"]
-
-        if task_id.startswith("code-"):
-            category = "code"
-        elif task_id.startswith("copy-"):
-            category = "copy"
-        elif task_id.startswith("research-"):
-            category = "research"
-        else:
-            category = "other"
-
-        if category not in category_counts:
-            category_counts[category] = {
-                "tasks": 0,
-                "passed": 0,
-            }
-
-        category_counts[category]["tasks"] += 1
-
-        if task["passed"]:
-            category_counts[category]["passed"] += 1
 
     return {
         "benchmark_id": benchmark_id,
-        "summary": {
-            "tasks": len(tasks),
-            "passed": sum(
-                1 for task in tasks if task["passed"]
-            ),
-            "failed": sum(
-                1 for task in tasks if not task["passed"]
-            ),
+        "benchmark": {
+            "completed": benchmark_results.get("completed", 0),
+            "passed": benchmark_results.get("passed", 0),
+            "failed": benchmark_results.get("failed", 0),
         },
-        "worker_stats": {
-            worker: {
-                "wins": wins,
-            }
-            for worker, wins in winner_counts.items()
+        "summary": summary,
+        "comparison": {
+            "monolith": summary.get("monolith", {}),
+            "market": summary.get("market", {}),
         },
-        "category_stats": category_counts,
-        "tasks": tasks,
+        "results": results,
+        "market_ledger": {
+            "runs": len(market_ledger_tasks),
+            "winner_counts": dict(winner_counts),
+            "tasks": market_ledger_tasks,
+        },
     }
 
 
@@ -180,5 +154,23 @@ if __name__ == "__main__":
     )
 
     print("Created benchmark_report.json")
-    print(json.dumps(report["summary"], indent=2))
-    print(json.dumps(report["worker_stats"], indent=2))
+    print("\n=== BENCHMARK SUMMARY ===")
+    print(json.dumps(report["benchmark"], indent=2))
+
+    print("\n=== MONOLITH ===")
+    print(json.dumps(
+        report["comparison"]["monolith"],
+        indent=2,
+    ))
+
+    print("\n=== MARKET ===")
+    print(json.dumps(
+        report["comparison"]["market"],
+        indent=2,
+    ))
+
+    print("\n=== MARKET LEDGER WINNERS ===")
+    print(json.dumps(
+        report["market_ledger"]["winner_counts"],
+        indent=2,
+    ))

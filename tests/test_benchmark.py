@@ -1,7 +1,6 @@
 from hash_market.benchmark.tasks import benchmark_tasks
 from hash_market.models import TaskType
 
-
 def test_benchmark_has_20_tasks() -> None:
     tasks = benchmark_tasks()
 
@@ -9,14 +8,14 @@ def test_benchmark_has_20_tasks() -> None:
     assert len({task.id for task in tasks}) == 20
 
 
-def test_benchmark_covers_required_task_types() -> None:
+def test_benchmark_contains_only_coding_tasks() -> None:
     tasks = benchmark_tasks()
 
-    task_types = {task.task_type for task in tasks}
-
-    assert TaskType.CODE in task_types
-    assert TaskType.COPY in task_types
-    assert TaskType.RESEARCH in task_types
+    assert all(task.task_type is TaskType.CODE for task in tasks)
+    assert [task.id for task in tasks] == [
+        f"code-{index:02d}"
+        for index in range(1, 21)
+    ]
 
 
 def test_every_benchmark_task_has_positive_budget() -> None:

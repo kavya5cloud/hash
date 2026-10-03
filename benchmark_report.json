@@ -1,1407 +1,2818 @@
 {
-  "benchmark_id": "98c59d6d-84b6-4cad-9c44-0810ddc9532e",
-  "summary": {
-    "tasks": 20,
+  "benchmark_id": "9badbebf-d9d6-4957-adcc-7036733bdcec",
+  "benchmark": {
+    "completed": 20,
     "passed": 20,
     "failed": 0
   },
-  "worker_stats": {
-    "worker-super": {
-      "wins": 1
+  "summary": {
+    "monolith": {
+      "tasks": 20,
+      "passed": 20,
+      "failed": 0,
+      "pass_rate": 1.0,
+      "total_token_factory_cost_usd": 0.0214902,
+      "average_token_factory_cost_usd": 0.00107451,
+      "total_latency_ms": 61038.5,
+      "average_latency_ms": 3051.93,
+      "total_retries": 0
     },
-    "worker-nano": {
-      "wins": 19
+    "market": {
+      "tasks": 20,
+      "passed": 20,
+      "failed": 0,
+      "pass_rate": 1.0,
+      "total_token_factory_cost_usd": 0.02338146,
+      "average_token_factory_cost_usd": 0.00116907,
+      "total_latency_ms": 59028.89,
+      "average_latency_ms": 2951.44,
+      "total_retries": 0
     }
   },
-  "category_stats": {
-    "code": {
-      "tasks": 7,
-      "passed": 7
+  "comparison": {
+    "monolith": {
+      "tasks": 20,
+      "passed": 20,
+      "failed": 0,
+      "pass_rate": 1.0,
+      "total_token_factory_cost_usd": 0.0214902,
+      "average_token_factory_cost_usd": 0.00107451,
+      "total_latency_ms": 61038.5,
+      "average_latency_ms": 3051.93,
+      "total_retries": 0
     },
-    "copy": {
-      "tasks": 6,
-      "passed": 6
-    },
-    "research": {
-      "tasks": 7,
-      "passed": 7
+    "market": {
+      "tasks": 20,
+      "passed": 20,
+      "failed": 0,
+      "pass_rate": 1.0,
+      "total_token_factory_cost_usd": 0.02338146,
+      "average_token_factory_cost_usd": 0.00116907,
+      "total_latency_ms": 59028.89,
+      "average_latency_ms": 2951.44,
+      "total_retries": 0
     }
   },
-  "tasks": [
+  "results": [
     {
-      "run_id": "ae4fd6ec-5357-4489-92d0-c1f4f1aafaac",
+      "benchmark_id": "9badbebf-d9d6-4957-adcc-7036733bdcec",
       "task_id": "code-01",
-      "winner": "worker-super",
-      "winning_price": 5.0,
-      "score": 0.7,
-      "reputation_component": null,
-      "price_component": null,
-      "passed": true,
-      "bids": [
-        {
-          "bid_id": "a7c7e763-d7d6-499d-949c-89c983c2319a",
-          "task_id": "code-01",
-          "worker_id": "worker-nano",
-          "price": 5.0,
-          "estimated_time_seconds": 30.0,
-          "plan": "Implement a straightforward add function that returns a + b.",
-          "telemetry": {
-            "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-            "prompt_tokens": 164,
-            "completion_tokens": 117,
-            "total_tokens": 281,
-            "latency_ms": 1824.77
-          }
-        },
-        {
-          "bid_id": "75df5917-fbb0-4bcd-9b9d-e2e19adeda1e",
-          "task_id": "code-01",
-          "worker_id": "worker-lightning",
-          "price": 10.0,
-          "estimated_time_seconds": 30.0,
-          "plan": "Implement the add function returning a + b.",
-          "telemetry": {
-            "model": "nvidia/Nemotron-3_5-Lightning",
-            "prompt_tokens": 164,
-            "completion_tokens": 512,
-            "total_tokens": 676,
-            "latency_ms": 2450.89
-          }
-        },
-        {
-          "bid_id": "4ea54873-42ae-43e1-b64f-bbf03c92ff51",
-          "task_id": "code-01",
-          "worker_id": "worker-super",
-          "price": 5.0,
-          "estimated_time_seconds": 10.0,
-          "plan": "Implement add function returning sum of inputs.",
-          "telemetry": {
-            "model": "nvidia/nemotron-3-super-120b-a12b",
-            "prompt_tokens": 164,
-            "completion_tokens": 128,
-            "total_tokens": 292,
-            "latency_ms": 1168.44
-          }
-        }
-      ],
-      "worker_telemetry": {
+      "task_type": "code",
+      "monolith": {
         "model": "nvidia/nemotron-3-super-120b-a12b",
-        "prompt_tokens": 83,
-        "completion_tokens": 82,
-        "total_tokens": 165,
-        "latency_ms": 753.91
+        "passed": true,
+        "attempts": 1,
+        "retries": 0,
+        "latency_ms": 3421.19,
+        "token_factory_latency_ms": 3229.54,
+        "total_tokens": 377,
+        "token_factory_cost_usd": 0.0005159,
+        "attempt_details": [
+          {
+            "attempt": 1,
+            "passed": true,
+            "worker_telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 83,
+              "completion_tokens": 70,
+              "total_tokens": 153,
+              "latency_ms": 2386.55,
+              "cost_usd": 8.79e-05
+            },
+            "verifier_telemetry": {
+              "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+              "prompt_tokens": 122,
+              "completion_tokens": 102,
+              "total_tokens": 224,
+              "latency_ms": 842.99,
+              "cost_usd": 0.000428
+            },
+            "reason": ".                                                                        [100%]\n1 passed in 0.00s"
+          }
+        ]
       },
-      "verifier_telemetry": {
-        "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
-        "prompt_tokens": 117,
-        "completion_tokens": 111,
-        "total_tokens": 228,
-        "latency_ms": 684.78
+      "market": {
+        "winner": "worker-nano",
+        "price": 0.5,
+        "passed": true,
+        "result": "PASS",
+        "retries": 0,
+        "total_tokens": 488,
+        "token_factory_cost_usd": 0.00080762,
+        "latency_ms": 2590.14,
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 83,
+          "completion_tokens": 61,
+          "total_tokens": 144,
+          "latency_ms": 1107.78,
+          "cost_usd": 1.962e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 122,
+          "completion_tokens": 222,
+          "total_tokens": 344,
+          "latency_ms": 1482.36,
+          "cost_usd": 0.000788
+        }
       }
     },
     {
-      "run_id": "ced172ec-1ebf-4316-b23e-c95acf4c0778",
+      "benchmark_id": "9badbebf-d9d6-4957-adcc-7036733bdcec",
       "task_id": "code-02",
-      "winner": "worker-nano",
-      "winning_price": 1.0,
-      "score": 0.8646153846153846,
-      "reputation_component": null,
-      "price_component": null,
-      "passed": true,
-      "bids": [
-        {
-          "bid_id": "5af74b5c-aad8-4b44-adfb-800220ed7170",
-          "task_id": "code-02",
-          "worker_id": "worker-nano",
-          "price": 1.0,
-          "estimated_time_seconds": 3.0,
-          "plan": "def is_even(n): return n%2==0",
-          "telemetry": {
-            "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-            "prompt_tokens": 166,
-            "completion_tokens": 210,
-            "total_tokens": 376,
-            "latency_ms": 2217.25
+      "task_type": "code",
+      "monolith": {
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "passed": true,
+        "attempts": 1,
+        "retries": 0,
+        "latency_ms": 2080.94,
+        "token_factory_latency_ms": 1880.19,
+        "total_tokens": 427,
+        "token_factory_cost_usd": 0.0005955,
+        "attempt_details": [
+          {
+            "attempt": 1,
+            "passed": true,
+            "worker_telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 85,
+              "completion_tokens": 100,
+              "total_tokens": 185,
+              "latency_ms": 977.06,
+              "cost_usd": 0.0001155
+            },
+            "verifier_telemetry": {
+              "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+              "prompt_tokens": 123,
+              "completion_tokens": 119,
+              "total_tokens": 242,
+              "latency_ms": 903.13,
+              "cost_usd": 0.00048
+            },
+            "reason": ".                                                                        [100%]\n1 passed in 0.00s"
           }
-        },
-        {
-          "bid_id": "e26127ca-f557-4518-aac4-8277f84ca9b0",
-          "task_id": "code-02",
-          "worker_id": "worker-lightning",
-          "price": 5.0,
-          "estimated_time_seconds": 15.0,
-          "plan": "Implement is_even using n % 2 == 0",
-          "telemetry": {
-            "model": "nvidia/Nemotron-3_5-Lightning",
-            "prompt_tokens": 166,
-            "completion_tokens": 512,
-            "total_tokens": 678,
-            "latency_ms": 2648.31
-          }
-        },
-        {
-          "bid_id": "f934a5ab-7cc4-4c25-879f-5ad3e0b90da2",
-          "task_id": "code-02",
-          "worker_id": "worker-super",
-          "price": 5.0,
-          "estimated_time_seconds": 30.0,
-          "plan": "Define is_even(n) returning n % 2 == 0",
-          "telemetry": {
-            "model": "nvidia/nemotron-3-super-120b-a12b",
-            "prompt_tokens": 166,
-            "completion_tokens": 163,
-            "total_tokens": 329,
-            "latency_ms": 1389.42
-          }
-        }
-      ],
-      "worker_telemetry": {
-        "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-        "prompt_tokens": 85,
-        "completion_tokens": 144,
-        "total_tokens": 229,
-        "latency_ms": 1951.23
+        ]
       },
-      "verifier_telemetry": {
-        "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
-        "prompt_tokens": 128,
-        "completion_tokens": 125,
-        "total_tokens": 253,
-        "latency_ms": 939.72
+      "market": {
+        "winner": "worker-nano",
+        "price": 5.0,
+        "passed": true,
+        "result": "PASS",
+        "retries": 0,
+        "total_tokens": 415,
+        "token_factory_cost_usd": 0.00055418,
+        "latency_ms": 1736.2,
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 85,
+          "completion_tokens": 67,
+          "total_tokens": 152,
+          "latency_ms": 1109.0,
+          "cost_usd": 2.118e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 128,
+          "completion_tokens": 135,
+          "total_tokens": 263,
+          "latency_ms": 627.2,
+          "cost_usd": 0.000533
+        }
       }
     },
     {
-      "run_id": "bad36efb-6e68-42b5-b291-a1fc828eb182",
+      "benchmark_id": "9badbebf-d9d6-4957-adcc-7036733bdcec",
       "task_id": "code-03",
-      "winner": "worker-nano",
-      "winning_price": 1.5,
-      "score": 0.91,
-      "reputation_component": null,
-      "price_component": null,
-      "passed": true,
-      "bids": [
-        {
-          "bid_id": "ca947f7f-c21b-4295-8854-e4b6c3ed495f",
-          "task_id": "code-03",
-          "worker_id": "worker-nano",
-          "price": 1.5,
-          "estimated_time_seconds": 5.0,
-          "plan": "return s[::-1]",
-          "telemetry": {
-            "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-            "prompt_tokens": 162,
-            "completion_tokens": 218,
-            "total_tokens": 380,
-            "latency_ms": 2620.73
+      "task_type": "code",
+      "monolith": {
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "passed": true,
+        "attempts": 1,
+        "retries": 0,
+        "latency_ms": 2207.06,
+        "token_factory_latency_ms": 2018.58,
+        "total_tokens": 420,
+        "token_factory_cost_usd": 0.0006225,
+        "attempt_details": [
+          {
+            "attempt": 1,
+            "passed": true,
+            "worker_telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 81,
+              "completion_tokens": 88,
+              "total_tokens": 169,
+              "latency_ms": 1058.89,
+              "cost_usd": 0.0001035
+            },
+            "verifier_telemetry": {
+              "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+              "prompt_tokens": 117,
+              "completion_tokens": 134,
+              "total_tokens": 251,
+              "latency_ms": 959.69,
+              "cost_usd": 0.000519
+            },
+            "reason": ".                                                                        [100%]\n1 passed in 0.00s"
           }
-        },
-        {
-          "bid_id": "7c36bc2f-a62a-4214-be97-fdc633d5f783",
-          "task_id": "code-03",
-          "worker_id": "worker-lightning",
-          "price": 10.0,
-          "estimated_time_seconds": 30.0,
-          "plan": "Use string slicing.",
-          "telemetry": {
-            "model": "nvidia/Nemotron-3_5-Lightning",
-            "prompt_tokens": 219,
-            "completion_tokens": 256,
-            "total_tokens": 475,
-            "latency_ms": 1339.72
-          }
-        },
-        {
-          "bid_id": "0984e6ab-fc9e-4fb1-8445-d86f67af1131",
-          "task_id": "code-03",
-          "worker_id": "worker-super",
-          "price": 5.0,
-          "estimated_time_seconds": 8.0,
-          "plan": "Implement reverse_string using slicing [::-1] and return result.",
-          "telemetry": {
-            "model": "nvidia/nemotron-3-super-120b-a12b",
-            "prompt_tokens": 162,
-            "completion_tokens": 160,
-            "total_tokens": 322,
-            "latency_ms": 1414.37
-          }
-        }
-      ],
-      "worker_telemetry": {
-        "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-        "prompt_tokens": 81,
-        "completion_tokens": 102,
-        "total_tokens": 183,
-        "latency_ms": 1445.47
+        ]
       },
-      "verifier_telemetry": {
-        "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
-        "prompt_tokens": 121,
-        "completion_tokens": 183,
-        "total_tokens": 304,
-        "latency_ms": 1014.02
+      "market": {
+        "winner": "worker-nano",
+        "price": 1.0,
+        "passed": true,
+        "result": "PASS",
+        "retries": 0,
+        "total_tokens": 396,
+        "token_factory_cost_usd": 0.00054778,
+        "latency_ms": 1687.67,
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 81,
+          "completion_tokens": 58,
+          "total_tokens": 139,
+          "latency_ms": 897.37,
+          "cost_usd": 1.878e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 121,
+          "completion_tokens": 136,
+          "total_tokens": 257,
+          "latency_ms": 790.3,
+          "cost_usd": 0.000529
+        }
       }
     },
     {
-      "run_id": "d6d08822-03ed-47d8-bf82-9f86dae349ae",
+      "benchmark_id": "9badbebf-d9d6-4957-adcc-7036733bdcec",
       "task_id": "code-04",
-      "winner": "worker-nano",
-      "winning_price": 0.5,
-      "score": 0.9400000000000001,
-      "reputation_component": null,
-      "price_component": null,
-      "passed": true,
-      "bids": [
-        {
-          "bid_id": "cd29683d-263f-4b62-bbc7-b79bbe308675",
-          "task_id": "code-04",
-          "worker_id": "worker-nano",
-          "price": 0.5,
-          "estimated_time_seconds": 5.0,
-          "plan": "Return max(values) using Python's built-in max.",
-          "telemetry": {
-            "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-            "prompt_tokens": 163,
-            "completion_tokens": 218,
-            "total_tokens": 381,
-            "latency_ms": 2434.4
+      "task_type": "code",
+      "monolith": {
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "passed": true,
+        "attempts": 1,
+        "retries": 0,
+        "latency_ms": 2254.24,
+        "token_factory_latency_ms": 2049.97,
+        "total_tokens": 658,
+        "token_factory_cost_usd": 0.0008674,
+        "attempt_details": [
+          {
+            "attempt": 1,
+            "passed": true,
+            "worker_telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 104,
+              "completion_tokens": 218,
+              "total_tokens": 322,
+              "latency_ms": 1268.06,
+              "cost_usd": 0.0002274
+            },
+            "verifier_telemetry": {
+              "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+              "prompt_tokens": 184,
+              "completion_tokens": 152,
+              "total_tokens": 336,
+              "latency_ms": 781.91,
+              "cost_usd": 0.00064
+            },
+            "reason": ".                                                                        [100%]\n1 passed in 0.01s"
           }
-        },
-        {
-          "bid_id": "e5ba6e86-6cbd-4ea5-a958-99668cd65aa8",
-          "task_id": "code-04",
-          "worker_id": "worker-super",
-          "price": 5.0,
-          "estimated_time_seconds": 10.0,
-          "plan": "Implement max_value using Python's built-in max function to return the largest value.",
-          "telemetry": {
-            "model": "nvidia/nemotron-3-super-120b-a12b",
-            "prompt_tokens": 163,
-            "completion_tokens": 156,
-            "total_tokens": 319,
-            "latency_ms": 1383.71
-          }
-        }
-      ],
-      "worker_telemetry": {
-        "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-        "prompt_tokens": 82,
-        "completion_tokens": 73,
-        "total_tokens": 155,
-        "latency_ms": 1079.04
+        ]
       },
-      "verifier_telemetry": {
-        "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
-        "prompt_tokens": 135,
-        "completion_tokens": 166,
-        "total_tokens": 301,
-        "latency_ms": 1003.0
+      "market": {
+        "winner": "worker-nano",
+        "price": 1.0,
+        "passed": true,
+        "result": "PASS",
+        "retries": 0,
+        "total_tokens": 610,
+        "token_factory_cost_usd": 0.0008838,
+        "latency_ms": 2768.74,
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 104,
+          "completion_tokens": 119,
+          "total_tokens": 223,
+          "latency_ms": 1643.6,
+          "cost_usd": 3.48e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 156,
+          "completion_tokens": 231,
+          "total_tokens": 387,
+          "latency_ms": 1125.14,
+          "cost_usd": 0.000849
+        }
       }
     },
     {
-      "run_id": "85d496c1-3d2e-4da2-84c4-447a629ade68",
+      "benchmark_id": "9badbebf-d9d6-4957-adcc-7036733bdcec",
       "task_id": "code-05",
-      "winner": "worker-nano",
-      "winning_price": 1.5,
-      "score": 0.9400000000000001,
-      "reputation_component": null,
-      "price_component": null,
-      "passed": true,
-      "bids": [
-        {
-          "bid_id": "dd00e966-9320-4f9a-89ee-b62e872a128f",
-          "task_id": "code-05",
-          "worker_id": "worker-nano",
-          "price": 1.5,
-          "estimated_time_seconds": 4.0,
-          "plan": "Iterate over string, count characters that are in 'aeiouAEIOU'",
-          "telemetry": {
-            "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-            "prompt_tokens": 163,
-            "completion_tokens": 306,
-            "total_tokens": 469,
-            "latency_ms": 3670.1
+      "task_type": "code",
+      "monolith": {
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "passed": true,
+        "attempts": 1,
+        "retries": 0,
+        "latency_ms": 2477.55,
+        "token_factory_latency_ms": 2151.47,
+        "total_tokens": 509,
+        "token_factory_cost_usd": 0.0006461,
+        "attempt_details": [
+          {
+            "attempt": 1,
+            "passed": true,
+            "worker_telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 87,
+              "completion_tokens": 160,
+              "total_tokens": 247,
+              "latency_ms": 1267.26,
+              "cost_usd": 0.0001701
+            },
+            "verifier_telemetry": {
+              "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+              "prompt_tokens": 155,
+              "completion_tokens": 107,
+              "total_tokens": 262,
+              "latency_ms": 884.21,
+              "cost_usd": 0.000476
+            },
+            "reason": ".                                                                        [100%]\n1 passed in 0.00s"
           }
-        },
-        {
-          "bid_id": "77cc9c31-49e5-4d26-81b2-41b47bd2c5ec",
-          "task_id": "code-05",
-          "worker_id": "worker-super",
-          "price": 15.0,
-          "estimated_time_seconds": 30.0,
-          "plan": "Define function count_vowels(s): initialize count=0; for each char in s, if char.lower() in 'aeiou', increment count; return count.",
-          "telemetry": {
-            "model": "nvidia/nemotron-3-super-120b-a12b",
-            "prompt_tokens": 163,
-            "completion_tokens": 174,
-            "total_tokens": 337,
-            "latency_ms": 1392.68
-          }
-        }
-      ],
-      "worker_telemetry": {
-        "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-        "prompt_tokens": 82,
-        "completion_tokens": 88,
-        "total_tokens": 170,
-        "latency_ms": 1152.83
+        ]
       },
-      "verifier_telemetry": {
-        "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
-        "prompt_tokens": 139,
-        "completion_tokens": 213,
-        "total_tokens": 352,
-        "latency_ms": 1131.59
+      "market": {
+        "winner": "worker-nano",
+        "price": 5.0,
+        "passed": true,
+        "result": "PASS",
+        "retries": 0,
+        "total_tokens": 537,
+        "token_factory_cost_usd": 0.00056146,
+        "latency_ms": 2961.1,
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 87,
+          "completion_tokens": 176,
+          "total_tokens": 263,
+          "latency_ms": 2287.6,
+          "cost_usd": 4.746e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 154,
+          "completion_tokens": 120,
+          "total_tokens": 274,
+          "latency_ms": 673.5,
+          "cost_usd": 0.000514
+        }
       }
     },
     {
-      "run_id": "f70438c6-e059-4351-b849-400e20e7fb52",
+      "benchmark_id": "9badbebf-d9d6-4957-adcc-7036733bdcec",
       "task_id": "code-06",
-      "winner": "worker-nano",
-      "winning_price": 1.0,
-      "score": 0.9400000000000001,
-      "reputation_component": null,
-      "price_component": null,
-      "passed": true,
-      "bids": [
-        {
-          "bid_id": "04f44aba-744d-4f36-b805-69fd6bd92453",
-          "task_id": "code-06",
-          "worker_id": "worker-nano",
-          "price": 1.0,
-          "estimated_time_seconds": 5.0,
-          "plan": "Iterative factorial implementation for non-negative integers",
-          "telemetry": {
-            "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-            "prompt_tokens": 161,
-            "completion_tokens": 105,
-            "total_tokens": 266,
-            "latency_ms": 1472.41
+      "task_type": "code",
+      "monolith": {
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "passed": true,
+        "attempts": 1,
+        "retries": 0,
+        "latency_ms": 2934.06,
+        "token_factory_latency_ms": 2630.63,
+        "total_tokens": 706,
+        "token_factory_cost_usd": 0.0010969,
+        "attempt_details": [
+          {
+            "attempt": 1,
+            "passed": true,
+            "worker_telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 101,
+              "completion_tokens": 184,
+              "total_tokens": 285,
+              "latency_ms": 1443.49,
+              "cost_usd": 0.0001959
+            },
+            "verifier_telemetry": {
+              "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+              "prompt_tokens": 181,
+              "completion_tokens": 240,
+              "total_tokens": 421,
+              "latency_ms": 1187.14,
+              "cost_usd": 0.000901
+            },
+            "reason": ".                                                                        [100%]\n1 passed in 0.01s"
           }
-        },
-        {
-          "bid_id": "3aae2bdf-a1ca-4e06-93de-a2f58c18cf07",
-          "task_id": "code-06",
-          "worker_id": "worker-lightning",
-          "price": 10.0,
-          "estimated_time_seconds": 30.0,
-          "plan": "Use string slicing.",
-          "telemetry": {
-            "model": "nvidia/Nemotron-3_5-Lightning",
-            "prompt_tokens": 218,
-            "completion_tokens": 256,
-            "total_tokens": 474,
-            "latency_ms": 1826.01
-          }
-        },
-        {
-          "bid_id": "634bbecb-1fb1-4a08-80e1-a13a7875274c",
-          "task_id": "code-06",
-          "worker_id": "worker-super",
-          "price": 5.0,
-          "estimated_time_seconds": 8.0,
-          "plan": "Iteratively multiply from 1 to n, returning 1 for n=0.",
-          "telemetry": {
-            "model": "nvidia/nemotron-3-super-120b-a12b",
-            "prompt_tokens": 161,
-            "completion_tokens": 175,
-            "total_tokens": 336,
-            "latency_ms": 1267.76
-          }
-        }
-      ],
-      "worker_telemetry": {
-        "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-        "prompt_tokens": 80,
-        "completion_tokens": 132,
-        "total_tokens": 212,
-        "latency_ms": 1727.45
+        ]
       },
-      "verifier_telemetry": {
-        "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
-        "prompt_tokens": 174,
-        "completion_tokens": 162,
-        "total_tokens": 336,
-        "latency_ms": 1030.75
+      "market": {
+        "winner": "worker-nano",
+        "price": 0.5,
+        "passed": true,
+        "result": "PASS",
+        "retries": 0,
+        "total_tokens": 889,
+        "token_factory_cost_usd": 0.0016089,
+        "latency_ms": 3573.94,
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 101,
+          "completion_tokens": 141,
+          "total_tokens": 242,
+          "latency_ms": 1969.56,
+          "cost_usd": 3.99e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 186,
+          "completion_tokens": 461,
+          "total_tokens": 647,
+          "latency_ms": 1604.38,
+          "cost_usd": 0.001569
+        }
       }
     },
     {
-      "run_id": "a1d62abd-1e7c-41b2-aac1-6d5c2629f52b",
+      "benchmark_id": "9badbebf-d9d6-4957-adcc-7036733bdcec",
       "task_id": "code-07",
-      "winner": "worker-nano",
-      "winning_price": 0.01,
-      "score": 0.9994,
-      "reputation_component": null,
-      "price_component": null,
-      "passed": true,
-      "bids": [
-        {
-          "bid_id": "c1ced3e0-a3fd-41dd-97ec-bc224664216f",
-          "task_id": "code-07",
-          "worker_id": "worker-nano",
-          "price": 0.01,
-          "estimated_time_seconds": 5.0,
-          "plan": "Collect items preserving first occurrence order",
-          "telemetry": {
-            "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-            "prompt_tokens": 162,
-            "completion_tokens": 212,
-            "total_tokens": 374,
-            "latency_ms": 2482.76
+      "task_type": "code",
+      "monolith": {
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "passed": true,
+        "attempts": 1,
+        "retries": 0,
+        "latency_ms": 2208.36,
+        "token_factory_latency_ms": 1932.34,
+        "total_tokens": 563,
+        "token_factory_cost_usd": 0.0007349,
+        "attempt_details": [
+          {
+            "attempt": 1,
+            "passed": true,
+            "worker_telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 99,
+              "completion_tokens": 168,
+              "total_tokens": 267,
+              "latency_ms": 1283.89,
+              "cost_usd": 0.0001809
+            },
+            "verifier_telemetry": {
+              "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+              "prompt_tokens": 167,
+              "completion_tokens": 129,
+              "total_tokens": 296,
+              "latency_ms": 648.45,
+              "cost_usd": 0.000554
+            },
+            "reason": ".                                                                        [100%]\n1 passed in 0.01s"
           }
-        },
-        {
-          "bid_id": "621af135-433e-4b18-96c3-26e6a7ff6035",
-          "task_id": "code-07",
-          "worker_id": "worker-lightning",
-          "price": 10.0,
-          "estimated_time_seconds": 30.0,
-          "plan": "Use string slicing.",
-          "telemetry": {
-            "model": "nvidia/Nemotron-3_5-Lightning",
-            "prompt_tokens": 219,
-            "completion_tokens": 256,
-            "total_tokens": 475,
-            "latency_ms": 1755.06
-          }
-        },
-        {
-          "bid_id": "b6fb3faf-2b1d-4254-b097-ae2cfac72842",
-          "task_id": "code-07",
-          "worker_id": "worker-super",
-          "price": 5.0,
-          "estimated_time_seconds": 30.0,
-          "plan": "Iterate through values, add each unseen item to a set and result list to preserve first occurrence order.",
-          "telemetry": {
-            "model": "nvidia/nemotron-3-super-120b-a12b",
-            "prompt_tokens": 162,
-            "completion_tokens": 165,
-            "total_tokens": 327,
-            "latency_ms": 1099.56
-          }
-        }
-      ],
-      "worker_telemetry": {
-        "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-        "prompt_tokens": 81,
-        "completion_tokens": 137,
-        "total_tokens": 218,
-        "latency_ms": 1609.97
+        ]
       },
-      "verifier_telemetry": {
-        "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
-        "prompt_tokens": 148,
-        "completion_tokens": 140,
-        "total_tokens": 288,
-        "latency_ms": 948.75
+      "market": {
+        "winner": "worker-nano",
+        "price": 0.1,
+        "passed": true,
+        "result": "PASS",
+        "retries": 0,
+        "total_tokens": 604,
+        "token_factory_cost_usd": 0.0006101,
+        "latency_ms": 2614.05,
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 99,
+          "completion_tokens": 209,
+          "total_tokens": 308,
+          "latency_ms": 1705.64,
+          "cost_usd": 5.61e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 167,
+          "completion_tokens": 129,
+          "total_tokens": 296,
+          "latency_ms": 908.41,
+          "cost_usd": 0.000554
+        }
       }
     },
     {
-      "run_id": "03d7c030-87a2-4645-bfbe-3b65e3c065a0",
-      "task_id": "copy-01",
-      "winner": "worker-nano",
-      "winning_price": 5.0,
-      "score": 0.7,
-      "reputation_component": null,
-      "price_component": null,
-      "passed": true,
-      "bids": [
-        {
-          "bid_id": "9285e71d-17c6-4369-a9f6-40a48338b021",
-          "task_id": "copy-01",
-          "worker_id": "worker-nano",
-          "price": 5.0,
-          "estimated_time_seconds": 60.0,
-          "plan": "Draft, evaluate, finalize tagline",
-          "telemetry": {
-            "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-            "prompt_tokens": 161,
-            "completion_tokens": 335,
-            "total_tokens": 496,
-            "latency_ms": 3645.54
+      "benchmark_id": "9badbebf-d9d6-4957-adcc-7036733bdcec",
+      "task_id": "code-08",
+      "task_type": "code",
+      "monolith": {
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "passed": true,
+        "attempts": 1,
+        "retries": 0,
+        "latency_ms": 2216.61,
+        "token_factory_latency_ms": 1937.0,
+        "total_tokens": 638,
+        "token_factory_cost_usd": 0.0009838,
+        "attempt_details": [
+          {
+            "attempt": 1,
+            "passed": true,
+            "worker_telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 98,
+              "completion_tokens": 156,
+              "total_tokens": 254,
+              "latency_ms": 1034.37,
+              "cost_usd": 0.0001698
+            },
+            "verifier_telemetry": {
+              "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+              "prompt_tokens": 169,
+              "completion_tokens": 215,
+              "total_tokens": 384,
+              "latency_ms": 902.63,
+              "cost_usd": 0.000814
+            },
+            "reason": ".                                                                        [100%]\n1 passed in 0.01s"
           }
-        },
-        {
-          "bid_id": "1a440ba7-b221-41be-bf0e-b066b21f3b19",
-          "task_id": "copy-01",
-          "worker_id": "worker-lightning",
-          "price": 10.0,
-          "estimated_time_seconds": 30.0,
-          "plan": "Use string slicing.",
-          "telemetry": {
-            "model": "nvidia/Nemotron-3_5-Lightning",
-            "prompt_tokens": 218,
-            "completion_tokens": 256,
-            "total_tokens": 474,
-            "latency_ms": 1684.06
-          }
-        },
-        {
-          "bid_id": "48f7e2d7-7e40-454a-87ec-cdf4f1942dad",
-          "task_id": "copy-01",
-          "worker_id": "worker-super",
-          "price": 5.0,
-          "estimated_time_seconds": 30.0,
-          "plan": "Empowering AI talent, one task at a time.",
-          "telemetry": {
-            "model": "nvidia/nemotron-3-super-120b-a12b",
-            "prompt_tokens": 161,
-            "completion_tokens": 392,
-            "total_tokens": 553,
-            "latency_ms": 2577.81
-          }
-        }
-      ],
-      "worker_telemetry": {
-        "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-        "prompt_tokens": 80,
-        "completion_tokens": 43,
-        "total_tokens": 123,
-        "latency_ms": 674.0
+        ]
       },
-      "verifier_telemetry": {
-        "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
-        "prompt_tokens": 112,
-        "completion_tokens": 161,
-        "total_tokens": 273,
-        "latency_ms": 1019.46
+      "market": {
+        "winner": "worker-nano",
+        "price": 1.0,
+        "passed": true,
+        "result": "PASS",
+        "retries": 0,
+        "total_tokens": 675,
+        "token_factory_cost_usd": 0.00086316,
+        "latency_ms": 3023.49,
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 98,
+          "completion_tokens": 197,
+          "total_tokens": 295,
+          "latency_ms": 1758.01,
+          "cost_usd": 5.316e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 165,
+          "completion_tokens": 215,
+          "total_tokens": 380,
+          "latency_ms": 1265.48,
+          "cost_usd": 0.00081
+        }
       }
     },
     {
-      "run_id": "65474574-91c2-4c20-85a5-7de6691962d8",
-      "task_id": "copy-02",
-      "winner": "worker-nano",
-      "winning_price": 0.5,
-      "score": 0.97,
-      "reputation_component": null,
-      "price_component": null,
-      "passed": true,
-      "bids": [
-        {
-          "bid_id": "a4ade73c-e795-4911-bca9-8fab36664bed",
-          "task_id": "copy-02",
-          "worker_id": "worker-nano",
-          "price": 0.5,
-          "estimated_time_seconds": 15.0,
-          "plan": "Write a concise headline draft",
-          "telemetry": {
-            "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-            "prompt_tokens": 160,
-            "completion_tokens": 293,
-            "total_tokens": 453,
-            "latency_ms": 3591.21
+      "benchmark_id": "9badbebf-d9d6-4957-adcc-7036733bdcec",
+      "task_id": "code-09",
+      "task_type": "code",
+      "monolith": {
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "passed": true,
+        "attempts": 1,
+        "retries": 0,
+        "latency_ms": 2637.81,
+        "token_factory_latency_ms": 2357.63,
+        "total_tokens": 708,
+        "token_factory_cost_usd": 0.0008523,
+        "attempt_details": [
+          {
+            "attempt": 1,
+            "passed": true,
+            "worker_telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 99,
+              "completion_tokens": 264,
+              "total_tokens": 363,
+              "latency_ms": 1532.85,
+              "cost_usd": 0.0002673
+            },
+            "verifier_telemetry": {
+              "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+              "prompt_tokens": 225,
+              "completion_tokens": 120,
+              "total_tokens": 345,
+              "latency_ms": 824.78,
+              "cost_usd": 0.000585
+            },
+            "reason": ".                                                                        [100%]\n1 passed in 0.01s"
           }
-        },
-        {
-          "bid_id": "6b048bf5-97f2-4f42-8dd8-2c0dbd6b355a",
-          "task_id": "copy-02",
-          "worker_id": "worker-lightning",
-          "price": 10.0,
-          "estimated_time_seconds": 30.0,
-          "plan": "Use string slicing.",
-          "telemetry": {
-            "model": "nvidia/Nemotron-3_5-Lightning",
-            "prompt_tokens": 217,
-            "completion_tokens": 256,
-            "total_tokens": 473,
-            "latency_ms": 1593.67
-          }
-        },
-        {
-          "bid_id": "012e4b9b-fbd8-403d-971d-779dafcb9fee",
-          "task_id": "copy-02",
-          "worker_id": "worker-super",
-          "price": 5.0,
-          "estimated_time_seconds": 30.0,
-          "plan": "Accelerate your code with zero\u2011config debugging",
-          "telemetry": {
-            "model": "nvidia/nemotron-3-super-120b-a12b",
-            "prompt_tokens": 160,
-            "completion_tokens": 255,
-            "total_tokens": 415,
-            "latency_ms": 1549.82
-          }
-        }
-      ],
-      "worker_telemetry": {
-        "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-        "prompt_tokens": 79,
-        "completion_tokens": 75,
-        "total_tokens": 154,
-        "latency_ms": 1038.17
+        ]
       },
-      "verifier_telemetry": {
-        "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
-        "prompt_tokens": 116,
-        "completion_tokens": 116,
-        "total_tokens": 232,
-        "latency_ms": 865.16
+      "market": {
+        "winner": "worker-nano",
+        "price": 2.0,
+        "passed": true,
+        "result": "PASS",
+        "retries": 0,
+        "total_tokens": 731,
+        "token_factory_cost_usd": 0.00106318,
+        "latency_ms": 2249.5,
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 99,
+          "completion_tokens": 151,
+          "total_tokens": 250,
+          "latency_ms": 1245.88,
+          "cost_usd": 4.218e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 211,
+          "completion_tokens": 270,
+          "total_tokens": 481,
+          "latency_ms": 1003.62,
+          "cost_usd": 0.001021
+        }
       }
     },
     {
-      "run_id": "061fb390-9581-455c-baf9-630e1a1f5d0e",
-      "task_id": "copy-03",
-      "winner": "worker-nano",
-      "winning_price": 2.0,
-      "score": 0.76,
-      "reputation_component": null,
-      "price_component": null,
-      "passed": true,
-      "bids": [
-        {
-          "bid_id": "716d15a8-8ad4-43f0-b0de-29625c5ba52b",
-          "task_id": "copy-03",
-          "worker_id": "worker-nano",
-          "price": 2.0,
-          "estimated_time_seconds": 5.0,
-          "plan": "Two-sentence description of AI agent market",
-          "telemetry": {
-            "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-            "prompt_tokens": 162,
-            "completion_tokens": 289,
-            "total_tokens": 451,
-            "latency_ms": 3073.34
+      "benchmark_id": "9badbebf-d9d6-4957-adcc-7036733bdcec",
+      "task_id": "code-10",
+      "task_type": "code",
+      "monolith": {
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "passed": true,
+        "attempts": 1,
+        "retries": 0,
+        "latency_ms": 2926.63,
+        "token_factory_latency_ms": 2462.27,
+        "total_tokens": 730,
+        "token_factory_cost_usd": 0.0011087,
+        "attempt_details": [
+          {
+            "attempt": 1,
+            "passed": true,
+            "worker_telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 97,
+              "completion_tokens": 174,
+              "total_tokens": 271,
+              "latency_ms": 1422.36,
+              "cost_usd": 0.0001857
+            },
+            "verifier_telemetry": {
+              "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+              "prompt_tokens": 227,
+              "completion_tokens": 232,
+              "total_tokens": 459,
+              "latency_ms": 1039.91,
+              "cost_usd": 0.000923
+            },
+            "reason": ".                                                                        [100%]\n1 passed in 0.01s"
           }
-        },
-        {
-          "bid_id": "10b4f45c-1013-417e-a0ce-11be8180c63f",
-          "task_id": "copy-03",
-          "worker_id": "worker-super",
-          "price": 5.0,
-          "estimated_time_seconds": 30.0,
-          "plan": "Provide a clear two\u2011sentence description of an AI agent market.",
-          "telemetry": {
-            "model": "nvidia/nemotron-3-super-120b-a12b",
-            "prompt_tokens": 162,
-            "completion_tokens": 166,
-            "total_tokens": 328,
-            "latency_ms": 1189.87
-          }
-        }
-      ],
-      "worker_telemetry": {
-        "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-        "prompt_tokens": 81,
-        "completion_tokens": 97,
-        "total_tokens": 178,
-        "latency_ms": 1367.94
+        ]
       },
-      "verifier_telemetry": {
-        "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
-        "prompt_tokens": 151,
-        "completion_tokens": 94,
-        "total_tokens": 245,
-        "latency_ms": 680.76
+      "market": {
+        "winner": "worker-nano",
+        "price": 1.0,
+        "passed": true,
+        "result": "PASS",
+        "retries": 0,
+        "total_tokens": 539,
+        "token_factory_cost_usd": 0.0005377,
+        "latency_ms": 2383.3,
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 97,
+          "completion_tokens": 137,
+          "total_tokens": 234,
+          "latency_ms": 1745.4,
+          "cost_usd": 3.87e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 208,
+          "completion_tokens": 97,
+          "total_tokens": 305,
+          "latency_ms": 637.9,
+          "cost_usd": 0.000499
+        }
       }
     },
     {
-      "run_id": "2d534be7-f2d7-43e4-ae78-24788f4f7712",
-      "task_id": "copy-04",
-      "winner": "worker-nano",
-      "winning_price": 1.0,
-      "score": 0.9400000000000001,
-      "reputation_component": null,
-      "price_component": null,
-      "passed": true,
-      "bids": [
-        {
-          "bid_id": "31e83b3f-446a-4855-b6fa-11be06932b5e",
-          "task_id": "copy-04",
-          "worker_id": "worker-nano",
-          "price": 1.0,
-          "estimated_time_seconds": 5.0,
-          "plan": "Draft a short, compelling CTA inviting developers to try the AI platform.",
-          "telemetry": {
-            "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-            "prompt_tokens": 162,
-            "completion_tokens": 193,
-            "total_tokens": 355,
-            "latency_ms": 2282.74
+      "benchmark_id": "9badbebf-d9d6-4957-adcc-7036733bdcec",
+      "task_id": "code-11",
+      "task_type": "code",
+      "monolith": {
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "passed": true,
+        "attempts": 1,
+        "retries": 0,
+        "latency_ms": 3749.03,
+        "token_factory_latency_ms": 3473.59,
+        "total_tokens": 672,
+        "token_factory_cost_usd": 0.0010097,
+        "attempt_details": [
+          {
+            "attempt": 1,
+            "passed": true,
+            "worker_telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 101,
+              "completion_tokens": 176,
+              "total_tokens": 277,
+              "latency_ms": 1025.08,
+              "cost_usd": 0.0001887
+            },
+            "verifier_telemetry": {
+              "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+              "prompt_tokens": 182,
+              "completion_tokens": 213,
+              "total_tokens": 395,
+              "latency_ms": 2448.51,
+              "cost_usd": 0.000821
+            },
+            "reason": ".                                                                        [100%]\n1 passed in 0.01s"
           }
-        },
-        {
-          "bid_id": "483fc108-f860-4997-a20b-d832ddae727e",
-          "task_id": "copy-04",
-          "worker_id": "worker-lightning",
-          "price": 10.0,
-          "estimated_time_seconds": 30.0,
-          "plan": "Use string slicing.",
-          "telemetry": {
-            "model": "nvidia/Nemotron-3_5-Lightning",
-            "prompt_tokens": 219,
-            "completion_tokens": 256,
-            "total_tokens": 475,
-            "latency_ms": 1681.66
-          }
-        },
-        {
-          "bid_id": "b8669de1-c646-4b07-84a8-aef9f4121128",
-          "task_id": "copy-04",
-          "worker_id": "worker-super",
-          "price": 5.0,
-          "estimated_time_seconds": 30.0,
-          "plan": "Unlock your next project\u2014try the AI developer platform today and build smarter, faster.",
-          "telemetry": {
-            "model": "nvidia/nemotron-3-super-120b-a12b",
-            "prompt_tokens": 162,
-            "completion_tokens": 280,
-            "total_tokens": 442,
-            "latency_ms": 1709.4
-          }
-        }
-      ],
-      "worker_telemetry": {
-        "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-        "prompt_tokens": 81,
-        "completion_tokens": 90,
-        "total_tokens": 171,
-        "latency_ms": 1108.12
+        ]
       },
-      "verifier_telemetry": {
-        "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
-        "prompt_tokens": 124,
-        "completion_tokens": 169,
-        "total_tokens": 293,
-        "latency_ms": 836.44
+      "market": {
+        "winner": "worker-nano",
+        "price": 1.5,
+        "passed": true,
+        "result": "PASS",
+        "retries": 0,
+        "total_tokens": 1209,
+        "token_factory_cost_usd": 0.00249106,
+        "latency_ms": 4142.13,
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 101,
+          "completion_tokens": 175,
+          "total_tokens": 276,
+          "latency_ms": 1761.35,
+          "cost_usd": 4.806e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 178,
+          "completion_tokens": 755,
+          "total_tokens": 933,
+          "latency_ms": 2380.78,
+          "cost_usd": 0.002443
+        }
       }
     },
     {
-      "run_id": "cd983666-bfd5-4fb1-a086-abbedf953136",
-      "task_id": "copy-05",
-      "winner": "worker-nano",
-      "winning_price": 2.5,
-      "score": 0.9,
-      "reputation_component": null,
-      "price_component": null,
-      "passed": true,
-      "bids": [
-        {
-          "bid_id": "04588ca1-027c-4667-bb48-a1fc7f6e77af",
-          "task_id": "copy-05",
-          "worker_id": "worker-nano",
-          "price": 2.5,
-          "estimated_time_seconds": 15.0,
-          "plan": "Compose a concise professional announcement introducing the new AI product.",
-          "telemetry": {
-            "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-            "prompt_tokens": 160,
-            "completion_tokens": 229,
-            "total_tokens": 389,
-            "latency_ms": 3028.72
+      "benchmark_id": "9badbebf-d9d6-4957-adcc-7036733bdcec",
+      "task_id": "code-12",
+      "task_type": "code",
+      "monolith": {
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "passed": true,
+        "attempts": 1,
+        "retries": 0,
+        "latency_ms": 2290.01,
+        "token_factory_latency_ms": 2015.18,
+        "total_tokens": 634,
+        "token_factory_cost_usd": 0.0008327,
+        "attempt_details": [
+          {
+            "attempt": 1,
+            "passed": true,
+            "worker_telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 115,
+              "completion_tokens": 188,
+              "total_tokens": 303,
+              "latency_ms": 1234.41,
+              "cost_usd": 0.0002037
+            },
+            "verifier_telemetry": {
+              "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+              "prompt_tokens": 182,
+              "completion_tokens": 149,
+              "total_tokens": 331,
+              "latency_ms": 780.77,
+              "cost_usd": 0.000629
+            },
+            "reason": ".                                                                        [100%]\n1 passed in 0.01s"
           }
-        },
-        {
-          "bid_id": "8ef8e247-137b-4faf-b0dc-adb2b445e5a7",
-          "task_id": "copy-05",
-          "worker_id": "worker-lightning",
-          "price": 10.0,
-          "estimated_time_seconds": 30.0,
-          "plan": "Use string slicing.",
-          "telemetry": {
-            "model": "nvidia/Nemotron-3_5-Lightning",
-            "prompt_tokens": 217,
-            "completion_tokens": 256,
-            "total_tokens": 473,
-            "latency_ms": 1769.37
-          }
-        },
-        {
-          "bid_id": "89f158a0-3a36-4cb0-97de-ede866050add",
-          "task_id": "copy-05",
-          "worker_id": "worker-super",
-          "price": 15.0,
-          "estimated_time_seconds": 30.0,
-          "plan": "We are excited to announce the launch of our new AI product, [Product Name], designed to streamline workflows and enhance decision\u2011making through advanced machine learning capabilities.",
-          "telemetry": {
-            "model": "nvidia/nemotron-3-super-120b-a12b",
-            "prompt_tokens": 160,
-            "completion_tokens": 358,
-            "total_tokens": 518,
-            "latency_ms": 2142.59
-          }
-        }
-      ],
-      "worker_telemetry": {
-        "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-        "prompt_tokens": 79,
-        "completion_tokens": 135,
-        "total_tokens": 214,
-        "latency_ms": 1577.89
+        ]
       },
-      "verifier_telemetry": {
-        "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
-        "prompt_tokens": 190,
-        "completion_tokens": 130,
-        "total_tokens": 320,
-        "latency_ms": 679.47
+      "market": {
+        "winner": "worker-nano",
+        "price": 1.0,
+        "passed": true,
+        "result": "PASS",
+        "retries": 0,
+        "total_tokens": 992,
+        "token_factory_cost_usd": 0.00170858,
+        "latency_ms": 3876.68,
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 115,
+          "completion_tokens": 207,
+          "total_tokens": 322,
+          "latency_ms": 2168.21,
+          "cost_usd": 5.658e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 179,
+          "completion_tokens": 491,
+          "total_tokens": 670,
+          "latency_ms": 1708.47,
+          "cost_usd": 0.001652
+        }
       }
     },
     {
-      "run_id": "a30feeb5-ff39-4a26-b1d4-dfb4cf4bc76a",
-      "task_id": "copy-06",
-      "winner": "worker-nano",
-      "winning_price": 5.0,
-      "score": 0.7,
-      "reputation_component": null,
-      "price_component": null,
-      "passed": true,
-      "bids": [
-        {
-          "bid_id": "50088989-6c84-459c-9981-7123bebe35b9",
-          "task_id": "copy-06",
-          "worker_id": "worker-nano",
-          "price": 5.0,
-          "estimated_time_seconds": 5.0,
-          "plan": "Provide three concise benefits of specialized AI models.",
-          "telemetry": {
-            "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-            "prompt_tokens": 159,
-            "completion_tokens": 280,
-            "total_tokens": 439,
-            "latency_ms": 3248.52
+      "benchmark_id": "9badbebf-d9d6-4957-adcc-7036733bdcec",
+      "task_id": "code-13",
+      "task_type": "code",
+      "monolith": {
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "passed": true,
+        "attempts": 1,
+        "retries": 0,
+        "latency_ms": 3069.45,
+        "token_factory_latency_ms": 2788.66,
+        "total_tokens": 622,
+        "token_factory_cost_usd": 0.0008095,
+        "attempt_details": [
+          {
+            "attempt": 1,
+            "passed": true,
+            "worker_telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 103,
+              "completion_tokens": 204,
+              "total_tokens": 307,
+              "latency_ms": 1282.71,
+              "cost_usd": 0.0002145
+            },
+            "verifier_telemetry": {
+              "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+              "prompt_tokens": 175,
+              "completion_tokens": 140,
+              "total_tokens": 315,
+              "latency_ms": 1505.95,
+              "cost_usd": 0.000595
+            },
+            "reason": ".                                                                        [100%]\n1 passed in 0.01s"
           }
-        },
-        {
-          "bid_id": "11c3f8e6-cc42-4a3e-abac-21b0095433f0",
-          "task_id": "copy-06",
-          "worker_id": "worker-lightning",
-          "price": 10.0,
-          "estimated_time_seconds": 30.0,
-          "plan": "Use string slicing.",
-          "telemetry": {
-            "model": "nvidia/Nemotron-3_5-Lightning",
-            "prompt_tokens": 216,
-            "completion_tokens": 256,
-            "total_tokens": 472,
-            "latency_ms": 1670.55
-          }
-        },
-        {
-          "bid_id": "5c7e1738-a9d0-447d-98cd-8dc109f6a380",
-          "task_id": "copy-06",
-          "worker_id": "worker-super",
-          "price": 5.0,
-          "estimated_time_seconds": 30.0,
-          "plan": "Provide three short bullet points highlighting key advantages of specialized AI models.",
-          "telemetry": {
-            "model": "nvidia/nemotron-3-super-120b-a12b",
-            "prompt_tokens": 159,
-            "completion_tokens": 130,
-            "total_tokens": 289,
-            "latency_ms": 1200.31
-          }
-        }
-      ],
-      "worker_telemetry": {
-        "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-        "prompt_tokens": 78,
-        "completion_tokens": 121,
-        "total_tokens": 199,
-        "latency_ms": 1379.61
+        ]
       },
-      "verifier_telemetry": {
-        "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
-        "prompt_tokens": 186,
-        "completion_tokens": 108,
-        "total_tokens": 294,
-        "latency_ms": 882.07
+      "market": {
+        "winner": "worker-nano",
+        "price": 1.0,
+        "passed": true,
+        "result": "PASS",
+        "retries": 0,
+        "total_tokens": 635,
+        "token_factory_cost_usd": 0.00072194,
+        "latency_ms": 2351.92,
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 103,
+          "completion_tokens": 174,
+          "total_tokens": 277,
+          "latency_ms": 1557.49,
+          "cost_usd": 4.794e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 200,
+          "completion_tokens": 158,
+          "total_tokens": 358,
+          "latency_ms": 794.43,
+          "cost_usd": 0.000674
+        }
       }
     },
     {
-      "run_id": "4cdec24e-bcb5-4fc8-b545-0f05354cadcf",
-      "task_id": "research-01",
-      "winner": "worker-nano",
-      "winning_price": 1.0,
-      "score": 0.9400000000000001,
-      "reputation_component": null,
-      "price_component": null,
-      "passed": true,
-      "bids": [
-        {
-          "bid_id": "ca2d4f70-cc6a-44bc-bad5-2ade55079301",
-          "task_id": "research-01",
-          "worker_id": "worker-nano",
-          "price": 1.0,
-          "estimated_time_seconds": 1.0,
-          "plan": "Three evaluation factors",
-          "telemetry": {
-            "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-            "prompt_tokens": 162,
-            "completion_tokens": 285,
-            "total_tokens": 447,
-            "latency_ms": 3265.5
+      "benchmark_id": "9badbebf-d9d6-4957-adcc-7036733bdcec",
+      "task_id": "code-14",
+      "task_type": "code",
+      "monolith": {
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "passed": true,
+        "attempts": 1,
+        "retries": 0,
+        "latency_ms": 3001.32,
+        "token_factory_latency_ms": 2720.89,
+        "total_tokens": 846,
+        "token_factory_cost_usd": 0.0014849,
+        "attempt_details": [
+          {
+            "attempt": 1,
+            "passed": true,
+            "worker_telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 98,
+              "completion_tokens": 205,
+              "total_tokens": 303,
+              "latency_ms": 1276.37,
+              "cost_usd": 0.0002139
+            },
+            "verifier_telemetry": {
+              "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+              "prompt_tokens": 179,
+              "completion_tokens": 364,
+              "total_tokens": 543,
+              "latency_ms": 1444.52,
+              "cost_usd": 0.001271
+            },
+            "reason": ".                                                                        [100%]\n1 passed in 0.01s"
           }
-        },
-        {
-          "bid_id": "c033fed3-94ec-4b5a-98c9-d5e524b70ba6",
-          "task_id": "research-01",
-          "worker_id": "worker-lightning",
-          "price": 10.0,
-          "estimated_time_seconds": 30.0,
-          "plan": "Use string slicing.",
-          "telemetry": {
-            "model": "nvidia/Nemotron-3_5-Lightning",
-            "prompt_tokens": 219,
-            "completion_tokens": 256,
-            "total_tokens": 475,
-            "latency_ms": 1533.45
-          }
-        },
-        {
-          "bid_id": "415ad65b-ab94-43f3-a281-e59bacd22981",
-          "task_id": "research-01",
-          "worker_id": "worker-super",
-          "price": 5.0,
-          "estimated_time_seconds": 30.0,
-          "plan": "List three factors: correctness of generated code, performance/efficiency, and safety/readability/maintainability.",
-          "telemetry": {
-            "model": "nvidia/nemotron-3-super-120b-a12b",
-            "prompt_tokens": 162,
-            "completion_tokens": 247,
-            "total_tokens": 409,
-            "latency_ms": 1733.06
-          }
-        }
-      ],
-      "worker_telemetry": {
-        "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-        "prompt_tokens": 81,
-        "completion_tokens": 98,
-        "total_tokens": 179,
-        "latency_ms": 1393.4
+        ]
       },
-      "verifier_telemetry": {
-        "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
-        "prompt_tokens": 175,
-        "completion_tokens": 171,
-        "total_tokens": 346,
-        "latency_ms": 1024.74
+      "market": {
+        "winner": "worker-nano",
+        "price": 0.5,
+        "passed": true,
+        "result": "PASS",
+        "retries": 0,
+        "total_tokens": 838,
+        "token_factory_cost_usd": 0.00132528,
+        "latency_ms": 3118.71,
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 98,
+          "completion_tokens": 185,
+          "total_tokens": 283,
+          "latency_ms": 1674.45,
+          "cost_usd": 5.028e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 195,
+          "completion_tokens": 360,
+          "total_tokens": 555,
+          "latency_ms": 1444.26,
+          "cost_usd": 0.001275
+        }
       }
     },
     {
-      "run_id": "7e5b1f98-6a2c-41f8-9fa1-1122bd28e3d0",
-      "task_id": "research-02",
-      "winner": "worker-nano",
-      "winning_price": 1.25,
-      "score": 0.95,
-      "reputation_component": null,
-      "price_component": null,
-      "passed": true,
-      "bids": [
-        {
-          "bid_id": "8f7cb991-c807-49e0-93dc-51886c29359e",
-          "task_id": "research-02",
-          "worker_id": "worker-nano",
-          "price": 1.25,
-          "estimated_time_seconds": 30.0,
-          "plan": "Latency matters for speed, user satisfaction, and overall efficiency.",
-          "telemetry": {
-            "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-            "prompt_tokens": 161,
-            "completion_tokens": 268,
-            "total_tokens": 429,
-            "latency_ms": 3189.17
+      "benchmark_id": "9badbebf-d9d6-4957-adcc-7036733bdcec",
+      "task_id": "code-15",
+      "task_type": "code",
+      "monolith": {
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "passed": true,
+        "attempts": 1,
+        "retries": 0,
+        "latency_ms": 4785.11,
+        "token_factory_latency_ms": 4136.35,
+        "total_tokens": 951,
+        "token_factory_cost_usd": 0.0014696,
+        "attempt_details": [
+          {
+            "attempt": 1,
+            "passed": true,
+            "worker_telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 98,
+              "completion_tokens": 328,
+              "total_tokens": 426,
+              "latency_ms": 2059.77,
+              "cost_usd": 0.0003246
+            },
+            "verifier_telemetry": {
+              "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+              "prompt_tokens": 215,
+              "completion_tokens": 310,
+              "total_tokens": 525,
+              "latency_ms": 2076.58,
+              "cost_usd": 0.001145
+            },
+            "reason": ".                                                                        [100%]\n1 passed in 0.02s"
           }
-        },
-        {
-          "bid_id": "0eb18263-87ce-4279-8150-cd41a80feb9c",
-          "task_id": "research-02",
-          "worker_id": "worker-lightning",
-          "price": 10.0,
-          "estimated_time_seconds": 30.0,
-          "plan": "Use string slicing.",
-          "telemetry": {
-            "model": "nvidia/Nemotron-3_5-Lightning",
-            "prompt_tokens": 218,
-            "completion_tokens": 256,
-            "total_tokens": 474,
-            "latency_ms": 1700.47
-          }
-        },
-        {
-          "bid_id": "24b3222c-85a1-474b-98f4-cd68a43710d8",
-          "task_id": "research-02",
-          "worker_id": "worker-super",
-          "price": 15.0,
-          "estimated_time_seconds": 30.0,
-          "plan": "Provide a brief explanation of why latency impacts AI agent workflows.",
-          "telemetry": {
-            "model": "nvidia/nemotron-3-super-120b-a12b",
-            "prompt_tokens": 161,
-            "completion_tokens": 242,
-            "total_tokens": 403,
-            "latency_ms": 1563.9
-          }
-        }
-      ],
-      "worker_telemetry": {
-        "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-        "prompt_tokens": 80,
-        "completion_tokens": 106,
-        "total_tokens": 186,
-        "latency_ms": 1398.91
+        ]
       },
-      "verifier_telemetry": {
-        "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
-        "prompt_tokens": 169,
-        "completion_tokens": 205,
-        "total_tokens": 374,
-        "latency_ms": 1220.95
+      "market": {
+        "winner": "worker-nano",
+        "price": 1.0,
+        "passed": true,
+        "result": "PASS",
+        "retries": 0,
+        "total_tokens": 745,
+        "token_factory_cost_usd": 0.0010096,
+        "latency_ms": 2805.66,
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 98,
+          "completion_tokens": 178,
+          "total_tokens": 276,
+          "latency_ms": 1555.95,
+          "cost_usd": 4.86e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 223,
+          "completion_tokens": 246,
+          "total_tokens": 469,
+          "latency_ms": 1249.71,
+          "cost_usd": 0.000961
+        }
       }
     },
     {
-      "run_id": "cadd3fa8-de73-4594-abf0-a18741e7ae8e",
-      "task_id": "research-03",
-      "winner": "worker-nano",
-      "winning_price": 1.0,
-      "score": 0.9400000000000001,
-      "reputation_component": null,
-      "price_component": null,
-      "passed": true,
-      "bids": [
-        {
-          "bid_id": "bef0cde0-7215-452b-80e7-085c1366471c",
-          "task_id": "research-03",
-          "worker_id": "worker-nano",
-          "price": 1.0,
-          "estimated_time_seconds": 30.0,
-          "plan": "Compare quality dimensions with cost drivers, highlight trade\u2011offs.",
-          "telemetry": {
-            "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-            "prompt_tokens": 160,
-            "completion_tokens": 279,
-            "total_tokens": 439,
-            "latency_ms": 2891.53
+      "benchmark_id": "9badbebf-d9d6-4957-adcc-7036733bdcec",
+      "task_id": "code-16",
+      "task_type": "code",
+      "monolith": {
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "passed": true,
+        "attempts": 1,
+        "retries": 0,
+        "latency_ms": 2992.63,
+        "token_factory_latency_ms": 2475.9,
+        "total_tokens": 733,
+        "token_factory_cost_usd": 0.0009837,
+        "attempt_details": [
+          {
+            "attempt": 1,
+            "passed": true,
+            "worker_telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 95,
+              "completion_tokens": 248,
+              "total_tokens": 343,
+              "latency_ms": 1422.11,
+              "cost_usd": 0.0002517
+            },
+            "verifier_telemetry": {
+              "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+              "prompt_tokens": 219,
+              "completion_tokens": 171,
+              "total_tokens": 390,
+              "latency_ms": 1053.79,
+              "cost_usd": 0.000732
+            },
+            "reason": ".                                                                        [100%]\n1 passed in 0.01s"
           }
-        },
-        {
-          "bid_id": "a69b5a45-0829-4f09-8194-d28e0f4659b8",
-          "task_id": "research-03",
-          "worker_id": "worker-lightning",
-          "price": 10.0,
-          "estimated_time_seconds": 30.0,
-          "plan": "Use string slicing.",
-          "telemetry": {
-            "model": "nvidia/Nemotron-3_5-Lightning",
-            "prompt_tokens": 217,
-            "completion_tokens": 256,
-            "total_tokens": 473,
-            "latency_ms": 2349.76
-          }
-        },
-        {
-          "bid_id": "955f7693-062a-42af-a489-e3ec2d190665",
-          "task_id": "research-03",
-          "worker_id": "worker-super",
-          "price": 5.0,
-          "estimated_time_seconds": 30.0,
-          "plan": "Explain that model quality refers to performance metrics such as accuracy, precision, recall, or generalization ability, while model cost encompasses computational resources, training time, inference latency, and monetary expenses required to develop and deploy the model.",
-          "telemetry": {
-            "model": "nvidia/nemotron-3-super-120b-a12b",
-            "prompt_tokens": 160,
-            "completion_tokens": 260,
-            "total_tokens": 420,
-            "latency_ms": 1949.23
-          }
-        }
-      ],
-      "worker_telemetry": {
-        "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-        "prompt_tokens": 79,
-        "completion_tokens": 151,
-        "total_tokens": 230,
-        "latency_ms": 1669.12
+        ]
       },
-      "verifier_telemetry": {
-        "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
-        "prompt_tokens": 227,
-        "completion_tokens": 144,
-        "total_tokens": 371,
-        "latency_ms": 723.22
+      "market": {
+        "winner": "worker-nano",
+        "price": 2.5,
+        "passed": true,
+        "result": "PASS",
+        "retries": 0,
+        "total_tokens": 797,
+        "token_factory_cost_usd": 0.00106662,
+        "latency_ms": 3051.27,
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 95,
+          "completion_tokens": 233,
+          "total_tokens": 328,
+          "latency_ms": 1886.36,
+          "cost_usd": 6.162e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 201,
+          "completion_tokens": 268,
+          "total_tokens": 469,
+          "latency_ms": 1164.91,
+          "cost_usd": 0.001005
+        }
       }
     },
     {
-      "run_id": "d987e111-a7a1-4c05-9e7d-b462f97bb065",
-      "task_id": "research-04",
-      "winner": "worker-nano",
-      "winning_price": 1.0,
-      "score": 0.9400000000000001,
-      "reputation_component": null,
-      "price_component": null,
-      "passed": true,
-      "bids": [
-        {
-          "bid_id": "7bf0c3e5-f385-451e-b5bc-cf6a106eb911",
-          "task_id": "research-04",
-          "worker_id": "worker-nano",
-          "price": 1.0,
-          "estimated_time_seconds": 45.0,
-          "plan": "Identify three distinct risks of using a single large model for each agent task.",
-          "telemetry": {
-            "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-            "prompt_tokens": 162,
-            "completion_tokens": 185,
-            "total_tokens": 347,
-            "latency_ms": 2101.37
+      "benchmark_id": "9badbebf-d9d6-4957-adcc-7036733bdcec",
+      "task_id": "code-17",
+      "task_type": "code",
+      "monolith": {
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "passed": true,
+        "attempts": 1,
+        "retries": 0,
+        "latency_ms": 3872.75,
+        "token_factory_latency_ms": 3520.15,
+        "total_tokens": 1066,
+        "token_factory_cost_usd": 0.0015216,
+        "attempt_details": [
+          {
+            "attempt": 1,
+            "passed": true,
+            "worker_telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 101,
+              "completion_tokens": 397,
+              "total_tokens": 498,
+              "latency_ms": 2236.63,
+              "cost_usd": 0.0003876
+            },
+            "verifier_telemetry": {
+              "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+              "prompt_tokens": 285,
+              "completion_tokens": 283,
+              "total_tokens": 568,
+              "latency_ms": 1283.52,
+              "cost_usd": 0.001134
+            },
+            "reason": ".                                                                        [100%]\n1 passed in 0.00s"
           }
-        },
-        {
-          "bid_id": "efafe02b-e613-4fb7-9c04-6ca43e9f5ab4",
-          "task_id": "research-04",
-          "worker_id": "worker-lightning",
-          "price": 10.0,
-          "estimated_time_seconds": 30.0,
-          "plan": "Use string slicing.",
-          "telemetry": {
-            "model": "nvidia/Nemotron-3_5-Lightning",
-            "prompt_tokens": 219,
-            "completion_tokens": 256,
-            "total_tokens": 475,
-            "latency_ms": 1624.66
-          }
-        },
-        {
-          "bid_id": "5d5ffdf0-ece4-4d72-85d5-5d3225ee0daa",
-          "task_id": "research-04",
-          "worker_id": "worker-super",
-          "price": 5.0,
-          "estimated_time_seconds": 12.0,
-          "plan": "1) Overfitting to generic patterns reduces task-specific accuracy; 2) High computational cost increases latency and expense; 3) Lack of specialization leads to poorer performance on niche or complex tasks.",
-          "telemetry": {
-            "model": "nvidia/nemotron-3-super-120b-a12b",
-            "prompt_tokens": 162,
-            "completion_tokens": 362,
-            "total_tokens": 524,
-            "latency_ms": 2445.82
-          }
-        }
-      ],
-      "worker_telemetry": {
-        "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-        "prompt_tokens": 81,
-        "completion_tokens": 129,
-        "total_tokens": 210,
-        "latency_ms": 1654.13
+        ]
       },
-      "verifier_telemetry": {
-        "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
-        "prompt_tokens": 204,
-        "completion_tokens": 119,
-        "total_tokens": 323,
-        "latency_ms": 929.69
+      "market": {
+        "winner": "worker-nano",
+        "price": 1.0,
+        "passed": true,
+        "result": "PASS",
+        "retries": 0,
+        "total_tokens": 800,
+        "token_factory_cost_usd": 0.00146098,
+        "latency_ms": 2917.61,
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 101,
+          "completion_tokens": 108,
+          "total_tokens": 209,
+          "latency_ms": 1149.95,
+          "cost_usd": 3.198e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 172,
+          "completion_tokens": 419,
+          "total_tokens": 591,
+          "latency_ms": 1767.66,
+          "cost_usd": 0.001429
+        }
       }
     },
     {
-      "run_id": "49173c12-ce02-4611-be06-be079ce730cd",
-      "task_id": "research-05",
-      "winner": "worker-nano",
-      "winning_price": 1.0,
-      "score": 0.96,
-      "reputation_component": null,
-      "price_component": null,
-      "passed": true,
-      "bids": [
-        {
-          "bid_id": "1f63eb15-6d3d-4192-8e85-362cdeb6af9c",
-          "task_id": "research-05",
-          "worker_id": "worker-nano",
-          "price": 1.0,
-          "estimated_time_seconds": 30.0,
-          "plan": "Explain that external checks catch errors missed internally, boosting trust.",
-          "telemetry": {
-            "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-            "prompt_tokens": 159,
-            "completion_tokens": 197,
-            "total_tokens": 356,
-            "latency_ms": 2441.52
+      "benchmark_id": "9badbebf-d9d6-4957-adcc-7036733bdcec",
+      "task_id": "code-18",
+      "task_type": "code",
+      "monolith": {
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "passed": true,
+        "attempts": 1,
+        "retries": 0,
+        "latency_ms": 4261.47,
+        "token_factory_latency_ms": 3865.12,
+        "total_tokens": 1461,
+        "token_factory_cost_usd": 0.0024101,
+        "attempt_details": [
+          {
+            "attempt": 1,
+            "passed": true,
+            "worker_telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 125,
+              "completion_tokens": 394,
+              "total_tokens": 519,
+              "latency_ms": 1935.14,
+              "cost_usd": 0.0003921
+            },
+            "verifier_telemetry": {
+              "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+              "prompt_tokens": 404,
+              "completion_tokens": 538,
+              "total_tokens": 942,
+              "latency_ms": 1929.98,
+              "cost_usd": 0.002018
+            },
+            "reason": ".                                                                        [100%]\n1 passed in 0.01s"
           }
-        },
-        {
-          "bid_id": "4fec81e4-7ccc-412e-9964-c178e7b6913f",
-          "task_id": "research-05",
-          "worker_id": "worker-lightning",
-          "price": 10.0,
-          "estimated_time_seconds": 30.0,
-          "plan": "Use string slicing.",
-          "telemetry": {
-            "model": "nvidia/Nemotron-3_5-Lightning",
-            "prompt_tokens": 216,
-            "completion_tokens": 256,
-            "total_tokens": 472,
-            "latency_ms": 1721.35
-          }
-        },
-        {
-          "bid_id": "e7e711a2-e3e7-4d17-8c8f-d8cf4255b543",
-          "task_id": "research-05",
-          "worker_id": "worker-super",
-          "price": 15.0,
-          "estimated_time_seconds": 300.0,
-          "plan": "Provide a clear, concise explanation covering error detection, bias reduction, trust building, and examples of how independent verification enhances reliability.",
-          "telemetry": {
-            "model": "nvidia/nemotron-3-super-120b-a12b",
-            "prompt_tokens": 159,
-            "completion_tokens": 249,
-            "total_tokens": 408,
-            "latency_ms": 2337.88
-          }
-        }
-      ],
-      "worker_telemetry": {
-        "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-        "prompt_tokens": 78,
-        "completion_tokens": 87,
-        "total_tokens": 165,
-        "latency_ms": 1141.34
+        ]
       },
-      "verifier_telemetry": {
-        "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
-        "prompt_tokens": 157,
-        "completion_tokens": 208,
-        "total_tokens": 365,
-        "latency_ms": 1043.38
+      "market": {
+        "winner": "worker-nano",
+        "price": 1.0,
+        "passed": true,
+        "result": "PASS",
+        "retries": 0,
+        "total_tokens": 1538,
+        "token_factory_cost_usd": 0.00271114,
+        "latency_ms": 5113.96,
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 125,
+          "completion_tokens": 286,
+          "total_tokens": 411,
+          "latency_ms": 1858.56,
+          "cost_usd": 7.614e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 373,
+          "completion_tokens": 754,
+          "total_tokens": 1127,
+          "latency_ms": 3255.4,
+          "cost_usd": 0.002635
+        }
       }
     },
     {
-      "run_id": "a1d623d3-e93d-4d07-994c-1bf2bbc8db74",
-      "task_id": "research-06",
-      "winner": "worker-nano",
-      "winning_price": 1.0,
-      "score": 0.9400000000000001,
-      "reputation_component": null,
-      "price_component": null,
-      "passed": true,
-      "bids": [
-        {
-          "bid_id": "62c5cbfb-29d9-4c88-9e0f-fe9f2118d09f",
-          "task_id": "research-06",
-          "worker_id": "worker-nano",
-          "price": 1.0,
-          "estimated_time_seconds": 5.0,
-          "plan": "Utility Score, Liquidity, Diversity",
-          "telemetry": {
-            "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-            "prompt_tokens": 159,
-            "completion_tokens": 358,
-            "total_tokens": 517,
-            "latency_ms": 3968.61
+      "benchmark_id": "9badbebf-d9d6-4957-adcc-7036733bdcec",
+      "task_id": "code-19",
+      "task_type": "code",
+      "monolith": {
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "passed": true,
+        "attempts": 1,
+        "retries": 0,
+        "latency_ms": 3182.08,
+        "token_factory_latency_ms": 2756.17,
+        "total_tokens": 746,
+        "token_factory_cost_usd": 0.001092,
+        "attempt_details": [
+          {
+            "attempt": 1,
+            "passed": true,
+            "worker_telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 122,
+              "completion_tokens": 186,
+              "total_tokens": 308,
+              "latency_ms": 1408.86,
+              "cost_usd": 0.000204
+            },
+            "verifier_telemetry": {
+              "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+              "prompt_tokens": 213,
+              "completion_tokens": 225,
+              "total_tokens": 438,
+              "latency_ms": 1347.31,
+              "cost_usd": 0.000888
+            },
+            "reason": ".                                                                        [100%]\n1 passed in 0.01s"
           }
-        },
-        {
-          "bid_id": "adbe2f1a-8eeb-4960-98e2-a99b399586a2",
-          "task_id": "research-06",
-          "worker_id": "worker-lightning",
-          "price": 10.0,
-          "estimated_time_seconds": 30.0,
-          "plan": "Use string slicing.",
-          "telemetry": {
-            "model": "nvidia/Nemotron-3_5-Lightning",
-            "prompt_tokens": 216,
-            "completion_tokens": 256,
-            "total_tokens": 472,
-            "latency_ms": 1825.38
-          }
-        },
-        {
-          "bid_id": "edad2bbc-8357-4097-963a-968f05b036e2",
-          "task_id": "research-06",
-          "worker_id": "worker-super",
-          "price": 5.0,
-          "estimated_time_seconds": 10.0,
-          "plan": "Three useful metrics: transaction volume, average user rating, and dispute resolution rate.",
-          "telemetry": {
-            "model": "nvidia/nemotron-3-super-120b-a12b",
-            "prompt_tokens": 159,
-            "completion_tokens": 157,
-            "total_tokens": 316,
-            "latency_ms": 1317.46
-          }
-        }
-      ],
-      "worker_telemetry": {
-        "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-        "prompt_tokens": 78,
-        "completion_tokens": 139,
-        "total_tokens": 217,
-        "latency_ms": 1843.14
+        ]
       },
-      "verifier_telemetry": {
-        "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
-        "prompt_tokens": 202,
-        "completion_tokens": 184,
-        "total_tokens": 386,
-        "latency_ms": 1092.53
+      "market": {
+        "winner": "worker-nano",
+        "price": 5.0,
+        "passed": true,
+        "result": "PASS",
+        "retries": 0,
+        "total_tokens": 770,
+        "token_factory_cost_usd": 0.0011184,
+        "latency_ms": 2470.57,
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 122,
+          "completion_tokens": 167,
+          "total_tokens": 289,
+          "latency_ms": 1400.87,
+          "cost_usd": 4.74e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 186,
+          "completion_tokens": 295,
+          "total_tokens": 481,
+          "latency_ms": 1069.7,
+          "cost_usd": 0.001071
+        }
       }
     },
     {
-      "run_id": "7b2e9f80-f7fa-462f-9a0e-39a263f3b6aa",
-      "task_id": "research-07",
-      "winner": "worker-nano",
-      "winning_price": 1.0,
-      "score": 0.96,
-      "reputation_component": null,
-      "price_component": null,
-      "passed": true,
-      "bids": [
-        {
-          "bid_id": "9570a2d8-c56f-49b1-bf6f-2357a17446fe",
-          "task_id": "research-07",
-          "worker_id": "worker-nano",
-          "price": 1.0,
-          "estimated_time_seconds": 15.0,
-          "plan": "Explain briefly how reputation can influence agent selection.",
-          "telemetry": {
-            "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-            "prompt_tokens": 159,
-            "completion_tokens": 273,
-            "total_tokens": 432,
-            "latency_ms": 2822.33
+      "benchmark_id": "9badbebf-d9d6-4957-adcc-7036733bdcec",
+      "task_id": "code-20",
+      "task_type": "code",
+      "monolith": {
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "passed": true,
+        "attempts": 1,
+        "retries": 0,
+        "latency_ms": 4470.2,
+        "token_factory_latency_ms": 3545.78,
+        "total_tokens": 1067,
+        "token_factory_cost_usd": 0.0018524,
+        "attempt_details": [
+          {
+            "attempt": 1,
+            "passed": true,
+            "worker_telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 105,
+              "completion_tokens": 251,
+              "total_tokens": 356,
+              "latency_ms": 1579.26,
+              "cost_usd": 0.0002574
+            },
+            "verifier_telemetry": {
+              "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+              "prompt_tokens": 269,
+              "completion_tokens": 442,
+              "total_tokens": 711,
+              "latency_ms": 1966.52,
+              "cost_usd": 0.001595
+            },
+            "reason": ".                                                                        [100%]\n1 passed in 0.01s"
           }
-        },
-        {
-          "bid_id": "eb4a7a2c-9f9c-4ce9-90bd-5b19d69f6c18",
-          "task_id": "research-07",
-          "worker_id": "worker-lightning",
-          "price": 10.0,
-          "estimated_time_seconds": 30.0,
-          "plan": "Use string slicing.",
-          "telemetry": {
-            "model": "nvidia/Nemotron-3_5-Lightning",
-            "prompt_tokens": 216,
-            "completion_tokens": 256,
-            "total_tokens": 472,
-            "latency_ms": 1439.73
-          }
-        },
-        {
-          "bid_id": "a41ab4c6-95b9-4211-9ccf-b7e5db34fe6b",
-          "task_id": "research-07",
-          "worker_id": "worker-super",
-          "price": 15.0,
-          "estimated_time_seconds": 30.0,
-          "plan": "Provide brief explanation of how reputation influences agent selection",
-          "telemetry": {
-            "model": "nvidia/nemotron-3-super-120b-a12b",
-            "prompt_tokens": 159,
-            "completion_tokens": 211,
-            "total_tokens": 370,
-            "latency_ms": 1707.27
-          }
-        }
-      ],
-      "worker_telemetry": {
-        "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
-        "prompt_tokens": 78,
-        "completion_tokens": 78,
-        "total_tokens": 156,
-        "latency_ms": 1068.95
+        ]
       },
-      "verifier_telemetry": {
-        "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
-        "prompt_tokens": 145,
-        "completion_tokens": 198,
-        "total_tokens": 343,
-        "latency_ms": 791.96
+      "market": {
+        "winner": "worker-nano",
+        "price": 1.0,
+        "passed": true,
+        "result": "PASS",
+        "retries": 0,
+        "total_tokens": 1053,
+        "token_factory_cost_usd": 0.00172998,
+        "latency_ms": 3592.25,
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 105,
+          "completion_tokens": 232,
+          "total_tokens": 337,
+          "latency_ms": 1818.2,
+          "cost_usd": 6.198e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 240,
+          "completion_tokens": 476,
+          "total_tokens": 716,
+          "latency_ms": 1774.05,
+          "cost_usd": 0.001668
+        }
       }
     }
-  ]
+  ],
+  "market_ledger": {
+    "runs": 20,
+    "winner_counts": {
+      "worker-nano": 20
+    },
+    "tasks": [
+      {
+        "run_id": "39461785-ca2b-4322-bea0-90b58b0ba2a0",
+        "task_id": "code-01",
+        "winner": "worker-nano",
+        "winning_price": 0.5,
+        "score": 0.97,
+        "reputation_component": 1.0,
+        "price_component": 0.95,
+        "passed": true,
+        "bids": [
+          {
+            "bid_id": "9f2e49ca-36e8-4b63-9bf9-1be11046f43d",
+            "task_id": "code-01",
+            "worker_id": "worker-nano",
+            "price": 0.5,
+            "estimated_time_seconds": 5.0,
+            "plan": "Provide a simple add function in Python.",
+            "telemetry": {
+              "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+              "prompt_tokens": 164,
+              "completion_tokens": 203,
+              "total_tokens": 367,
+              "latency_ms": 2995.93,
+              "cost_usd": 5.856e-05
+            }
+          },
+          {
+            "bid_id": "d96c58bb-ede7-4cc3-aab9-3651a8a144cd",
+            "task_id": "code-01",
+            "worker_id": "worker-lightning",
+            "price": 10.0,
+            "estimated_time_seconds": 30.0,
+            "plan": "Use string slicing.",
+            "telemetry": {
+              "model": "nvidia/Nemotron-3_5-Lightning",
+              "prompt_tokens": 221,
+              "completion_tokens": 256,
+              "total_tokens": 477,
+              "latency_ms": 1377.93,
+              "cost_usd": 7.47e-05
+            }
+          },
+          {
+            "bid_id": "815ec8ac-c129-4b4e-809d-459b8aead982",
+            "task_id": "code-01",
+            "worker_id": "worker-super",
+            "price": 5.0,
+            "estimated_time_seconds": 10.0,
+            "plan": "Implement add function returning sum of inputs.",
+            "telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 164,
+              "completion_tokens": 128,
+              "total_tokens": 292,
+              "latency_ms": 1160.71,
+              "cost_usd": 0.0001644
+            }
+          }
+        ],
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 83,
+          "completion_tokens": 61,
+          "total_tokens": 144,
+          "latency_ms": 1107.78,
+          "cost_usd": 1.962e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 122,
+          "completion_tokens": 222,
+          "total_tokens": 344,
+          "latency_ms": 1482.36,
+          "cost_usd": 0.000788
+        }
+      },
+      {
+        "run_id": "231971f6-b1f3-4a48-a983-b2a97ea05eac",
+        "task_id": "code-02",
+        "winner": "worker-nano",
+        "winning_price": 5.0,
+        "score": 0.7,
+        "reputation_component": 1.0,
+        "price_component": 0.5,
+        "passed": true,
+        "bids": [
+          {
+            "bid_id": "74b964ad-f2bf-4c05-a8b5-e0a4609c79ed",
+            "task_id": "code-02",
+            "worker_id": "worker-nano",
+            "price": 5.0,
+            "estimated_time_seconds": 10.0,
+            "plan": "Return n % 2 == 0",
+            "telemetry": {
+              "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+              "prompt_tokens": 166,
+              "completion_tokens": 219,
+              "total_tokens": 385,
+              "latency_ms": 2920.05,
+              "cost_usd": 6.252e-05
+            }
+          },
+          {
+            "bid_id": "ce7c572e-2be3-4467-ba74-7e344adba454",
+            "task_id": "code-02",
+            "worker_id": "worker-lightning",
+            "price": 10.0,
+            "estimated_time_seconds": 30.0,
+            "plan": "Define is_even(n) using n % 2 == 0",
+            "telemetry": {
+              "model": "nvidia/Nemotron-3_5-Lightning",
+              "prompt_tokens": 166,
+              "completion_tokens": 512,
+              "total_tokens": 678,
+              "latency_ms": 2436.03,
+              "cost_usd": 0.00013284
+            }
+          },
+          {
+            "bid_id": "71a7ba7d-cad4-483b-9495-6391113f3b19",
+            "task_id": "code-02",
+            "worker_id": "worker-super",
+            "price": 5.0,
+            "estimated_time_seconds": 30.0,
+            "plan": "Define is_even(n) returning n % 2 == 0",
+            "telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 166,
+              "completion_tokens": 163,
+              "total_tokens": 329,
+              "latency_ms": 1274.05,
+              "cost_usd": 0.0001965
+            }
+          }
+        ],
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 85,
+          "completion_tokens": 67,
+          "total_tokens": 152,
+          "latency_ms": 1109.0,
+          "cost_usd": 2.118e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 128,
+          "completion_tokens": 135,
+          "total_tokens": 263,
+          "latency_ms": 627.2,
+          "cost_usd": 0.000533
+        }
+      },
+      {
+        "run_id": "0b8add0b-92e8-4810-980a-d2452e674438",
+        "task_id": "code-03",
+        "winner": "worker-nano",
+        "winning_price": 1.0,
+        "score": 0.9400000000000001,
+        "reputation_component": 1.0,
+        "price_component": 0.9,
+        "passed": true,
+        "bids": [
+          {
+            "bid_id": "5627fbd3-f94b-481b-84bf-6fcac7c1c91e",
+            "task_id": "code-03",
+            "worker_id": "worker-nano",
+            "price": 1.0,
+            "estimated_time_seconds": 5.0,
+            "plan": "def reverse_string(s): return s[::-1]",
+            "telemetry": {
+              "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+              "prompt_tokens": 162,
+              "completion_tokens": 143,
+              "total_tokens": 305,
+              "latency_ms": 2004.48,
+              "cost_usd": 4.404e-05
+            }
+          },
+          {
+            "bid_id": "23ef08b8-22cf-429a-a0d4-a0952f82bbe0",
+            "task_id": "code-03",
+            "worker_id": "worker-lightning",
+            "price": 10.0,
+            "estimated_time_seconds": 30.0,
+            "plan": "Use string slicing.",
+            "telemetry": {
+              "model": "nvidia/Nemotron-3_5-Lightning",
+              "prompt_tokens": 219,
+              "completion_tokens": 256,
+              "total_tokens": 475,
+              "latency_ms": 1570.75,
+              "cost_usd": 7.458e-05
+            }
+          },
+          {
+            "bid_id": "c7d8080f-648e-46ec-bc7b-62168d065568",
+            "task_id": "code-03",
+            "worker_id": "worker-super",
+            "price": 5.0,
+            "estimated_time_seconds": 30.0,
+            "plan": "Define reverse_string(s) returning s[::-1].",
+            "telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 162,
+              "completion_tokens": 123,
+              "total_tokens": 285,
+              "latency_ms": 1102.65,
+              "cost_usd": 0.0001593
+            }
+          }
+        ],
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 81,
+          "completion_tokens": 58,
+          "total_tokens": 139,
+          "latency_ms": 897.37,
+          "cost_usd": 1.878e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 121,
+          "completion_tokens": 136,
+          "total_tokens": 257,
+          "latency_ms": 790.3,
+          "cost_usd": 0.000529
+        }
+      },
+      {
+        "run_id": "445b0ed1-e271-40b4-b089-b01d7ee4aa53",
+        "task_id": "code-04",
+        "winner": "worker-nano",
+        "winning_price": 1.0,
+        "score": 0.9400000000000001,
+        "reputation_component": 1.0,
+        "price_component": 0.9,
+        "passed": true,
+        "bids": [
+          {
+            "bid_id": "da8b12d0-03fc-4022-b19f-3c71a0d30354",
+            "task_id": "code-04",
+            "worker_id": "worker-nano",
+            "price": 1.0,
+            "estimated_time_seconds": 5.0,
+            "plan": "Implement count_vowels using lowercase conversion and set lookup.",
+            "telemetry": {
+              "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+              "prompt_tokens": 185,
+              "completion_tokens": 199,
+              "total_tokens": 384,
+              "latency_ms": 2451.63,
+              "cost_usd": 5.886e-05
+            }
+          },
+          {
+            "bid_id": "0df9e87c-1104-4b60-890a-1223e4086d8c",
+            "task_id": "code-04",
+            "worker_id": "worker-lightning",
+            "price": 10.0,
+            "estimated_time_seconds": 30.0,
+            "plan": "Use string slicing.",
+            "telemetry": {
+              "model": "nvidia/Nemotron-3_5-Lightning",
+              "prompt_tokens": 242,
+              "completion_tokens": 256,
+              "total_tokens": 498,
+              "latency_ms": 1243.86,
+              "cost_usd": 7.596e-05
+            }
+          },
+          {
+            "bid_id": "1b8c57ca-c3fc-43e7-831c-a12dd2a944cf",
+            "task_id": "code-04",
+            "worker_id": "worker-super",
+            "price": 5.0,
+            "estimated_time_seconds": 30.0,
+            "plan": "Define count_vowels(s): lower the string, iterate over characters, increment count for each char in {'a','e','i','o','u'}, return the total.",
+            "telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 185,
+              "completion_tokens": 162,
+              "total_tokens": 347,
+              "latency_ms": 1372.55,
+              "cost_usd": 0.0002013
+            }
+          }
+        ],
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 104,
+          "completion_tokens": 119,
+          "total_tokens": 223,
+          "latency_ms": 1643.6,
+          "cost_usd": 3.48e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 156,
+          "completion_tokens": 231,
+          "total_tokens": 387,
+          "latency_ms": 1125.14,
+          "cost_usd": 0.000849
+        }
+      },
+      {
+        "run_id": "44927891-ff7b-4c48-9779-9c40945de87a",
+        "task_id": "code-05",
+        "winner": "worker-nano",
+        "winning_price": 5.0,
+        "score": 0.7,
+        "reputation_component": 1.0,
+        "price_component": 0.5,
+        "passed": true,
+        "bids": [
+          {
+            "bid_id": "0d795eb3-c547-49eb-98b3-da462ae50e5d",
+            "task_id": "code-05",
+            "worker_id": "worker-nano",
+            "price": 5.0,
+            "estimated_time_seconds": 45.0,
+            "plan": "use ordered dict or set to track seen items and build result list",
+            "telemetry": {
+              "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+              "prompt_tokens": 168,
+              "completion_tokens": 252,
+              "total_tokens": 420,
+              "latency_ms": 3255.61,
+              "cost_usd": 7.056e-05
+            }
+          },
+          {
+            "bid_id": "e6c8098d-f4a8-4b3c-a7a0-5ec9622f090e",
+            "task_id": "code-05",
+            "worker_id": "worker-lightning",
+            "price": 10.0,
+            "estimated_time_seconds": 30.0,
+            "plan": "Use dict.fromkeys() to remove duplicates while preserving order.",
+            "telemetry": {
+              "model": "nvidia/Nemotron-3_5-Lightning",
+              "prompt_tokens": 168,
+              "completion_tokens": 512,
+              "total_tokens": 680,
+              "latency_ms": 2395.67,
+              "cost_usd": 0.00013296
+            }
+          },
+          {
+            "bid_id": "10a271aa-57c4-4fd1-9718-bf81aab8e140",
+            "task_id": "code-05",
+            "worker_id": "worker-super",
+            "price": 10.0,
+            "estimated_time_seconds": 30.0,
+            "plan": "Iterate over input list, keep a set of seen items, and collect each item not yet seen into a result list.",
+            "telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 168,
+              "completion_tokens": 203,
+              "total_tokens": 371,
+              "latency_ms": 1435.31,
+              "cost_usd": 0.0002331
+            }
+          }
+        ],
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 87,
+          "completion_tokens": 176,
+          "total_tokens": 263,
+          "latency_ms": 2287.6,
+          "cost_usd": 4.746e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 154,
+          "completion_tokens": 120,
+          "total_tokens": 274,
+          "latency_ms": 673.5,
+          "cost_usd": 0.000514
+        }
+      },
+      {
+        "run_id": "621d67bf-6ea7-46d3-b3ed-54d8805f14db",
+        "task_id": "code-06",
+        "winner": "worker-nano",
+        "winning_price": 0.5,
+        "score": 0.97,
+        "reputation_component": 1.0,
+        "price_component": 0.95,
+        "passed": true,
+        "bids": [
+          {
+            "bid_id": "40f9badb-e170-4d9f-960c-907848cbabc7",
+            "task_id": "code-06",
+            "worker_id": "worker-nano",
+            "price": 0.5,
+            "estimated_time_seconds": 5.0,
+            "plan": "Use a set to isolate distinct values, then find the two largest and return the second.",
+            "telemetry": {
+              "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+              "prompt_tokens": 182,
+              "completion_tokens": 223,
+              "total_tokens": 405,
+              "latency_ms": 2859.38,
+              "cost_usd": 6.444e-05
+            }
+          },
+          {
+            "bid_id": "5fe62460-0fe3-418f-8fd3-3c1609ffd1f0",
+            "task_id": "code-06",
+            "worker_id": "worker-lightning",
+            "price": 10.0,
+            "estimated_time_seconds": 30.0,
+            "plan": "Use string slicing.",
+            "telemetry": {
+              "model": "nvidia/Nemotron-3_5-Lightning",
+              "prompt_tokens": 239,
+              "completion_tokens": 256,
+              "total_tokens": 495,
+              "latency_ms": 1355.89,
+              "cost_usd": 7.578e-05
+            }
+          },
+          {
+            "bid_id": "28272f02-d47d-4f4e-9f04-dab846b13c41",
+            "task_id": "code-06",
+            "worker_id": "worker-super",
+            "price": 10.0,
+            "estimated_time_seconds": 30.0,
+            "plan": "Iterate through the list, maintaining the largest and second-largest distinct values; update them when encountering a new larger value or a value between the two; return the second-largest or None if it doesn't exist.",
+            "telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 182,
+              "completion_tokens": 177,
+              "total_tokens": 359,
+              "latency_ms": 1258.35,
+              "cost_usd": 0.0002139
+            }
+          }
+        ],
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 101,
+          "completion_tokens": 141,
+          "total_tokens": 242,
+          "latency_ms": 1969.56,
+          "cost_usd": 3.99e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 186,
+          "completion_tokens": 461,
+          "total_tokens": 647,
+          "latency_ms": 1604.38,
+          "cost_usd": 0.001569
+        }
+      },
+      {
+        "run_id": "494077ac-c40e-447f-a396-e2d40e0de3c3",
+        "task_id": "code-07",
+        "winner": "worker-nano",
+        "winning_price": 0.1,
+        "score": 0.996,
+        "reputation_component": 1.0,
+        "price_component": 0.9933333333333333,
+        "passed": true,
+        "bids": [
+          {
+            "bid_id": "b5bc053f-e76f-4831-a420-af5417e8306b",
+            "task_id": "code-07",
+            "worker_id": "worker-nano",
+            "price": 0.1,
+            "estimated_time_seconds": 5.0,
+            "plan": "Strip non\u2011alphanumerics, lower case, compare with reversed string",
+            "telemetry": {
+              "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+              "prompt_tokens": 180,
+              "completion_tokens": 345,
+              "total_tokens": 525,
+              "latency_ms": 3876.82,
+              "cost_usd": 9.36e-05
+            }
+          },
+          {
+            "bid_id": "36582099-cd27-4703-8b56-683d602bc186",
+            "task_id": "code-07",
+            "worker_id": "worker-super",
+            "price": 15.0,
+            "estimated_time_seconds": 30.0,
+            "plan": "Filter alphanumeric characters, convert to lowercase, then check if the cleaned string equals its reverse.",
+            "telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 180,
+              "completion_tokens": 146,
+              "total_tokens": 326,
+              "latency_ms": 1093.32,
+              "cost_usd": 0.0001854
+            }
+          }
+        ],
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 99,
+          "completion_tokens": 209,
+          "total_tokens": 308,
+          "latency_ms": 1705.64,
+          "cost_usd": 5.61e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 167,
+          "completion_tokens": 129,
+          "total_tokens": 296,
+          "latency_ms": 908.41,
+          "cost_usd": 0.000554
+        }
+      },
+      {
+        "run_id": "6e40a0ea-3aea-4c1e-9bde-9d93d623c26a",
+        "task_id": "code-08",
+        "winner": "worker-nano",
+        "winning_price": 1.0,
+        "score": 0.9400000000000001,
+        "reputation_component": 1.0,
+        "price_component": 0.9,
+        "passed": true,
+        "bids": [
+          {
+            "bid_id": "4cc3e07b-1e8e-4e99-b7fa-732f875d18ca",
+            "task_id": "code-08",
+            "worker_id": "worker-nano",
+            "price": 1.0,
+            "estimated_time_seconds": 5.0,
+            "plan": "Implement a simple case\u2011insensitive word counter",
+            "telemetry": {
+              "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+              "prompt_tokens": 179,
+              "completion_tokens": 132,
+              "total_tokens": 311,
+              "latency_ms": 1739.82,
+              "cost_usd": 4.242e-05
+            }
+          },
+          {
+            "bid_id": "15ef964f-443a-42fd-95e2-cd617d028b8f",
+            "task_id": "code-08",
+            "worker_id": "worker-lightning",
+            "price": 10.0,
+            "estimated_time_seconds": 30.0,
+            "plan": "Use string slicing.",
+            "telemetry": {
+              "model": "nvidia/Nemotron-3_5-Lightning",
+              "prompt_tokens": 236,
+              "completion_tokens": 256,
+              "total_tokens": 492,
+              "latency_ms": 1129.54,
+              "cost_usd": 7.56e-05
+            }
+          },
+          {
+            "bid_id": "168f4869-06f3-44d0-9ddb-0c71cd6f9587",
+            "task_id": "code-08",
+            "worker_id": "worker-super",
+            "price": 5.0,
+            "estimated_time_seconds": 30.0,
+            "plan": "Split text on whitespace, convert each word to lowercase, count occurrences using a dictionary or collections.Counter, and return the resulting dict.",
+            "telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 179,
+              "completion_tokens": 205,
+              "total_tokens": 384,
+              "latency_ms": 1303.98,
+              "cost_usd": 0.0002382
+            }
+          }
+        ],
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 98,
+          "completion_tokens": 197,
+          "total_tokens": 295,
+          "latency_ms": 1758.01,
+          "cost_usd": 5.316e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 165,
+          "completion_tokens": 215,
+          "total_tokens": 380,
+          "latency_ms": 1265.48,
+          "cost_usd": 0.00081
+        }
+      },
+      {
+        "run_id": "ce00a719-0f23-4c9b-b2ae-69ded1265969",
+        "task_id": "code-09",
+        "winner": "worker-nano",
+        "winning_price": 2.0,
+        "score": 0.92,
+        "reputation_component": 1.0,
+        "price_component": 0.8666666666666667,
+        "passed": true,
+        "bids": [
+          {
+            "bid_id": "6bbb81b8-1fac-4d4b-a150-3d307829827f",
+            "task_id": "code-09",
+            "worker_id": "worker-nano",
+            "price": 2.0,
+            "estimated_time_seconds": 5.0,
+            "plan": "Two-pointer linear merge of sorted lists",
+            "telemetry": {
+              "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+              "prompt_tokens": 180,
+              "completion_tokens": 216,
+              "total_tokens": 396,
+              "latency_ms": 2236.6,
+              "cost_usd": 6.264e-05
+            }
+          },
+          {
+            "bid_id": "48cd4a25-1d92-402e-8c2b-23feabbba7df",
+            "task_id": "code-09",
+            "worker_id": "worker-lightning",
+            "price": 15.0,
+            "estimated_time_seconds": 30.0,
+            "plan": "Implement two-pointer merge algorithm iterating through both lists and appending smaller element.",
+            "telemetry": {
+              "model": "nvidia/Nemotron-3_5-Lightning",
+              "prompt_tokens": 180,
+              "completion_tokens": 512,
+              "total_tokens": 692,
+              "latency_ms": 3235.84,
+              "cost_usd": 0.00013368
+            }
+          },
+          {
+            "bid_id": "9fb0ff0e-ff07-4ec2-9524-51b917ddd5a9",
+            "task_id": "code-09",
+            "worker_id": "worker-super",
+            "price": 10.0,
+            "estimated_time_seconds": 30.0,
+            "plan": "Use two-pointer traversal to compare elements from both sorted lists, append the smaller to result, then extend with any remaining elements.",
+            "telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 180,
+              "completion_tokens": 143,
+              "total_tokens": 323,
+              "latency_ms": 1108.72,
+              "cost_usd": 0.0001827
+            }
+          }
+        ],
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 99,
+          "completion_tokens": 151,
+          "total_tokens": 250,
+          "latency_ms": 1245.88,
+          "cost_usd": 4.218e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 211,
+          "completion_tokens": 270,
+          "total_tokens": 481,
+          "latency_ms": 1003.62,
+          "cost_usd": 0.001021
+        }
+      },
+      {
+        "run_id": "6b90a0f6-a82f-4388-80ab-a11949c24e0a",
+        "task_id": "code-10",
+        "winner": "worker-nano",
+        "winning_price": 1.0,
+        "score": 0.9400000000000001,
+        "reputation_component": 1.0,
+        "price_component": 0.9,
+        "passed": true,
+        "bids": [
+          {
+            "bid_id": "f325cbe3-3b7f-4b76-a976-d0b2792aaded",
+            "task_id": "code-10",
+            "worker_id": "worker-nano",
+            "price": 1.0,
+            "estimated_time_seconds": 25.0,
+            "plan": "Write a simple iterative binary search that returns index or -1.",
+            "telemetry": {
+              "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+              "prompt_tokens": 178,
+              "completion_tokens": 194,
+              "total_tokens": 372,
+              "latency_ms": 2159.5,
+              "cost_usd": 5.724e-05
+            }
+          },
+          {
+            "bid_id": "c7aae52c-a0db-412d-aca9-2771499a3fce",
+            "task_id": "code-10",
+            "worker_id": "worker-lightning",
+            "price": 10.0,
+            "estimated_time_seconds": 30.0,
+            "plan": "Use string slicing.",
+            "telemetry": {
+              "model": "nvidia/Nemotron-3_5-Lightning",
+              "prompt_tokens": 235,
+              "completion_tokens": 256,
+              "total_tokens": 491,
+              "latency_ms": 1234.19,
+              "cost_usd": 7.554e-05
+            }
+          },
+          {
+            "bid_id": "403f0a45-260b-4697-8e10-8f2c5e2aa115",
+            "task_id": "code-10",
+            "worker_id": "worker-super",
+            "price": 5.0,
+            "estimated_time_seconds": 30.0,
+            "plan": "Implement an iterative binary search that returns the index of target in a sorted list or -1 if not found.",
+            "telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 178,
+              "completion_tokens": 142,
+              "total_tokens": 320,
+              "latency_ms": 877.26,
+              "cost_usd": 0.0001812
+            }
+          }
+        ],
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 97,
+          "completion_tokens": 137,
+          "total_tokens": 234,
+          "latency_ms": 1745.4,
+          "cost_usd": 3.87e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 208,
+          "completion_tokens": 97,
+          "total_tokens": 305,
+          "latency_ms": 637.9,
+          "cost_usd": 0.000499
+        }
+      },
+      {
+        "run_id": "ed16e183-845b-4bfd-820e-c14907f4331c",
+        "task_id": "code-11",
+        "winner": "worker-nano",
+        "winning_price": 1.5,
+        "score": 0.91,
+        "reputation_component": 1.0,
+        "price_component": 0.85,
+        "passed": true,
+        "bids": [
+          {
+            "bid_id": "99bc3ce7-2572-4312-b207-89d67411cbd5",
+            "task_id": "code-11",
+            "worker_id": "worker-nano",
+            "price": 1.5,
+            "estimated_time_seconds": 30.0,
+            "plan": "Use modulo to find effective k, slice list and concatenate",
+            "telemetry": {
+              "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+              "prompt_tokens": 182,
+              "completion_tokens": 205,
+              "total_tokens": 387,
+              "latency_ms": 1881.42,
+              "cost_usd": 6.012e-05
+            }
+          },
+          {
+            "bid_id": "78fa502f-b3ea-462c-9b4a-05d01ec82275",
+            "task_id": "code-11",
+            "worker_id": "worker-lightning",
+            "price": 10.0,
+            "estimated_time_seconds": 30.0,
+            "plan": "Use string slicing.",
+            "telemetry": {
+              "model": "nvidia/Nemotron-3_5-Lightning",
+              "prompt_tokens": 239,
+              "completion_tokens": 256,
+              "total_tokens": 495,
+              "latency_ms": 1582.46,
+              "cost_usd": 7.578e-05
+            }
+          },
+          {
+            "bid_id": "39c5dc66-1853-4451-a38a-856642d85258",
+            "task_id": "code-11",
+            "worker_id": "worker-super",
+            "price": 10.0,
+            "estimated_time_seconds": 30.0,
+            "plan": "Compute effective shift as k % len(values) (or 0 for empty list), then return values[-shift:] + values[:-shift].",
+            "telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 182,
+              "completion_tokens": 145,
+              "total_tokens": 327,
+              "latency_ms": 1227.6,
+              "cost_usd": 0.0001851
+            }
+          }
+        ],
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 101,
+          "completion_tokens": 175,
+          "total_tokens": 276,
+          "latency_ms": 1761.35,
+          "cost_usd": 4.806e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 178,
+          "completion_tokens": 755,
+          "total_tokens": 933,
+          "latency_ms": 2380.78,
+          "cost_usd": 0.002443
+        }
+      },
+      {
+        "run_id": "470a9509-7638-4b3a-b563-ac2d68d23224",
+        "task_id": "code-12",
+        "winner": "worker-nano",
+        "winning_price": 1.0,
+        "score": 0.96,
+        "reputation_component": 1.0,
+        "price_component": 0.9333333333333333,
+        "passed": true,
+        "bids": [
+          {
+            "bid_id": "78ee5275-6a56-4d3c-bd82-6ff2d865dde1",
+            "task_id": "code-12",
+            "worker_id": "worker-nano",
+            "price": 1.0,
+            "estimated_time_seconds": 5.0,
+            "plan": "Use a list comprehension to extend one level of nesting.",
+            "telemetry": {
+              "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+              "prompt_tokens": 196,
+              "completion_tokens": 225,
+              "total_tokens": 421,
+              "latency_ms": 2359.93,
+              "cost_usd": 6.576e-05
+            }
+          },
+          {
+            "bid_id": "a0b4d7bc-84f0-4e7d-8bf8-fe4781915b38",
+            "task_id": "code-12",
+            "worker_id": "worker-lightning",
+            "price": 15.0,
+            "estimated_time_seconds": 45.0,
+            "plan": "Iterate through values, appending non-list items directly and extending with list items to flatten one level.",
+            "telemetry": {
+              "model": "nvidia/Nemotron-3_5-Lightning",
+              "prompt_tokens": 196,
+              "completion_tokens": 512,
+              "total_tokens": 708,
+              "latency_ms": 2962.82,
+              "cost_usd": 0.00013464
+            }
+          },
+          {
+            "bid_id": "5dbc8333-5bf1-4d3e-8fb1-a91208c41cfa",
+            "task_id": "code-12",
+            "worker_id": "worker-super",
+            "price": 5.0,
+            "estimated_time_seconds": 30.0,
+            "plan": "Define flatten_one_level(values): return [item for sublist in values for item in (sublist if isinstance(sublist, list) else [sublist])]",
+            "telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 196,
+              "completion_tokens": 360,
+              "total_tokens": 556,
+              "latency_ms": 2222.82,
+              "cost_usd": 0.0003828
+            }
+          }
+        ],
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 115,
+          "completion_tokens": 207,
+          "total_tokens": 322,
+          "latency_ms": 2168.21,
+          "cost_usd": 5.658e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 179,
+          "completion_tokens": 491,
+          "total_tokens": 670,
+          "latency_ms": 1708.47,
+          "cost_usd": 0.001652
+        }
+      },
+      {
+        "run_id": "a4d83ea2-c67b-49b7-8839-3c16603ffd8b",
+        "task_id": "code-13",
+        "winner": "worker-nano",
+        "winning_price": 1.0,
+        "score": 0.9400000000000001,
+        "reputation_component": 1.0,
+        "price_component": 0.9,
+        "passed": true,
+        "bids": [
+          {
+            "bid_id": "e3c52d7e-13bd-41d6-aa04-517bb5c6bbb9",
+            "task_id": "code-13",
+            "worker_id": "worker-nano",
+            "price": 1.0,
+            "estimated_time_seconds": 15.0,
+            "plan": "single pass counting frequencies with dict, then linear scan for first non-repeating char",
+            "telemetry": {
+              "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+              "prompt_tokens": 184,
+              "completion_tokens": 267,
+              "total_tokens": 451,
+              "latency_ms": 2731.34,
+              "cost_usd": 7.512e-05
+            }
+          },
+          {
+            "bid_id": "cf086924-7949-4fa8-8a83-d8e38e86aa89",
+            "task_id": "code-13",
+            "worker_id": "worker-lightning",
+            "price": 10.0,
+            "estimated_time_seconds": 30.0,
+            "plan": "Use string slicing.",
+            "telemetry": {
+              "model": "nvidia/Nemotron-3_5-Lightning",
+              "prompt_tokens": 241,
+              "completion_tokens": 256,
+              "total_tokens": 497,
+              "latency_ms": 1640.48,
+              "cost_usd": 7.59e-05
+            }
+          },
+          {
+            "bid_id": "139aa7d0-c54e-45e0-aeb1-6bf8db392d4b",
+            "task_id": "code-13",
+            "worker_id": "worker-super",
+            "price": 10.0,
+            "estimated_time_seconds": 30.0,
+            "plan": "Use Counter to tally characters, then scan the string to return the first char with count 1, else None.",
+            "telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 184,
+              "completion_tokens": 168,
+              "total_tokens": 352,
+              "latency_ms": 1314.41,
+              "cost_usd": 0.0002064
+            }
+          }
+        ],
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 103,
+          "completion_tokens": 174,
+          "total_tokens": 277,
+          "latency_ms": 1557.49,
+          "cost_usd": 4.794e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 200,
+          "completion_tokens": 158,
+          "total_tokens": 358,
+          "latency_ms": 794.43,
+          "cost_usd": 0.000674
+        }
+      },
+      {
+        "run_id": "74c4ad89-03e4-47c6-a63b-bfbf6d0e8df7",
+        "task_id": "code-14",
+        "winner": "worker-nano",
+        "winning_price": 0.5,
+        "score": 0.97,
+        "reputation_component": 1.0,
+        "price_component": 0.95,
+        "passed": true,
+        "bids": [
+          {
+            "bid_id": "57686d2f-5b0f-4ed5-82c7-c3b9034cead4",
+            "task_id": "code-14",
+            "worker_id": "worker-nano",
+            "price": 0.5,
+            "estimated_time_seconds": 2.0,
+            "plan": "Implement two_sum.",
+            "telemetry": {
+              "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+              "prompt_tokens": 179,
+              "completion_tokens": 237,
+              "total_tokens": 416,
+              "latency_ms": 1955.73,
+              "cost_usd": 6.762e-05
+            }
+          },
+          {
+            "bid_id": "ca85fec1-d670-416b-b3da-b219a2eaf49e",
+            "task_id": "code-14",
+            "worker_id": "worker-lightning",
+            "price": 10.0,
+            "estimated_time_seconds": 30.0,
+            "plan": "Use string slicing.",
+            "telemetry": {
+              "model": "nvidia/Nemotron-3_5-Lightning",
+              "prompt_tokens": 236,
+              "completion_tokens": 256,
+              "total_tokens": 492,
+              "latency_ms": 1641.46,
+              "cost_usd": 7.56e-05
+            }
+          },
+          {
+            "bid_id": "cd1f6272-b016-4a16-838a-895428e2ad29",
+            "task_id": "code-14",
+            "worker_id": "worker-super",
+            "price": 10.0,
+            "estimated_time_seconds": 30.0,
+            "plan": "Iterate list, store value\u2192index, check complement.",
+            "telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 179,
+              "completion_tokens": 194,
+              "total_tokens": 373,
+              "latency_ms": 1294.42,
+              "cost_usd": 0.0002283
+            }
+          }
+        ],
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 98,
+          "completion_tokens": 185,
+          "total_tokens": 283,
+          "latency_ms": 1674.45,
+          "cost_usd": 5.028e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 195,
+          "completion_tokens": 360,
+          "total_tokens": 555,
+          "latency_ms": 1444.26,
+          "cost_usd": 0.001275
+        }
+      },
+      {
+        "run_id": "128fcbd6-302d-4cc2-b348-508771739582",
+        "task_id": "code-15",
+        "winner": "worker-nano",
+        "winning_price": 1.0,
+        "score": 0.9400000000000001,
+        "reputation_component": 1.0,
+        "price_component": 0.9,
+        "passed": true,
+        "bids": [
+          {
+            "bid_id": "f41ecb13-fb87-4012-a16d-b654f653e4bf",
+            "task_id": "code-15",
+            "worker_id": "worker-nano",
+            "price": 1.0,
+            "estimated_time_seconds": 5.0,
+            "plan": "Single pass scan tracking current and max run length",
+            "telemetry": {
+              "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+              "prompt_tokens": 179,
+              "completion_tokens": 226,
+              "total_tokens": 405,
+              "latency_ms": 2181.12,
+              "cost_usd": 6.498e-05
+            }
+          },
+          {
+            "bid_id": "ee337319-834a-4c6c-88ba-40efcae18c33",
+            "task_id": "code-15",
+            "worker_id": "worker-super",
+            "price": 10.0,
+            "estimated_time_seconds": 30.0,
+            "plan": "Iterate through list, track current run length and max; reset when not increasing; handle empty list.",
+            "telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 179,
+              "completion_tokens": 166,
+              "total_tokens": 345,
+              "latency_ms": 1000.53,
+              "cost_usd": 0.0002031
+            }
+          }
+        ],
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 98,
+          "completion_tokens": 178,
+          "total_tokens": 276,
+          "latency_ms": 1555.95,
+          "cost_usd": 4.86e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 223,
+          "completion_tokens": 246,
+          "total_tokens": 469,
+          "latency_ms": 1249.71,
+          "cost_usd": 0.000961
+        }
+      },
+      {
+        "run_id": "13a5e82d-5cc2-4a7b-9bc9-ea308070286c",
+        "task_id": "code-16",
+        "winner": "worker-nano",
+        "winning_price": 2.5,
+        "score": 0.9,
+        "reputation_component": 1.0,
+        "price_component": 0.8333333333333334,
+        "passed": true,
+        "bids": [
+          {
+            "bid_id": "bb59fdc0-0cc8-4960-949f-51ab6425dd6e",
+            "task_id": "code-16",
+            "worker_id": "worker-nano",
+            "price": 2.5,
+            "estimated_time_seconds": 15.0,
+            "plan": "Use a stack to check bracket matching",
+            "telemetry": {
+              "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+              "prompt_tokens": 176,
+              "completion_tokens": 211,
+              "total_tokens": 387,
+              "latency_ms": 2318.17,
+              "cost_usd": 6.12e-05
+            }
+          },
+          {
+            "bid_id": "d80fa971-06ed-42db-a64c-a3c6bdded0c8",
+            "task_id": "code-16",
+            "worker_id": "worker-super",
+            "price": 15.0,
+            "estimated_time_seconds": 30.0,
+            "plan": "Use a stack to track opening brackets; iterate through the string, push openings, pop and match closings; return False on mismatch or if stack not empty at end.",
+            "telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 176,
+              "completion_tokens": 181,
+              "total_tokens": 357,
+              "latency_ms": 1399.01,
+              "cost_usd": 0.0002157
+            }
+          }
+        ],
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 95,
+          "completion_tokens": 233,
+          "total_tokens": 328,
+          "latency_ms": 1886.36,
+          "cost_usd": 6.162e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 201,
+          "completion_tokens": 268,
+          "total_tokens": 469,
+          "latency_ms": 1164.91,
+          "cost_usd": 0.001005
+        }
+      },
+      {
+        "run_id": "de1aac02-29f7-4792-9ae7-ecbb024fb516",
+        "task_id": "code-17",
+        "winner": "worker-nano",
+        "winning_price": 1.0,
+        "score": 0.96,
+        "reputation_component": 1.0,
+        "price_component": 0.9333333333333333,
+        "passed": true,
+        "bids": [
+          {
+            "bid_id": "9f8c6ca8-aedc-4266-acaf-ac4479fd350b",
+            "task_id": "code-17",
+            "worker_id": "worker-nano",
+            "price": 1.0,
+            "estimated_time_seconds": 5.0,
+            "plan": "Group using sorted key, maintain original order within groups",
+            "telemetry": {
+              "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+              "prompt_tokens": 182,
+              "completion_tokens": 246,
+              "total_tokens": 428,
+              "latency_ms": 2115.69,
+              "cost_usd": 6.996e-05
+            }
+          },
+          {
+            "bid_id": "38edf0ea-e9de-4697-8dec-c1ff2c6e9e02",
+            "task_id": "code-17",
+            "worker_id": "worker-lightning",
+            "price": 10.0,
+            "estimated_time_seconds": 30.0,
+            "plan": "Use string slicing.",
+            "telemetry": {
+              "model": "nvidia/Nemotron-3_5-Lightning",
+              "prompt_tokens": 239,
+              "completion_tokens": 256,
+              "total_tokens": 495,
+              "latency_ms": 1615.19,
+              "cost_usd": 7.578e-05
+            }
+          },
+          {
+            "bid_id": "bec13e78-4259-4909-bb83-62be382547ee",
+            "task_id": "code-17",
+            "worker_id": "worker-super",
+            "price": 15.0,
+            "estimated_time_seconds": 30.0,
+            "plan": "Use a dictionary where key is the sorted tuple of characters; iterate through input words, appending each to the list for its key to preserve order; finally return the dictionary's values as a list of groups.",
+            "telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 182,
+              "completion_tokens": 162,
+              "total_tokens": 344,
+              "latency_ms": 1215.81,
+              "cost_usd": 0.0002004
+            }
+          }
+        ],
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 101,
+          "completion_tokens": 108,
+          "total_tokens": 209,
+          "latency_ms": 1149.95,
+          "cost_usd": 3.198e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 172,
+          "completion_tokens": 419,
+          "total_tokens": 591,
+          "latency_ms": 1767.66,
+          "cost_usd": 0.001429
+        }
+      },
+      {
+        "run_id": "4a561693-cf33-4600-baee-0e4ad262fd61",
+        "task_id": "code-18",
+        "winner": "worker-nano",
+        "winning_price": 1.0,
+        "score": 0.9625,
+        "reputation_component": 1.0,
+        "price_component": 0.9375,
+        "passed": true,
+        "bids": [
+          {
+            "bid_id": "fc86d717-fd48-4395-b6f6-640a1504f29d",
+            "task_id": "code-18",
+            "worker_id": "worker-nano",
+            "price": 1.0,
+            "estimated_time_seconds": 10.0,
+            "plan": "BFS shortest path on 0 cells, return -1 if unreachable",
+            "telemetry": {
+              "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+              "prompt_tokens": 206,
+              "completion_tokens": 353,
+              "total_tokens": 559,
+              "latency_ms": 2754.66,
+              "cost_usd": 9.708e-05
+            }
+          },
+          {
+            "bid_id": "1bf58dd2-7ccc-4329-9d76-306e270d83d5",
+            "task_id": "code-18",
+            "worker_id": "worker-lightning",
+            "price": 16.0,
+            "estimated_time_seconds": 90.0,
+            "plan": "BFS from start to goal, avoiding blocked cells, return shortest path length or -1.",
+            "telemetry": {
+              "model": "nvidia/Nemotron-3_5-Lightning",
+              "prompt_tokens": 206,
+              "completion_tokens": 512,
+              "total_tokens": 718,
+              "latency_ms": 3007.93,
+              "cost_usd": 0.00013524
+            }
+          },
+          {
+            "bid_id": "ad55ef0b-4887-4af0-8cd5-6210efca57e4",
+            "task_id": "code-18",
+            "worker_id": "worker-super",
+            "price": 8.0,
+            "estimated_time_seconds": 10.0,
+            "plan": "Perform BFS from start cell (0,0), exploring four directions on cells with value 0, tracking steps; return steps when reaching bottom\u2011right else -1.",
+            "telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 206,
+              "completion_tokens": 261,
+              "total_tokens": 467,
+              "latency_ms": 1699.62,
+              "cost_usd": 0.0002967
+            }
+          }
+        ],
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 125,
+          "completion_tokens": 286,
+          "total_tokens": 411,
+          "latency_ms": 1858.56,
+          "cost_usd": 7.614e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 373,
+          "completion_tokens": 754,
+          "total_tokens": 1127,
+          "latency_ms": 3255.4,
+          "cost_usd": 0.002635
+        }
+      },
+      {
+        "run_id": "a2a162f3-176c-497e-88c5-dba6be9fe460",
+        "task_id": "code-19",
+        "winner": "worker-nano",
+        "winning_price": 5.0,
+        "score": 0.8,
+        "reputation_component": 1.0,
+        "price_component": 0.6666666666666667,
+        "passed": true,
+        "bids": [
+          {
+            "bid_id": "23426d96-25e1-425d-ab69-6b998a0062fb",
+            "task_id": "code-19",
+            "worker_id": "worker-nano",
+            "price": 5.0,
+            "estimated_time_seconds": 10.0,
+            "plan": "Track seen items with a set and return the first element seen twice, otherwise None",
+            "telemetry": {
+              "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+              "prompt_tokens": 203,
+              "completion_tokens": 221,
+              "total_tokens": 424,
+              "latency_ms": 1856.3,
+              "cost_usd": 6.522e-05
+            }
+          },
+          {
+            "bid_id": "51eda35d-843a-4124-9a0d-3655121015e5",
+            "task_id": "code-19",
+            "worker_id": "worker-lightning",
+            "price": 10.0,
+            "estimated_time_seconds": 30.0,
+            "plan": "Use string slicing.",
+            "telemetry": {
+              "model": "nvidia/Nemotron-3_5-Lightning",
+              "prompt_tokens": 260,
+              "completion_tokens": 256,
+              "total_tokens": 516,
+              "latency_ms": 1674.12,
+              "cost_usd": 7.704e-05
+            }
+          },
+          {
+            "bid_id": "e0282889-d5b8-421c-901e-65093b16a317",
+            "task_id": "code-19",
+            "worker_id": "worker-super",
+            "price": 15.0,
+            "estimated_time_seconds": 30.0,
+            "plan": "Replace logic to track seen set; iterate list, if element in seen return it; else add to seen; after loop return None.",
+            "telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 203,
+              "completion_tokens": 172,
+              "total_tokens": 375,
+              "latency_ms": 1022.1,
+              "cost_usd": 0.0002157
+            }
+          }
+        ],
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 122,
+          "completion_tokens": 167,
+          "total_tokens": 289,
+          "latency_ms": 1400.87,
+          "cost_usd": 4.74e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 186,
+          "completion_tokens": 295,
+          "total_tokens": 481,
+          "latency_ms": 1069.7,
+          "cost_usd": 0.001071
+        }
+      },
+      {
+        "run_id": "32ea9f0f-fa1f-471a-9ac9-ecba5a66c114",
+        "task_id": "code-20",
+        "winner": "worker-nano",
+        "winning_price": 1.0,
+        "score": 0.96,
+        "reputation_component": 1.0,
+        "price_component": 0.9333333333333333,
+        "passed": true,
+        "bids": [
+          {
+            "bid_id": "753f6410-12ca-42af-8b7e-614b02d41093",
+            "task_id": "code-20",
+            "worker_id": "worker-nano",
+            "price": 1.0,
+            "estimated_time_seconds": 7.0,
+            "plan": "Use Counter, sort by frequency then first index, return top k",
+            "telemetry": {
+              "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+              "prompt_tokens": 186,
+              "completion_tokens": 228,
+              "total_tokens": 414,
+              "latency_ms": 1868.81,
+              "cost_usd": 6.588e-05
+            }
+          },
+          {
+            "bid_id": "7e4bc8eb-db19-4d20-8de3-dcfca4eb1b7f",
+            "task_id": "code-20",
+            "worker_id": "worker-lightning",
+            "price": 10.0,
+            "estimated_time_seconds": 30.0,
+            "plan": "Use string slicing.",
+            "telemetry": {
+              "model": "nvidia/Nemotron-3_5-Lightning",
+              "prompt_tokens": 243,
+              "completion_tokens": 256,
+              "total_tokens": 499,
+              "latency_ms": 1690.7,
+              "cost_usd": 7.602e-05
+            }
+          },
+          {
+            "bid_id": "87d60aab-ca6a-4ca1-9b11-cc8dd2080c62",
+            "task_id": "code-20",
+            "worker_id": "worker-super",
+            "price": 15.0,
+            "estimated_time_seconds": 30.0,
+            "plan": "Use collections.Counter to count frequencies, record first occurrence index for each value, sort by (-frequency, first_index), and return the first k values.",
+            "telemetry": {
+              "model": "nvidia/nemotron-3-super-120b-a12b",
+              "prompt_tokens": 186,
+              "completion_tokens": 184,
+              "total_tokens": 370,
+              "latency_ms": 1141.23,
+              "cost_usd": 0.0002214
+            }
+          }
+        ],
+        "worker_telemetry": {
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "prompt_tokens": 105,
+          "completion_tokens": 232,
+          "total_tokens": 337,
+          "latency_ms": 1818.2,
+          "cost_usd": 6.198e-05
+        },
+        "verifier_telemetry": {
+          "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+          "prompt_tokens": 240,
+          "completion_tokens": 476,
+          "total_tokens": 716,
+          "latency_ms": 1774.05,
+          "cost_usd": 0.001668
+        }
+      }
+    ]
+  }
 }

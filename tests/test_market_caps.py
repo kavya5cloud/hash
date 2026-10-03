@@ -93,3 +93,39 @@ def test_reputation_never_goes_below_zero() -> None:
     market.settle_fail(agent, 10.0)
 
     assert agent.reputation == 0.0
+
+
+def test_guardrails_enforce_round_retry_output_and_budget_limits():
+    from hash_market.guardrails import (
+        GuardrailConfig,
+        validate_budget,
+        validate_output,
+        validate_retry,
+        validate_round,
+    )
+
+    config = GuardrailConfig(
+        max_rounds=2,
+        max_retries=1,
+        max_output_chars=10,
+        max_task_budget=100.0,
+    )
+
+    validate_round(2, config)
+    validate_retry(1, config)
+    validate_output("1234567890", config)
+    validate_budget(100.0, config)
+
+    import pytest
+
+    with pytest.raises(ValueError):
+        validate_round(3, config)
+
+    with pytest.raises(ValueError):
+        validate_retry(2, config)
+
+    with pytest.raises(ValueError):
+        validate_output("12345678901", config)
+
+    with pytest.raises(ValueError):
+        validate_budget(101.0, config)

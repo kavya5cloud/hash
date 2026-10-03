@@ -6,6 +6,7 @@ import uuid
 from dataclasses import dataclass
 
 from .agents.verifier import Verifier
+from .guardrails import validate_budget, validate_round
 from .agents.worker import Worker
 from .ledger import Ledger
 from .llm import LLMClient
@@ -37,6 +38,11 @@ def run_market(
     manager_telemetry: dict | None = None,
 ) -> MarketRunResult:
     """Run one task through bidding, award, escrow, execution and verification."""
+
+    validate_budget(goal.budget)
+    validate_budget(task.budget)
+    if max_rounds < 1:
+        raise ValueError("max_rounds must be positive")
 
     run_id = str(uuid.uuid4())
 
@@ -78,6 +84,7 @@ def run_market(
     )
 
     for round_number in range(1, max_rounds + 1):
+        validate_round(round_number)
         bids = []
 
         for worker_id, worker in workers.items():

@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import uuid
 
+from ..guardrails import validate_output
 from ..llm import LLMClient, LLMResponse
 from ..models import Bid, Task
 
@@ -173,4 +174,5 @@ class Worker:
         )
 
         self.last_response = response
+        validate_output(response.content)
         return response.content

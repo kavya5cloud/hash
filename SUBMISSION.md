@@ -63,9 +63,28 @@ Latest recorded benchmark:
 | Average latency | 3,051.93 ms | 2,951.44 ms |
 | Retries | 0 | 0 |
 
-The latest market benchmark selected `worker-nano` for all 20 tasks.
+### What the numbers actually show
 
-These are recorded benchmark results from the current implementation, not projected or simulated performance claims.
+Both modes passed 20/20, but they did not spend the money on the same thing.
+Splitting each mode's Token Factory spend by role:
+
+| Role | Monolith | Market |
+|---|---:|---:|
+| Execution | $0.0214902 (`nemotron-3-super-120b-a12b`) | $0.00090246 (`NVIDIA-Nemotron-3-Nano-30B-A3B`) |
+| Independent verification | none | $0.022479 (`Nemotron-3-Ultra-550b-a55b`) |
+
+The market awarded all 20 tasks to `worker-nano`, a 30B model, and matched the
+120B monolith's pass rate while **doing the work 23.8x cheaper**.
+
+The market's higher *total* is not execution overhead — it is the 550B verifier,
+which accounts for 96% of market spend and is work the monolith never does at
+all. The comparison that matters is execution against execution; verification is
+a separate quality guarantee, and its cost is a configurable choice of verifier
+model rather than a property of the market design.
+
+These are recorded benchmark results from the current implementation, not
+projected or simulated performance claims. The dashboard computes this same
+split live from the benchmark report at `/market`.
 
 ## How It Was Built
 

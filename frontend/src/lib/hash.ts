@@ -114,10 +114,126 @@ export type BenchmarkMode = {
   retries?: number;
 };
 
-export type Benchmark = Record<string, unknown> & {
+/** Where a mode's Token Factory spend actually went, per role. */
+export type CostSplit = {
+  worker_usd: number;
+  verifier_usd: number;
+  worker_model: string | null;
+  verifier_model: string | null;
+};
+
+export type Benchmark = {
   monolith?: BenchmarkMode;
   market?: BenchmarkMode;
+  monolith_split?: CostSplit;
+  market_split?: CostSplit;
+  winners?: Record<string, number>;
 };
+
+/* The API serves the raw benchmark report, which nests the per-mode summary
+ * under `summary` and prefixes its totals with `total_`/`average_`. Normalize
+ * it here so the dashboard reads one stable shape. */
+type RawMode = {
+  tasks?: number;
+  passed?: number;
+  pass_rate?: number;
+  total_token_factory_cost_usd?: number;
+  average_token_factory_cost_usd?: number;
+  total_latency_ms?: number;
+  average_latency_ms?: number;
+  total_retries?: number;
+};
+
+type RawTelemetry = { model?: string; cost_usd?: number | null };
+
+type RawResult = {
+  monolith?: {
+    model?: string;
+    token_factory_cost_usd?: number | null;
+    attempt_details?: { worker_telemetry?: RawTelemetry }[];
+  };
+  market?: {
+    winner?: string;
+    worker_telemetry?: RawTelemetry;
+    verifier_telemetry?: RawTelemetry;
+  };
+};
+
+type RawBenchmark = {
+  summary?: { monolith?: RawMode; market?: RawMode };
+  comparison?: { monolith?: RawMode; market?: RawMode };
+  results?: RawResult[];
+};
+
+function normalizeMode(raw: RawMode | undefined): BenchmarkMode | undefined {
+  if (!raw) return undefined;
+
+  return {
+    tasks: raw.tasks,
+    passed: raw.passed,
+    pass_rate: raw.pass_rate,
+    token_factory_cost_usd: raw.total_token_factory_cost_usd,
+    average_cost_usd: raw.average_token_factory_cost_usd,
+    total_latency_ms: raw.total_latency_ms,
+    average_latency_ms: raw.average_latency_ms,
+    retries: raw.total_retries,
+  };
+}
+
+export function normalizeBenchmark(raw: RawBenchmark): Benchmark {
+  const modes = raw.summary ?? raw.comparison ?? {};
+  const results = raw.results ?? [];
+
+  // The monolith does the work itself and never verifies; the market pays a
+  // small worker and a large verifier. Splitting the spend by role is the only
+  // way to compare execution cost against execution cost.
+  const split = (
+    pick: (result: RawResult) => {
+      worker?: RawTelemetry;
+      verifier?: RawTelemetry;
+    },
+  ): CostSplit => {
+    const acc: CostSplit = {
+      worker_usd: 0,
+      verifier_usd: 0,
+      worker_model: null,
+      verifier_model: null,
+    };
+
+    for (const result of results) {
+      const { worker, verifier } = pick(result);
+      acc.worker_usd += worker?.cost_usd ?? 0;
+      acc.verifier_usd += verifier?.cost_usd ?? 0;
+      acc.worker_model ??= worker?.model ?? null;
+      acc.verifier_model ??= verifier?.model ?? null;
+    }
+
+    return acc;
+  };
+
+  const winners: Record<string, number> = {};
+
+  for (const result of results) {
+    const winner = result.market?.winner;
+    if (winner) winners[winner] = (winners[winner] ?? 0) + 1;
+  }
+
+  return {
+    monolith: normalizeMode(modes.monolith),
+    market: normalizeMode(modes.market),
+    monolith_split: split((result) => ({
+      worker: {
+        model: result.monolith?.model,
+        cost_usd: result.monolith?.token_factory_cost_usd ?? 0,
+      },
+    })),
+    market_split: split((result) => ({
+      worker: result.market?.worker_telemetry,
+      verifier: result.market?.verifier_telemetry,
+    })),
+    winners,
+  };
+}
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const response = await fetch(`${HASH_API}${path}`, {
@@ -147,7 +263,8 @@ export const api = {
   runs: () => request<RunSummary[]>("/runs"),
   run: (runId: string) => request<Run>(`/runs/${runId}`),
   demoRun: () => request<Run>("/demo/run"),
-  benchmark: () => request<Benchmark>("/benchmark"),
+  benchmark: async () =>
+    normalizeBenchmark(await request<RawBenchmark>("/benchmark")),
   createRun: (goal: string) =>
     request<{ run_id: string; passed: boolean | null; verdict: string | null }>(
       "/runs",

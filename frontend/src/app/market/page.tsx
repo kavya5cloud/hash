@@ -137,8 +137,59 @@ function BenchmarkTable({ benchmark }: { benchmark: Benchmark }) {
     ["Retries", monolith.retries ?? "—", market.retries ?? "—"],
   ];
 
+  const monolithSplit = benchmark.monolith_split;
+  const marketSplit = benchmark.market_split;
+
+  if (monolithSplit && marketSplit) {
+    rows.push(
+      [
+        "— of that, execution",
+        formatUsd(monolithSplit.worker_usd),
+        formatUsd(marketSplit.worker_usd),
+      ],
+      [
+        "— of that, verification",
+        monolithSplit.verifier_usd ? formatUsd(monolithSplit.verifier_usd) : "none",
+        formatUsd(marketSplit.verifier_usd),
+      ],
+    );
+  }
+
+  // Execution cost is the like-for-like comparison: the monolith's own spend
+  // against what the market actually paid its worker.
+  const executionRatio =
+    monolithSplit && marketSplit && marketSplit.worker_usd > 0
+      ? monolithSplit.worker_usd / marketSplit.worker_usd
+      : null;
+
   return (
-    <table className="w-full text-sm">
+    <>
+      {executionRatio ? (
+        <div className="border-line bg-surface-raised mb-4 rounded-lg border p-4">
+          <div className="eyebrow">[ Execution cost ]</div>
+          <p className="mt-2 text-sm">
+            The market matched the monolith&apos;s pass rate while doing the work{" "}
+            <span className="text-accent-alt font-mono font-semibold">
+              {executionRatio.toFixed(1)}×
+            </span>{" "}
+            cheaper — it routed every task to{" "}
+            <span className="font-mono text-xs break-all">
+              {marketSplit?.worker_model ?? "a smaller worker"}
+            </span>{" "}
+            instead of{" "}
+            <span className="font-mono text-xs break-all">
+              {monolithSplit?.worker_model ?? "the largest model"}
+            </span>
+            .
+          </p>
+          <p className="text-faint mt-2 text-xs">
+            The market&apos;s higher total is independent verification, which the
+            monolith does not do at all.
+          </p>
+        </div>
+      ) : null}
+
+      <table className="w-full text-sm">
       <thead>
         <tr className="text-left eyebrow">
           <th className="pb-2 font-medium">Metric</th>
@@ -158,7 +209,8 @@ function BenchmarkTable({ benchmark }: { benchmark: Benchmark }) {
           </tr>
         ))}
       </tbody>
-    </table>
+      </table>
+    </>
   );
 }
 
@@ -180,7 +232,7 @@ export default function Home() {
       setOnline(true);
     } catch {
       setOnline(false);
-      return;
+      return [] as RunSummary[];
     }
 
     const [agentsResult, historyResult, benchmarkResult] =
@@ -195,11 +247,29 @@ export default function Home() {
     if (benchmarkResult.status === "fulfilled") {
       setBenchmark(benchmarkResult.value);
     }
+
+    return historyResult.status === "fulfilled" ? historyResult.value : [];
   }, []);
 
   useEffect(() => {
     // Deferred so the first paint is not blocked and state lands in a callback.
-    void Promise.resolve().then(refresh);
+    void Promise.resolve().then(async () => {
+      const summaries = await refresh();
+
+      // Deployed, the ledger starts empty, which would leave every panel
+      // blank. Open the most recent real run if there is one, and otherwise
+      // fall back to the recorded demo so the market lifecycle is always
+      // visible. Both paths are labelled in the UI.
+      try {
+        if (summaries.length) {
+          setRun(await api.run(summaries[0].run_id));
+        } else {
+          setRun(await api.demoRun());
+        }
+      } catch {
+        // Leave the empty state in place; the panels explain what to do.
+      }
+    });
   }, [refresh]);
 
   const withBusy = async (work: () => Promise<void>) => {

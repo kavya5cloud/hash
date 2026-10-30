@@ -39,10 +39,36 @@ app = FastAPI(
 )
 
 
+HASH_ALLOWED_ORIGINS = [
+    origin.strip()
+    for origin in os.environ.get(
+        "HASH_ALLOWED_ORIGINS",
+        "http://localhost:3000,http://127.0.0.1:3000",
+    ).split(",")
+    if origin.strip()
+]
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=HASH_ALLOWED_ORIGINS,
+    allow_credentials=False,
+    allow_methods=["GET", "POST"],
+    allow_headers=["*"],
+)
+
+
 class RunRequest(BaseModel):
     """Request to start a Hash run."""
 
     goal: str = Field(min_length=1)
+
+
+DEMO_RUN_PATH = (
+    Path(__file__).resolve().parents[2]
+    / "demo"
+    / "fallback_run.json"
+)
 
 
 def _ledger() -> Ledger:
@@ -283,6 +309,29 @@ def _run_summary(run_id: str) -> dict:
         },
         "events": events,
     }
+
+
+@app.get("/demo/run")
+def demo_run() -> dict:
+    """Return the deterministic record-ready demo fixture.
+
+    This endpoint never calls a model and never writes to the ledger.
+    """
+    if not DEMO_RUN_PATH.exists():
+        raise HTTPException(
+            status_code=404,
+            detail="Demo fixture not found",
+        )
+
+    try:
+        return json.loads(
+            DEMO_RUN_PATH.read_text(encoding="utf-8")
+        )
+    except json.JSONDecodeError as exc:
+        raise HTTPException(
+            status_code=500,
+            detail="Demo fixture contains invalid JSON",
+        ) from exc
 
 
 @app.get("/health")

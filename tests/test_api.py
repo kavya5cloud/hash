@@ -106,3 +106,41 @@ def test_models_requires_api_key(monkeypatch) -> None:
     response = client.get("/models")
 
     assert response.status_code == 503
+
+
+def test_demo_run_is_recorded_and_complete() -> None:
+    response = client.get("/demo/run")
+
+    assert response.status_code == 200
+
+    payload = response.json()
+
+    assert payload["demo"] is True
+    assert "RECORDED DEMO" in payload["label"]
+    assert payload["status"] == "completed"
+    assert payload["award"]["worker_id"] == payload["verdicts"][0][
+        "worker_id"
+    ]
+    assert payload["verdicts"][0]["passed"] is True
+    assert payload["settlement"]["type"] == "payment_released"
+    assert payload["cost_summary"]["recorded_demo_data"] is True
+    assert payload["events"]
+
+
+def test_run_not_found() -> None:
+    response = client.get("/runs/does-not-exist")
+
+    assert response.status_code == 404
+
+
+def test_cors_allows_local_frontend() -> None:
+    response = client.get(
+        "/health",
+        headers={"Origin": "http://localhost:3000"},
+    )
+
+    assert response.status_code == 200
+    assert (
+        response.headers["access-control-allow-origin"]
+        == "http://localhost:3000"
+    )

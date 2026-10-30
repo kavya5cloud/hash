@@ -1,0 +1,253 @@
+{
+  "demo": true,
+  "label": "RECORDED DEMO \u2014 SYNTHETIC FALLBACK DATA \u2014 NOT A LIVE RUN",
+  "run_id": "demo-hash-market-001",
+  "status": "completed",
+  "goal": {
+    "id": "demo-goal-001",
+    "prompt": "Write a Python function that adds two integers.",
+    "budget": 20.0
+  },
+  "tasks": [
+    {
+      "id": "demo-task-001",
+      "type": "code",
+      "budget": 20.0,
+      "acceptance_criteria": [
+        "Return the sum of two integers.",
+        "Provide a complete Python implementation."
+      ]
+    }
+  ],
+  "bids": [
+    {
+      "bid_id": "demo-bid-nano",
+      "worker_id": "worker-nano",
+      "price": 0.5,
+      "estimated_time_seconds": 2.0,
+      "plan": "Implement the addition function directly.",
+      "status": "accepted"
+    },
+    {
+      "bid_id": "demo-bid-lightning",
+      "worker_id": "worker-lightning",
+      "price": 1.0,
+      "estimated_time_seconds": 1.5,
+      "plan": "Implement and verify the arithmetic operation.",
+      "status": "rejected"
+    }
+  ],
+  "award": {
+    "task_id": "demo-task-001",
+    "worker_id": "worker-nano",
+    "bid_id": "demo-bid-nano",
+    "price": 0.5,
+    "score": 0.95,
+    "reputation_component": 0.9,
+    "price_component": 1.0
+  },
+  "escrow": {
+    "worker_id": "worker-nano",
+    "amount": 0.5
+  },
+  "verdicts": [
+    {
+      "task_id": "demo-task-001",
+      "worker_id": "worker-nano",
+      "passed": true,
+      "reason": "Recorded demo verification passed."
+    }
+  ],
+  "output": "def add(a, b):\n    return a + b\n",
+  "settlement": {
+    "type": "payment_released",
+    "worker_id": "worker-nano",
+    "amount": 0.5
+  },
+  "reputation": {
+    "worker-nano": 91.0,
+    "worker-lightning": 85.0
+  },
+  "telemetry": {
+    "manager": {
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "prompt_tokens": 80,
+      "completion_tokens": 45,
+      "total_tokens": 125,
+      "latency_ms": 1200.0,
+      "cost_usd": 0.0001,
+      "recorded_demo_data": true
+    },
+    "bids": [
+      {
+        "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+        "prompt_tokens": 80,
+        "completion_tokens": 40,
+        "total_tokens": 120,
+        "latency_ms": 900.0,
+        "cost_usd": 2e-05,
+        "recorded_demo_data": true
+      },
+      {
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "prompt_tokens": 80,
+        "completion_tokens": 42,
+        "total_tokens": 122,
+        "latency_ms": 850.0,
+        "cost_usd": 2.5e-05,
+        "recorded_demo_data": true
+      }
+    ],
+    "worker": {
+      "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+      "prompt_tokens": 83,
+      "completion_tokens": 61,
+      "total_tokens": 144,
+      "latency_ms": 1107.78,
+      "cost_usd": 1.962e-05,
+      "recorded_demo_data": true
+    },
+    "verifier": {
+      "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+      "prompt_tokens": 122,
+      "completion_tokens": 222,
+      "total_tokens": 344,
+      "latency_ms": 1482.36,
+      "cost_usd": 0.000788,
+      "recorded_demo_data": true
+    }
+  },
+  "cost_summary": {
+    "task_budget": 20.0,
+    "worker_price": 0.5,
+    "total_tokens": 488,
+    "token_factory_cost_usd": 0.00080762,
+    "recorded_demo_data": true
+  },
+  "events": [
+    {
+      "id": 1,
+      "run_id": "demo-hash-market-001",
+      "event_type": "goal_created",
+      "timestamp": 0,
+      "data": {
+        "goal_id": "demo-goal-001",
+        "prompt": "Write a Python function that adds two integers.",
+        "budget": 20.0
+      }
+    },
+    {
+      "id": 2,
+      "run_id": "demo-hash-market-001",
+      "event_type": "task_posted",
+      "timestamp": 1,
+      "data": {
+        "task_id": "demo-task-001",
+        "budget": 20.0,
+        "task_type": "code"
+      }
+    },
+    {
+      "id": 3,
+      "run_id": "demo-hash-market-001",
+      "event_type": "sealed_bid_submitted",
+      "timestamp": 2,
+      "data": {
+        "bid_id": "demo-bid-nano",
+        "task_id": "demo-task-001",
+        "worker_id": "worker-nano",
+        "price": 0.5
+      }
+    },
+    {
+      "id": 4,
+      "run_id": "demo-hash-market-001",
+      "event_type": "sealed_bid_submitted",
+      "timestamp": 3,
+      "data": {
+        "bid_id": "demo-bid-lightning",
+        "task_id": "demo-task-001",
+        "worker_id": "worker-lightning",
+        "price": 1.0
+      }
+    },
+    {
+      "id": 5,
+      "run_id": "demo-hash-market-001",
+      "event_type": "task_awarded",
+      "timestamp": 4,
+      "data": {
+        "task_id": "demo-task-001",
+        "worker_id": "worker-nano",
+        "bid_id": "demo-bid-nano",
+        "price": 0.5,
+        "score": 0.95
+      }
+    },
+    {
+      "id": 6,
+      "run_id": "demo-hash-market-001",
+      "event_type": "escrow_reserved",
+      "timestamp": 5,
+      "data": {
+        "task_id": "demo-task-001",
+        "worker_id": "worker-nano",
+        "amount": 0.5
+      }
+    },
+    {
+      "id": 7,
+      "run_id": "demo-hash-market-001",
+      "event_type": "work_submitted",
+      "timestamp": 6,
+      "data": {
+        "task_id": "demo-task-001",
+        "worker_id": "worker-nano"
+      }
+    },
+    {
+      "id": 8,
+      "run_id": "demo-hash-market-001",
+      "event_type": "verdict",
+      "timestamp": 7,
+      "data": {
+        "task_id": "demo-task-001",
+        "worker_id": "worker-nano",
+        "passed": true,
+        "reason": "Recorded demo verification passed."
+      }
+    },
+    {
+      "id": 9,
+      "run_id": "demo-hash-market-001",
+      "event_type": "payment_released",
+      "timestamp": 8,
+      "data": {
+        "task_id": "demo-task-001",
+        "worker_id": "worker-nano",
+        "amount": 0.5
+      }
+    },
+    {
+      "id": 10,
+      "run_id": "demo-hash-market-001",
+      "event_type": "reputation_updated",
+      "timestamp": 9,
+      "data": {
+        "worker_id": "worker-nano",
+        "result": "pass",
+        "reputation": 91.0
+      }
+    },
+    {
+      "id": 11,
+      "run_id": "demo-hash-market-001",
+      "event_type": "goal_completed",
+      "timestamp": 10,
+      "data": {
+        "goal_id": "demo-goal-001",
+        "worker_id": "worker-nano"
+      }
+    }
+  ]
+}

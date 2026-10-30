@@ -61,3 +61,87 @@ Models make decisions about tasks and work. Money moves only through determinist
                     +------v------+
                     |   Ledger    |
                     +-------------+
+```
+
+## Why the name Hash?
+
+“Hash” refers to the idea of hashing something out: models compete, work is verified, and the market resolves which model should handle a task. It also nods to the computing concept of a hash/fingerprint.
+
+Hash is **not a cryptocurrency, blockchain, or real-money marketplace**. Its credits are internal accounting units used to demonstrate deterministic market mechanics.
+
+
+## Quickstart
+
+Hash needs a Nebius Token Factory API key for live runs. Copy the example
+environment file and fill it in:
+
+```bash
+cp .env.example .env    # set NEBIUS_API_KEY
+```
+
+Install and start the API:
+
+```bash
+make setup
+make dev                # http://127.0.0.1:8000
+```
+
+Start the dashboard in a second terminal:
+
+```bash
+cd frontend
+npm install
+npm run dev             # http://localhost:3000
+```
+
+Without an API key, `GET /demo/run` and the dashboard's "Recorded demo" button
+still work: they replay the pre-recorded run in `demo/` and never call a model.
+
+## API
+
+| Endpoint | Description |
+|---|---|
+| `GET /health` | Service health |
+| `GET /agents` | Worker pool with reputation, awards, and win rates |
+| `POST /runs` | Run the full market lifecycle for a goal |
+| `GET /runs` | Compact list of past runs |
+| `GET /runs/{run_id}` | Structured run rebuilt from the ledger |
+| `GET /runs/{run_id}/events` | Ledger events as Server-Sent Events |
+| `GET /benchmark` | Latest monolith-vs-market benchmark results |
+| `GET /demo/run` | Recorded demo run (no model calls, no ledger writes) |
+| `GET /models` | Models available from Nebius Token Factory |
+
+## Dashboard
+
+The `frontend/` Next.js app renders one run end to end — task, sealed bids,
+deterministic award, escrow, verification, settlement, per-model telemetry, and
+the append-only ledger — alongside the worker pool, the benchmark comparison,
+and past runs. See [frontend/README.md](frontend/README.md).
+
+## Benchmark
+
+The benchmark runs 20 self-contained Python coding tasks with hidden pytest
+verification, comparing a monolith (largest Nemotron, one retry) against the
+Hash market:
+
+```bash
+make benchmark
+```
+
+Results are written to `benchmark_results.json` and served by `GET /benchmark`.
+The latest recorded comparison is in [SUBMISSION.md](SUBMISSION.md).
+
+## Tests
+
+```bash
+make test               # backend: pytest
+cd frontend && npm run lint && npm run build
+```
+
+## Configuration
+
+| Variable | Default | Purpose |
+|---|---|---|
+| `NEBIUS_API_KEY` | — | Nebius Token Factory API key, required for live runs |
+| `HASH_ALLOWED_ORIGINS` | `http://localhost:3000,http://127.0.0.1:3000` | Browser origins allowed to call the API |
+| `NEXT_PUBLIC_HASH_API` | `http://127.0.0.1:8000` | API base URL used by the dashboard |

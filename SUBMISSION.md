@@ -79,13 +79,18 @@ These are recorded benchmark results from the current implementation, not projec
 - SSE run-event streaming
 - Configurable Token Factory pricing
 - Next.js dashboard over the Hash API
+- Static landing page served from the same deployment
 
 ## Dashboard
 
-The `frontend/` Next.js dashboard renders a single run end to end — task,
-sealed bids, deterministic award, escrow, verification, settlement, per-model
-telemetry, and the append-only ledger — plus the worker pool with reputation
-and win rates, the benchmark comparison, and past runs.
+`frontend/` serves the Hash landing page at `/` and the live market dashboard
+at `/market`.
+
+The dashboard renders a single run end to end — task, sealed bids,
+deterministic award, escrow, verification, settlement, per-model telemetry, and
+the append-only ledger — plus the worker pool with reputation and win rates,
+the benchmark comparison, and past runs. It shares the landing page's palette
+and label treatment.
 
 A recorded demo run is included for environments without Token Factory access.
 It is labeled as recorded data in the UI, makes no model calls, and writes no

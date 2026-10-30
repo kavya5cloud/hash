@@ -111,12 +111,24 @@ still work: they replay the pre-recorded run in `demo/` and never call a model.
 | `GET /demo/run` | Recorded demo run (no model calls, no ledger writes) |
 | `GET /models` | Models available from Nebius Token Factory |
 
-## Dashboard
+## Landing page and dashboard
 
-The `frontend/` Next.js app renders one run end to end — task, sealed bids,
-deterministic award, escrow, verification, settlement, per-model telemetry, and
-the append-only ledger — alongside the worker pool, the benchmark comparison,
-and past runs. See [frontend/README.md](frontend/README.md).
+`frontend/` serves two things:
+
+| Route | What it is |
+|---|---|
+| `/` | The Hash landing page, a prebuilt static export in `frontend/public/` |
+| `/market` | The live market dashboard (Next.js app router) |
+
+Next does not serve nested `public/` directories as clean routes, so `/` and
+the landing page's own routes are rewritten onto their static files in
+`frontend/next.config.ts`.
+
+The dashboard renders one run end to end — task, sealed bids, deterministic
+award, escrow, verification, settlement, per-model telemetry, and the
+append-only ledger — alongside the worker pool, the benchmark comparison, and
+past runs. It is styled from the landing page's palette so the two read as one
+product. See [frontend/README.md](frontend/README.md).
 
 ## Benchmark
 

@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // The Hash landing page is a prebuilt static export; its bundles are
+    // minified third-party output, not sources we lint.
+    "public/**",
   ]),
 ]);
 

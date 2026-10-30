@@ -128,3 +128,27 @@ ledger events.
                       |
                    Ledger
 ```
+
+## Challenges
+
+The implementation required keeping model reasoning separate from deterministic
+market mechanics. Model outputs can propose tasks, bids, solutions, and
+verification judgments, but escrow, settlement, slashing, caps, and ledger
+accounting remain controlled by application code.
+
+Another challenge was making benchmark verification independent from the
+model's own verification claim. Hash therefore uses hidden pytest tests as the
+authoritative coding-task pass/fail signal while still running the Nemotron
+verifier for the market's verification path and telemetry.
+
+## What's Next
+
+- Add the live market SSE visualization to the dashboard.
+- Add run replay over the ledger.
+- Persist the ledger in deployed environments, which currently start empty.
+- Continue collecting documented Nebius Token Factory and Nemotron integration
+  feedback.
+
+## License
+
+MIT.

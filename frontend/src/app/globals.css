@@ -1,26 +1,50 @@
 @import "tailwindcss";
 
+/*
+ * Design tokens lifted from the Hash landing page in `public/` so the market
+ * dashboard reads as the same product. The landing page is dark-only, so the
+ * dashboard is too — there is no light theme to fall back to.
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a;
+  --foreground: #ffffff;
+  --surface: #141414;
+  --surface-raised: #1c1c1c;
+  --line: #2f2f2f;
+  --line-strong: #4d4d4d;
+  --muted: rgba(255, 255, 255, 0.7);
+  --faint: rgba(255, 255, 255, 0.5);
+  --accent: #f18bb2;
+  --accent-alt: #bdbf51;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-accent: var(--accent);
+  --color-accent-alt: var(--accent-alt);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Inter, sans-serif;
+}
+
+/* The landing page labels sections as `-- 001.` / `[ LABEL ]`; `.eyebrow`
+   carries that same treatment into the dashboard. */
+.eyebrow {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faint);
 }

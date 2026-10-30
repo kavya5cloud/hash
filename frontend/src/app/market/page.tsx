@@ -24,12 +24,12 @@ type Panel = {
 
 function Panel({ title, children, aside }: Panel) {
   return (
-    <section className="rounded-xl border border-black/10 bg-black/[0.015] p-5 dark:border-white/10 dark:bg-white/[0.02]">
+    <section className="border-line bg-surface rounded-xl border p-5">
       <header className="mb-4 flex items-baseline justify-between gap-3">
-        <h2 className="text-sm font-semibold tracking-wide uppercase opacity-70">
+        <h2 className="text-xs font-semibold tracking-[0.16em] uppercase">
           {title}
         </h2>
-        {aside ? <div className="text-xs opacity-60">{aside}</div> : null}
+        {aside ? <div className="text-faint text-xs">{aside}</div> : null}
       </header>
       {children}
     </section>
@@ -44,8 +44,8 @@ function Stat({
   value: React.ReactNode;
 }) {
   return (
-    <div className="rounded-lg border border-black/10 p-3 dark:border-white/10">
-      <div className="text-[11px] tracking-wide uppercase opacity-60">
+    <div className="border-line bg-surface-raised rounded-lg border p-3">
+      <div className="eyebrow">
         {label}
       </div>
       <div className="mt-1 font-mono text-sm">{value}</div>
@@ -61,9 +61,9 @@ function Pill({
   children: React.ReactNode;
 }) {
   const tones = {
-    pass: "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300",
-    fail: "bg-rose-500/15 text-rose-700 dark:text-rose-300",
-    neutral: "bg-black/10 dark:bg-white/10",
+    pass: "bg-accent-alt/20 text-accent-alt",
+    fail: "bg-accent/20 text-accent",
+    neutral: "bg-white/10 text-white/80",
   } as const;
 
   return (
@@ -85,7 +85,7 @@ function TelemetryRow({
   if (!telemetry) return null;
 
   return (
-    <tr className="border-t border-black/5 dark:border-white/5">
+    <tr className="border-line/60 border-t">
       <td className="py-2 pr-4 font-medium">{role}</td>
       <td className="py-2 pr-4 font-mono text-xs break-all">
         {telemetry.model}
@@ -140,7 +140,7 @@ function BenchmarkTable({ benchmark }: { benchmark: Benchmark }) {
   return (
     <table className="w-full text-sm">
       <thead>
-        <tr className="text-left text-[11px] tracking-wide uppercase opacity-60">
+        <tr className="text-left eyebrow">
           <th className="pb-2 font-medium">Metric</th>
           <th className="pb-2 text-right font-medium">Monolith</th>
           <th className="pb-2 text-right font-medium">Market</th>
@@ -150,7 +150,7 @@ function BenchmarkTable({ benchmark }: { benchmark: Benchmark }) {
         {rows.map(([label, left, right]) => (
           <tr
             key={label}
-            className="border-t border-black/5 dark:border-white/5"
+            className="border-line/60 border-t"
           >
             <td className="py-2 pr-4">{label}</td>
             <td className="py-2 pr-4 text-right font-mono">{left}</td>
@@ -238,8 +238,22 @@ export default function Home() {
   return (
     <main className="mx-auto w-full max-w-5xl px-4 py-10">
       <header className="mb-8">
+        <nav className="border-line mb-8 flex items-center justify-between border-b pb-4">
+          {/* The landing page is the static export served at `/`. */}
+          <a href="/" className="text-sm font-semibold tracking-[0.2em]">
+            #HASH
+          </a>
+          <a href="/" className="eyebrow hover:text-foreground">
+            ← Back to overview
+          </a>
+        </nav>
+
+        <div className="eyebrow mb-3">[ Live Market ] -- 001.</div>
+
         <div className="flex flex-wrap items-center gap-3">
-          <h1 className="text-2xl font-semibold tracking-tight">Hash</h1>
+          <h1 className="text-3xl font-semibold tracking-tight">
+            Hash Market
+          </h1>
           <Pill tone={online ? "pass" : online === null ? "neutral" : "fail"}>
             {online === null
               ? "checking API"
@@ -248,7 +262,7 @@ export default function Home() {
                 : "API offline"}
           </Pill>
         </div>
-        <p className="mt-2 max-w-2xl text-sm opacity-70">
+        <p className="text-muted mt-2 max-w-2xl text-sm">
           A market where NVIDIA Nemotron models bid for tasks, get verified and
           paid, and build reputation. Credits are internal accounting units, not
           money.
@@ -260,20 +274,20 @@ export default function Home() {
           value={goal}
           onChange={(event) => setGoal(event.target.value)}
           placeholder="Describe a goal for the market"
-          className="flex-1 rounded-lg border border-black/15 bg-transparent px-3 py-2 text-sm outline-none focus:border-black/40 dark:border-white/15 dark:focus:border-white/40"
+          className="border-line focus:border-line-strong placeholder:text-faint flex-1 rounded-lg border bg-transparent px-3 py-2 text-sm outline-none"
         />
         <div className="flex gap-2">
           <button
             onClick={startRun}
             disabled={busy || !goal.trim() || online === false}
-            className="rounded-lg bg-foreground px-4 py-2 text-sm font-medium text-background disabled:opacity-40"
+            className="bg-foreground text-background rounded-lg px-4 py-2 text-xs font-medium tracking-[0.12em] uppercase disabled:opacity-40"
           >
             {busy ? "Running…" : "Run market"}
           </button>
           <button
             onClick={loadDemo}
             disabled={busy || online === false}
-            className="rounded-lg border border-black/15 px-4 py-2 text-sm font-medium disabled:opacity-40 dark:border-white/15"
+            className="border-line hover:border-line-strong rounded-lg border px-4 py-2 text-xs font-medium tracking-[0.12em] uppercase disabled:opacity-40"
           >
             Recorded demo
           </button>
@@ -281,13 +295,13 @@ export default function Home() {
       </div>
 
       {error ? (
-        <p className="mb-6 rounded-lg bg-rose-500/10 px-3 py-2 text-sm text-rose-700 dark:text-rose-300">
+        <p className="border-accent/40 text-accent mb-6 rounded-lg border px-3 py-2 text-sm">
           {error}
         </p>
       ) : null}
 
       {online === false ? (
-        <p className="mb-6 rounded-lg border border-black/10 px-3 py-2 text-sm opacity-70 dark:border-white/10">
+        <p className="border-line text-muted mb-6 rounded-lg border px-3 py-2 text-sm">
           Start the backend with <code className="font-mono">make dev</code>,
           then reload.
         </p>
@@ -297,7 +311,7 @@ export default function Home() {
         {run ? (
           <>
             {run.demo ? (
-              <p className="rounded-lg bg-amber-500/15 px-3 py-2 text-xs font-medium text-amber-800 dark:text-amber-200">
+              <p className="border-accent-alt/40 text-accent-alt rounded-lg border px-3 py-2 text-xs font-medium">
                 {run.label ?? "Recorded demo data — not a live run."}
               </p>
             ) : null}
@@ -343,7 +357,7 @@ export default function Home() {
 
               {task?.acceptance_criteria?.length ? (
                 <div className="mt-4">
-                  <div className="text-[11px] tracking-wide uppercase opacity-60">
+                  <div className="eyebrow">
                     Acceptance criteria
                   </div>
                   <ul className="mt-1 list-disc pl-5 text-sm">
@@ -365,7 +379,7 @@ export default function Home() {
             >
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="text-left text-[11px] tracking-wide uppercase opacity-60">
+                  <tr className="text-left eyebrow">
                     <th className="pb-2 font-medium">Worker</th>
                     <th className="pb-2 text-right font-medium">Price</th>
                     <th className="pb-2 text-right font-medium">Est. time</th>
@@ -376,15 +390,15 @@ export default function Home() {
                   {run.bids.map((bid, index) => (
                     <tr
                       key={bid.bid_id ?? `${bid.worker_id}-${index}`}
-                      className="border-t border-black/5 dark:border-white/5"
+                      className="border-line/60 border-t"
                     >
                       <td className="py-2 pr-4">
                         <div className="font-medium">{bid.worker_id}</div>
                         {bid.plan ? (
-                          <div className="text-xs opacity-60">{bid.plan}</div>
+                          <div className="text-faint text-xs">{bid.plan}</div>
                         ) : null}
                         {bid.reason ? (
-                          <div className="text-xs opacity-60">
+                          <div className="text-faint text-xs">
                             {bid.reason}
                           </div>
                         ) : null}
@@ -418,7 +432,7 @@ export default function Home() {
               </table>
 
               {run.award ? (
-                <p className="mt-3 text-xs opacity-60">
+                <p className="mt-3 text-faint text-xs">
                   Award score combines price ({run.award.price_component}) and
                   reputation ({run.award.reputation_component})
                   deterministically.
@@ -454,7 +468,7 @@ export default function Home() {
                 </div>
 
                 {run.output ? (
-                  <pre className="mt-4 max-h-72 overflow-auto rounded-lg bg-black/5 p-3 font-mono text-xs dark:bg-white/5">
+                  <pre className="border-line bg-surface-raised mt-4 max-h-72 overflow-auto rounded-lg border p-3 font-mono text-xs">
                     {run.output}
                   </pre>
                 ) : null}
@@ -464,7 +478,7 @@ export default function Home() {
             <Panel title="Model telemetry">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="text-left text-[11px] tracking-wide uppercase opacity-60">
+                  <tr className="text-left eyebrow">
                     <th className="pb-2 font-medium">Role</th>
                     <th className="pb-2 font-medium">Model</th>
                     <th className="pb-2 text-right font-medium">Tokens</th>
@@ -498,15 +512,15 @@ export default function Home() {
                 {run.events.map((event) => (
                   <li
                     key={event.id}
-                    className="flex gap-3 border-l-2 border-black/10 pl-3 text-sm dark:border-white/10"
+                    className="border-line flex gap-3 border-l-2 pl-3 text-sm"
                   >
-                    <span className="w-6 shrink-0 font-mono text-xs opacity-50">
+                    <span className="w-6 shrink-0 font-mono text-faint text-xs">
                       {event.id}
                     </span>
                     <span className="font-medium">
                       {EVENT_LABELS[event.event_type] ?? event.event_type}
                     </span>
-                    <span className="ml-auto truncate font-mono text-xs opacity-50">
+                    <span className="ml-auto truncate font-mono text-faint text-xs">
                       {Object.entries(event.data)
                         .slice(0, 2)
                         .map(([key, value]) => `${key}=${String(value)}`)
@@ -519,7 +533,7 @@ export default function Home() {
           </>
         ) : (
           <Panel title="Run">
-            <p className="text-sm opacity-70">
+            <p className="text-muted text-sm">
               Start a market run, or load the recorded demo, to see bidding,
               verification, settlement, and the ledger.
             </p>
@@ -530,7 +544,7 @@ export default function Home() {
           {agents.length ? (
             <table className="w-full text-sm">
               <thead>
-                <tr className="text-left text-[11px] tracking-wide uppercase opacity-60">
+                <tr className="text-left eyebrow">
                   <th className="pb-2 font-medium">Worker</th>
                   <th className="pb-2 font-medium">Model</th>
                   <th className="pb-2 text-right font-medium">Reputation</th>
@@ -542,11 +556,11 @@ export default function Home() {
                 {agents.map((agent) => (
                   <tr
                     key={agent.id}
-                    className="border-t border-black/5 dark:border-white/5"
+                    className="border-line/60 border-t"
                   >
                     <td className="py-2 pr-4">
                       <div className="font-medium">{agent.name}</div>
-                      <div className="text-xs opacity-60">{agent.strategy}</div>
+                      <div className="text-faint text-xs">{agent.strategy}</div>
                     </td>
                     <td className="py-2 pr-4 font-mono text-xs break-all">
                       {agent.model}
@@ -565,7 +579,7 @@ export default function Home() {
               </tbody>
             </table>
           ) : (
-            <p className="text-sm opacity-70">No worker data available.</p>
+            <p className="text-muted text-sm">No worker data available.</p>
           )}
         </Panel>
 
@@ -585,7 +599,7 @@ export default function Home() {
                 <li key={summary.run_id}>
                   <button
                     onClick={() => openRun(summary.run_id)}
-                    className="flex w-full items-center gap-3 rounded-lg px-2 py-2 text-left text-sm hover:bg-black/5 dark:hover:bg-white/5"
+                    className="hover:bg-surface-raised flex w-full items-center gap-3 rounded-lg px-2 py-2 text-left text-sm"
                   >
                     <Pill
                       tone={
@@ -605,7 +619,7 @@ export default function Home() {
                     <span className="flex-1 truncate">
                       {summary.goal ?? summary.run_id}
                     </span>
-                    <span className="font-mono text-xs opacity-50">
+                    <span className="font-mono text-faint text-xs">
                       {summary.event_count} events
                     </span>
                   </button>
@@ -613,12 +627,12 @@ export default function Home() {
               ))}
             </ul>
           ) : (
-            <p className="text-sm opacity-70">No runs recorded yet.</p>
+            <p className="text-muted text-sm">No runs recorded yet.</p>
           )}
         </Panel>
       </div>
 
-      <footer className="mt-10 text-xs opacity-50">
+      <footer className="border-line text-faint mt-10 border-t pt-6 text-xs">
         Hash is not a cryptocurrency, blockchain, or real-money marketplace.
       </footer>
     </main>

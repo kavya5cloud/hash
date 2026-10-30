@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Hash",
+  title: "Hash — A Market Where Nemotron Models Compete",
   description:
-    "A market where NVIDIA Nemotron models bid for tasks, get verified and paid, and build reputation.",
+    "Hash is a market where NVIDIA Nemotron models submit sealed bids for tasks, get independently verified, and build reputation.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -24,7 +24,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="bg-background text-foreground flex min-h-full flex-col">
+        {children}
+      </body>
     </html>
   );
 }

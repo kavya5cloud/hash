@@ -24,7 +24,7 @@ type Panel = {
 
 function Panel({ title, children, aside }: Panel) {
   return (
-    <section className="border-line bg-surface rounded-xl border p-5">
+    <section className="glass rounded-2xl p-5">
       <header className="mb-4 flex items-baseline justify-between gap-3">
         <h2 className="text-xs font-semibold tracking-[0.16em] uppercase">
           {title}
@@ -44,7 +44,7 @@ function Stat({
   value: React.ReactNode;
 }) {
   return (
-    <div className="border-line bg-surface-raised rounded-lg border p-3">
+    <div className="glass-raised rounded-xl p-3">
       <div className="eyebrow">
         {label}
       </div>
@@ -101,6 +101,12 @@ function TelemetryRow({
       </td>
     </tr>
   );
+}
+
+/** Award components are raw floats; three places is plenty on screen. */
+function formatScore(value: number | null | undefined): string {
+  if (value === null || value === undefined) return "—";
+  return value.toFixed(3);
 }
 
 function BenchmarkTable({ benchmark }: { benchmark: Benchmark }) {
@@ -165,7 +171,7 @@ function BenchmarkTable({ benchmark }: { benchmark: Benchmark }) {
   return (
     <>
       {executionRatio ? (
-        <div className="border-line bg-surface-raised mb-4 rounded-lg border p-4">
+        <div className="glass-raised mb-4 rounded-xl p-4">
           <div className="eyebrow">[ Execution cost ]</div>
           <p className="mt-2 text-sm">
             The market matched the monolith&apos;s pass rate while doing the work{" "}
@@ -344,20 +350,20 @@ export default function Home() {
           value={goal}
           onChange={(event) => setGoal(event.target.value)}
           placeholder="Describe a goal for the market"
-          className="border-line focus:border-line-strong placeholder:text-faint flex-1 rounded-lg border bg-transparent px-3 py-2 text-sm outline-none"
+          className="glass-raised focus:border-line-strong placeholder:text-faint flex-1 rounded-full px-4 py-2.5 text-sm outline-none transition-colors"
         />
         <div className="flex gap-2">
           <button
             onClick={startRun}
             disabled={busy || !goal.trim() || online === false}
-            className="bg-foreground text-background rounded-lg px-4 py-2 text-xs font-medium tracking-[0.12em] uppercase disabled:opacity-40"
+            className="bg-foreground text-background rounded-full px-5 py-2.5 text-xs font-semibold tracking-[0.12em] uppercase transition-transform hover:-translate-y-px disabled:translate-y-0 disabled:opacity-40"
           >
             {busy ? "Running…" : "Run market"}
           </button>
           <button
             onClick={loadDemo}
             disabled={busy || online === false}
-            className="border-line hover:border-line-strong rounded-lg border px-4 py-2 text-xs font-medium tracking-[0.12em] uppercase disabled:opacity-40"
+            className="glass-raised hover:border-line-strong rounded-full px-5 py-2.5 text-xs font-semibold tracking-[0.12em] uppercase transition-transform hover:-translate-y-px disabled:translate-y-0 disabled:opacity-40"
           >
             Recorded demo
           </button>
@@ -365,13 +371,13 @@ export default function Home() {
       </div>
 
       {error ? (
-        <p className="border-accent/40 text-accent mb-6 rounded-lg border px-3 py-2 text-sm">
+        <p className="glass border-accent/40 text-accent mb-6 rounded-xl px-4 py-2.5 text-sm">
           {error}
         </p>
       ) : null}
 
       {online === false ? (
-        <p className="border-line text-muted mb-6 rounded-lg border px-3 py-2 text-sm">
+        <p className="glass text-muted mb-6 rounded-xl px-4 py-2.5 text-sm">
           Start the backend with <code className="font-mono">make dev</code>,
           then reload.
         </p>
@@ -381,7 +387,7 @@ export default function Home() {
         {run ? (
           <>
             {run.demo ? (
-              <p className="border-accent-alt/40 text-accent-alt rounded-lg border px-3 py-2 text-xs font-medium">
+              <p className="glass border-accent-alt/40 text-accent-alt rounded-xl px-4 py-2.5 text-xs font-medium">
                 {run.label ?? "Recorded demo data — not a live run."}
               </p>
             ) : null}
@@ -503,8 +509,9 @@ export default function Home() {
 
               {run.award ? (
                 <p className="mt-3 text-faint text-xs">
-                  Award score combines price ({run.award.price_component}) and
-                  reputation ({run.award.reputation_component})
+                  Award score combines price (
+                  {formatScore(run.award.price_component)}) and reputation (
+                  {formatScore(run.award.reputation_component)})
                   deterministically.
                 </p>
               ) : null}
@@ -538,7 +545,7 @@ export default function Home() {
                 </div>
 
                 {run.output ? (
-                  <pre className="border-line bg-surface-raised mt-4 max-h-72 overflow-auto rounded-lg border p-3 font-mono text-xs">
+                  <pre className="glass-raised mt-4 max-h-72 overflow-auto rounded-xl p-3 font-mono text-xs">
                     {run.output}
                   </pre>
                 ) : null}
@@ -669,7 +676,7 @@ export default function Home() {
                 <li key={summary.run_id}>
                   <button
                     onClick={() => openRun(summary.run_id)}
-                    className="hover:bg-surface-raised flex w-full items-center gap-3 rounded-lg px-2 py-2 text-left text-sm"
+                    className="hover:bg-surface-raised flex w-full items-center gap-3 rounded-xl px-3 py-2 text-left text-sm transition-colors"
                   >
                     <Pill
                       tone={

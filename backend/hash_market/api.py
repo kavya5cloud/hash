@@ -220,6 +220,13 @@ def _run_summary(run_id: str) -> dict:
             if completion_events
             and completion_events[-1]["event_type"]
             == "goal_failed"
+            # Benchmark market runs settle without emitting a goal event, so
+            # fall back to the settlement: a run that has paid or slashed is
+            # finished regardless.
+            else "completed"
+            if payment
+            else "failed"
+            if slash
             else "running"
         ),
         "goal": {

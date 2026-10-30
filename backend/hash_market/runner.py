@@ -11,6 +11,7 @@ from .agents.manager import Manager
 from .agents.verifier import Verifier
 from .agents.worker import Worker
 from .ledger import Ledger
+from .paths import ledger_path
 from .llm import LLMClient
 from .models import Goal
 
@@ -26,7 +27,7 @@ def run(goal_prompt: str) -> None:
     load_dotenv()
 
     run_id = str(uuid.uuid4())
-    ledger = Ledger("hash.db")
+    ledger = Ledger(ledger_path())
     llm = LLMClient()
 
     manager = Manager(llm, MANAGER_MODEL)

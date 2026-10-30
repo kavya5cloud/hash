@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 from .agents.verifier import Verifier
 from .agents.worker import Worker
 from .ledger import Ledger
+from .paths import ledger_path
 from .llm import LLMClient
 from .market import Market
 from .models import Goal, Task, TaskType
@@ -25,7 +26,7 @@ def run() -> None:
     load_dotenv()
 
     run_id = str(uuid.uuid4())
-    ledger = Ledger("hash.db")
+    ledger = Ledger(ledger_path())
     llm = LLMClient()
     market = Market()
     agents = phase2_agents()

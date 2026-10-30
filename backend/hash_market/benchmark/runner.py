@@ -13,6 +13,11 @@ from dotenv import load_dotenv
 from ..agents.verifier import Verifier
 from ..agents.worker import Worker
 from ..ledger import Ledger
+from ..paths import (
+    BENCHMARK_CSV_PATH,
+    benchmark_results_path,
+    ledger_path,
+)
 from ..llm import LLMClient
 from ..market import Market
 from ..participants import phase2_agents
@@ -162,7 +167,7 @@ def _write_csv(results: list[dict]) -> None:
         "market_price",
     ]
 
-    with Path("benchmark_results.csv").open(
+    with BENCHMARK_CSV_PATH.open(
         "w",
         newline="",
         encoding="utf-8",
@@ -276,7 +281,7 @@ def run(limit: int | None = None) -> None:
 
     llm = LLMClient()
     market = Market()
-    ledger = Ledger("hash.db")
+    ledger = Ledger(ledger_path())
     agents = phase2_agents()
 
     workers = {
@@ -573,7 +578,7 @@ def run(limit: int | None = None) -> None:
         "results": results,
     }
 
-    Path("benchmark_results.json").write_text(
+    benchmark_results_path().write_text(
         json.dumps(report, indent=2),
         encoding="utf-8",
     )
@@ -584,7 +589,7 @@ def run(limit: int | None = None) -> None:
     print(f"Completed: {len(results)}")
     print(f"Passed: {passed}")
     print(f"Failed: {len(results) - passed}")
-    print("Report: benchmark_results.json")
+    print(f"Report: {benchmark_results_path()}")
 
     for result in results:
         market = result["market"]

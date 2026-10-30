@@ -3,5 +3,3 @@ uvicorn[standard]
 openai
 pydantic
 python-dotenv
-pytest
-httpx

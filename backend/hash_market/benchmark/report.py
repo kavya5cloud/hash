@@ -7,12 +7,21 @@ import sqlite3
 from collections import Counter
 from pathlib import Path
 
+from ..paths import benchmark_results_path, ledger_path
+
 
 def build_report(
-    db_path: str = "hash.db",
-    results_path: str = "benchmark_results.json",
+    db_path: str | Path | None = None,
+    results_path: str | Path | None = None,
 ) -> dict:
     """Build an evidence report for the latest Monolith-vs-Market benchmark."""
+
+    db_path = db_path if db_path is not None else ledger_path()
+    results_path = (
+        results_path
+        if results_path is not None
+        else benchmark_results_path()
+    )
 
     results_file = Path(results_path)
 
@@ -29,7 +38,7 @@ def build_report(
 
     if not benchmark_id:
         raise ValueError(
-            "benchmark_results.json does not contain benchmark_id"
+            f"{results_file.name} does not contain benchmark_id"
         )
 
     results = benchmark_results.get("results", [])

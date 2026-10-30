@@ -1,5 +1,8 @@
+// Deployed, the API is a service on the same origin behind /api. Locally it is
+// a separate uvicorn process. NEXT_PUBLIC_HASH_API overrides both.
 export const HASH_API =
-  process.env.NEXT_PUBLIC_HASH_API ?? "http://127.0.0.1:8000";
+  process.env.NEXT_PUBLIC_HASH_API ??
+  (process.env.NODE_ENV === "production" ? "/api" : "http://127.0.0.1:8000");
 
 export type Telemetry = {
   model: string;

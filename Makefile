@@ -5,7 +5,7 @@ PYTEST ?= $(PYTHON) -m pytest
 .PHONY: setup dev test benchmark frontend-setup frontend-dev frontend-check
 
 setup:
-	$(PIP) install -r backend/requirements.txt
+	$(PIP) install -r backend/requirements-dev.txt
 
 dev:
 	PYTHONPATH=backend uvicorn hash_market.api:app --reload

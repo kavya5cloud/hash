@@ -22,6 +22,11 @@ from .ledger import Ledger
 from .llm import LLMClient, NEBIUS_BASE_URL
 from .models import Goal
 from .participants import phase2_agents
+from .paths import (
+    DEMO_RUN_PATH,
+    benchmark_results_path,
+    ledger_path,
+)
 
 
 load_dotenv()
@@ -64,15 +69,8 @@ class RunRequest(BaseModel):
     goal: str = Field(min_length=1)
 
 
-DEMO_RUN_PATH = (
-    Path(__file__).resolve().parents[2]
-    / "demo"
-    / "fallback_run.json"
-)
-
-
 def _ledger() -> Ledger:
-    return Ledger("hash.db")
+    return Ledger(ledger_path())
 
 
 def _run_events(run_id: str) -> list[dict]:
@@ -559,7 +557,7 @@ def stream_events(run_id: str) -> StreamingResponse:
 def benchmark() -> dict:
     """Return the latest benchmark results."""
 
-    path = Path("benchmark_results.json")
+    path = benchmark_results_path()
 
     if not path.exists():
         raise HTTPException(
